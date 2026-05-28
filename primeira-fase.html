@@ -265,7 +265,7 @@
             transition: width 80ms linear;
         }
 
-        /* Next Section Placeholder (Para permitir o scroll passar do hero no desktop) */
+        /* Próxima dobra (Dobra 2) */
         .section-dobra-2 {
             position: relative;
             z-index: 2;
@@ -278,23 +278,96 @@
             overflow: hidden;
             background-color: #F3F4F0;
         }
+
+        .dobra-2-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Controle Responsivo do Background e Layout */
+        @media (max-width: 768px) {
+            .section-dobra-2 {
+                flex-direction: column;
+                background-color: #F3F4F0;
+                height: auto;
+                min-height: auto;
+                border-radius: 0;
+                box-shadow: none;
+                margin-top: 0;
+            }
+            .dobra-2-bg {
+                position: relative;
+                order: 2;
+                height: 55vh;
+                object-position: top;
+                content: url('../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 2/Primeira-fase-Dobra-3--CEL.jpg');
+            }
+            .dobra-2-content {
+                order: 1;
+                padding: 1rem 1.5rem 3rem 1.5rem;
+            }
+        }
+        @media (min-width: 769px) {
+            .dobra-2-bg {
+                content: url('../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 2/Site copiar-gigapixel-high fidelity v2-6x copiar.jpg');
+            }
+        }
+
         .dobra-2-content {
             position: relative;
             z-index: 1;
-            text-align: center;
-            padding: 4rem;
-        }
-        .dobra-2-content h1 {
-            color: #899702;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            max-width: 80rem;
+            width: 100%;
+            padding: 6rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
         }
 
+        .dobra-2-glass-card {
+            background-color: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 4rem 3rem;
+            border-radius: 2rem;
+            max-width: 600px;
+            box-shadow: 0 10px 40px rgba(148, 163, 184, 0.16);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .dobra-2-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #6B6B6B;
+            font-weight: 400;
+        }
+        
+        .dobra-2-text strong {
+            font-weight: 700;
+            color: #4A4A4A;
+        }
+        
         @media (max-width: 768px) {
-            .section-dobra-2 {
-                border-radius: 0;
+            .dobra-2-glass-card {
+                background: transparent;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                border: none;
                 box-shadow: none;
-                min-height: 50vh;
+                padding: 0;
+                transform: translateY(20px);
+            }
+            .dobra-2-text {
+                font-size: 1rem;
+                text-align: justify;
             }
         }
     </style>
@@ -351,11 +424,20 @@
     <!-- Scroll trigger zone -->
     <div class="scroll-spacer" id="trigger"></div>
 
-    <!-- Conteúdo da Página -->
+    <!-- Conteúdo da Página (Dobra 2 em diante) -->
     <main class="section-dobra-2">
+        <!-- Background Imagem Responsiva -->
+        <img class="dobra-2-bg" alt="Fundo Dobra 2">
+
         <div class="dobra-2-content">
-            <h1>Primeira Fase</h1>
-            <p>Mais detalhes sobre a primeira fase do projeto estarão aqui.</p>
+            <div class="dobra-2-glass-card" id="dobra2-card">
+                <p class="dobra-2-text">
+                    Imagine se, a cada ano de vida, você tivesse comemorado plantando uma árvore.<br><br>
+                    <strong>Quantas árvores você teria plantado até hoje?</strong><br><br>
+                    E se nós plantássemos essa ideia na cabeça de uma nova geração?<br><br>
+                    É isso — e muito mais — que essa fase do projeto propõe como uma solução para um futuro de regeneração do planeta!
+                </p>
+            </div>
         </div>
     </main>
 
@@ -542,6 +624,20 @@
                 start: "top top", // Quando o topo da dobra 2 bate no topo da tela (hero 100% coberto)
                 onEnter: () => document.getElementById("hero-canvas").style.visibility = "hidden",
                 onLeaveBack: () => document.getElementById("hero-canvas").style.visibility = "visible"
+            });
+
+            // Animação da Dobra 2 (ScrollTrigger para o Glass Card)
+            gsap.to("#dobra2-card", {
+                scrollTrigger: {
+                    trigger: ".section-dobra-2",
+                    start: "top 60%", // dispara quando o topo da dobra 2 cruzar 60% da tela
+                    end: "top 30%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power3.out"
             });
         }
 
