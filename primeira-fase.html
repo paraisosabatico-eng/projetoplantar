@@ -36,6 +36,7 @@
             height: 100vh;
             height: 100svh;
             z-index: 0;
+            display: block; /* Garante que não haja espaço extra abaixo do canvas */
         }
 
         @media (max-width: 768px) {
@@ -266,108 +267,431 @@
         }
 
         /* Próxima dobra (Dobra 2) */
+        /* Próxima dobra (Dobra 2) */
         .section-dobra-2 {
             position: relative;
             z-index: 2;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
             border-radius: 3rem 3rem 0 0;
             box-shadow: 0 -20px 60px rgba(0,0,0,0.4);
             overflow: hidden;
             background-color: #F3F4F0;
         }
 
-        .dobra-2-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .d2-bg-picture {
+            display: block;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            position: relative;
             z-index: 0;
+        }
+
+        .dobra-2-bg {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            z-index: 0;
+            position: relative;
         }
 
         /* Controle Responsivo do Background e Layout */
         @media (max-width: 768px) {
             .section-dobra-2 {
-                flex-direction: column;
-                background-color: #F3F4F0;
-                height: auto;
-                min-height: auto;
-                border-radius: 0;
-                box-shadow: none;
-                margin-top: 0;
-            }
-            .dobra-2-bg {
-                position: relative;
-                order: 2;
-                height: 55vh;
-                object-position: top;
-                content: url('../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 2/Primeira-fase-Dobra-3--CEL.jpg');
-            }
-            .dobra-2-content {
-                order: 1;
-                padding: 1rem 1.5rem 3rem 1.5rem;
-            }
-        }
-        @media (min-width: 769px) {
-            .dobra-2-bg {
-                content: url('../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 2/Site copiar-gigapixel-high fidelity v2-6x copiar.jpg');
+                background-color: #F3F4F0 !important;
+                border-radius: 0 !important;
+                margin-top: 0 !important;
+                position: relative !important;
+                z-index: 2 !important;
+                box-shadow: 0 -10px 40px rgba(0,0,0,0.2) !important;
             }
         }
 
         .dobra-2-content {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             z-index: 1;
-            max-width: 80rem;
             width: 100%;
-            padding: 6rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
+            height: 100%;
+            padding: 4rem;
+            
+            /* Grid 3x3 conforme solicitado */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 1rem;
         }
 
         .dobra-2-glass-card {
-            background-color: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            padding: 4rem 3rem;
+            /* Colocar entre as duas caixas iniciais do canto esquerdo (Row 1-2, Col 1) */
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+            align-self: center;
+            
+            /* Ajustes finos para colar na imagem e sobrepor as folhas */
+            position: relative;
+            left: 7rem;
+            top: -10rem;
+            /* Estilo Vidro com Mais Transparência e Filete Branco */
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 3rem 2.5rem;
             border-radius: 2rem;
-            max-width: 600px;
-            box-shadow: 0 10px 40px rgba(148, 163, 184, 0.16);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            
             opacity: 0;
             transform: translateY(40px);
+            max-width: 100%;
         }
 
         .dobra-2-text {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             line-height: 1.6;
-            color: #6B6B6B;
+            color: #4A4A4A;
             font-weight: 400;
+            font-style: normal;
         }
         
         .dobra-2-text strong {
-            font-weight: 700;
-            color: #4A4A4A;
+            font-weight: 600;
+            color: #899701;
+            font-size: 1.25rem;
         }
         
         @media (max-width: 768px) {
+            .section-dobra-2 {
+                display: block !important;
+                background-color: #F3F4F0 !important;
+                height: auto !important;
+                min-height: auto !important;
+                border-radius: 0 !important;
+                margin-top: 0 !important;
+                position: relative !important;
+                z-index: 2 !important;
+                box-shadow: 0 -10px 40px rgba(0,0,0,0.2) !important;
+                padding: 0 !important;
+            }
+            .dobra-2-content {
+                position: relative !important;
+                display: block !important;
+                height: auto !important;
+                padding: 0 1rem 2rem 1rem !important;
+                width: 100% !important;
+                margin-top: -12rem !important;
+            }
             .dobra-2-glass-card {
-                background: transparent;
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
-                border: none;
-                box-shadow: none;
-                padding: 0;
-                transform: translateY(20px);
+                /* Reseta posicionamento do desktop */
+                left: 0 !important;
+                top: 0 !important;
+                margin-top: 0 !important;
+                z-index: 10 !important;
+                
+                background: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.6);
+                box-shadow: 0 10px 40px rgba(148, 163, 184, 0.16);
+                padding: 2rem 1.5rem;
+                width: 100%;
+                max-width: 100%;
+                transform: none !important; /* Ignora o GSAP inicial */
             }
             .dobra-2-text {
                 font-size: 1rem;
-                text-align: justify;
+                text-align: left;
+                letter-spacing: normal;
+            }
+        }
+
+        /* ──────────────────────────────────────────────
+           DOBRA 3 (BENTO BOX DOS PERSONAGENS)
+        ────────────────────────────────────────────── */
+        /* ──────────────────────────────────────────────
+           DOBRA 3 (CARDS DOS PERSONAGENS)
+        ────────────────────────────────────────────── */
+        .section-dobra-3 {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #FAFAFA;
+            padding: 6rem 1.5rem;
+            gap: 3rem;
+        }
+
+        .d3-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+            max-width: 60rem;
+            padding: 0 1rem;
+        }
+
+        .d3-etapa-badge {
+            background-color: #E8E9E6;
+            color: #7A7A7A;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+        }
+
+        .d3-magia-img {
+            max-width: 45rem;
+            width: 100%;
+            height: auto;
+        }
+
+        .d3-quote-text {
+            font-size: 1.5rem;
+            color: #7A7A7A;
+            line-height: 1.5;
+            font-weight: 400;
+            margin: 0;
+            max-width: 50rem;
+        }
+
+        .d3-main-container {
+            width: 100%;
+            max-width: 90rem;
+            background-color: #FFFFFF;
+            border-radius: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .d3-grid-title {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #7A7A7A;
+            text-align: center;
+            margin: 0;
+        }
+
+        .d3-characters-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .d3-character-card {
+            background-color: #F4F5F2; /* Cor da caixa de texto conforme print */
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+        .d3-character-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .d3-character-img {
+            width: 100%;
+            aspect-ratio: 9 / 16; /* Taller format to prevent cropping top/bottom */
+            object-fit: cover;
+            object-position: top; /* Ensures the head is always prioritized if a minor crop happens */
+        }
+
+        .d3-character-info {
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .d3-character-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #899702;
+            margin-bottom: 1rem;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .d3-character-desc {
+            font-size: 0.75rem;
+            line-height: 1.6;
+            color: #7A7A7A;
+            text-align: center;
+            margin: 0;
+        }
+
+        .d3-footer {
+            width: 100%;
+            max-width: 60rem;
+            background-color: #FFFFFF;
+            border-radius: 9999px;
+            padding: 1.5rem 3rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+        .d3-footer p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #7A7A7A;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .d3-characters-row {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .section-dobra-3 { padding: 4rem 1rem; gap: 2rem; }
+            .d3-main-container { padding: 2rem 1.25rem; border-radius: 1.5rem; gap: 2rem; }
+            .d3-characters-row { grid-template-columns: 1fr; gap: 2rem; }
+            .d3-character-info { padding: 2.5rem 1.5rem; }
+            .d3-quote-text { font-size: 1.2rem; }
+            .d3-footer { padding: 1.5rem; border-radius: 1.5rem; }
+        }
+        /* ──────────────────────────────────────────────
+           DOBRA 4 (LEITURA DO LIVRO)
+        ────────────────────────────────────────────── */
+        .section-dobra-4 {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .d4-bg-picture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .dobra-4-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .dobra-4-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 100rem;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .d4-col-left {
+            flex: 0 0 55%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .d4-col-right {
+            flex: 1;
+        }
+
+        .d4-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        .d4-title-img {
+            max-width: 45rem;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        .d4-subtitle {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #FFFFFF;
+            font-size: 1rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-top: 0.5rem;
+        }
+
+        .d4-document-container {
+            width: 100%;
+            max-width: 60rem;
+            height: 75vh;
+            min-height: 600px;
+            background-color: #FFFFFF;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            overflow: hidden;
+            border: 4px solid rgba(255,255,255,0.4);
+        }
+
+        .d4-document-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: #F8F9FA;
+        }
+
+        @media (max-width: 768px) {
+            .section-dobra-4 {
+                padding: 4rem 0 0 0;
+                min-height: 100vh;
+                align-items: flex-start;
+            }
+            .dobra-4-bg {
+                object-position: bottom center;
+            }
+            .dobra-4-content {
+                padding: 1rem 1rem 0 1rem;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .d4-col-left {
+                flex: 1 1 100%;
+                width: 100%;
+                gap: 1.5rem;
+            }
+            .d4-col-right {
+                display: none;
+            }
+            .d4-document-container {
+                height: 50vh;
+                min-height: 380px;
+                border-radius: 1rem;
+                border-width: 2px;
+            }
+            .d4-subtitle {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -426,20 +750,138 @@
 
     <!-- Conteúdo da Página (Dobra 2 em diante) -->
     <main class="section-dobra-2">
-        <!-- Background Imagem Responsiva -->
-        <img class="dobra-2-bg" alt="Fundo Dobra 2">
+        <!-- Background Imagem Responsiva resolvida com picture tag -->
+        <picture class="d2-bg-picture">
+            <source media="(max-width: 768px)" srcset="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Primeira%20Fase/Dobra%202/Primeira-fase-Dobra-3--CEL.jpg">
+            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 2/Primeira-fase-Dobras V2.jpg" class="dobra-2-bg" alt="Fundo Dobra 2">
+        </picture>
 
         <div class="dobra-2-content">
             <div class="dobra-2-glass-card" id="dobra2-card">
-                <p class="dobra-2-text">
-                    Imagine se, a cada ano de vida, você tivesse comemorado plantando uma árvore.<br><br>
-                    <strong>Quantas árvores você teria plantado até hoje?</strong><br><br>
-                    E se nós plantássemos essa ideia na cabeça de uma nova geração?<br><br>
-                    É isso — e muito mais — que essa fase do projeto propõe como uma solução para um futuro de regeneração do planeta!
-                </p>
+                <div class="dobra-2-text">
+                    <p style="margin-bottom: 1.5rem;">
+                        Imagine se, a cada ano de vida, você tivesse comemorado plantando uma árvore.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong>Quantas árvores você teria plantado até hoje?</strong>
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        E se nós plantássemos essa ideia na cabeça de uma nova geração?
+                    </p>
+                    <p>
+                        É isso — e muito mais — que essa fase do projeto propõe como uma solução para um futuro de regeneração do planeta!
+                    </p>
+                </div>
             </div>
         </div>
     </main>
+
+    <!-- Dobra 3 -->
+    <section class="section-dobra-3">
+        <!-- Header da Seção -->
+        <div class="d3-header">
+            <span class="d3-etapa-badge">primeira etapa</span>
+            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 3/A-MAGIA-DO-TEATRO.png" alt="A Magia do Teatro" class="d3-magia-img">
+            <p class="d3-quote-text">
+                "Onde realidade e imaginação se encontram, as sementes da transformação são lançadas.”
+            </p>
+        </div>
+
+        <!-- Container Principal (Caixa Branca) -->
+        <div class="d3-main-container">
+            <h2 class="d3-grid-title">Conheça um pouco mais sobre os personagens.</h2>
+            
+            <!-- Linha de Personagens -->
+            <div class="d3-characters-row">
+                
+                <!-- Personagem 1: Árvo -->
+                <div class="d3-character-card">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Persongens/ChatGPT Image 18 de fev. de 2026, 13_05_29.png" alt="Árvo" class="d3-character-img">
+                    <div class="d3-character-info">
+                        <h3 class="d3-character-name">Árvo</h3>
+                        <p class="d3-character-desc">
+                            Árvo é o Guardião das Sementes no Bosque das Raízes — um menino de 8 anos que escuta a voz das árvores e sente o chão pulsar sob seus pés. Curioso, empático e corajoso, carrega sementes e luz nas mãos. Representa a infância desperta: a semente consciente que aprende que cuidar é uma forma de existir.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Personagem 2: Dona Sávia -->
+                <div class="d3-character-card">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Persongens/ChatGPT Image 18 de fev. de 2026, 13_05_43.png" alt="Dona Sávia" class="d3-character-img">
+                    <div class="d3-character-info">
+                        <h3 class="d3-character-name">Dona Sávia</h3>
+                        <p class="d3-character-desc">
+                            Dona Sávia é a Guardiã Ancestral do Bosque das Raízes — presença serena que carrega a sabedoria da floresta. Com olhar profundo e mãos marcadas pelo tempo, ensina sem impor, orienta com silêncio e gesto. Representa as raízes do tempo: a memória viva que sustenta, cura e lembra que tudo está conectado.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Personagem 3: Mãe de Árvo -->
+                <div class="d3-character-card">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Persongens/ChatGPT Image 18 de fev. de 2026, 13_05_55.png" alt="Mãe de Árvo" class="d3-character-img">
+                    <div class="d3-character-info">
+                        <h3 class="d3-character-name">Mãe de Árvo</h3>
+                        <p class="d3-character-desc">
+                            Símbolo do amor que sustenta e da tradição que floresce no cotidiano, a Mãe de Árvo traduz a força silenciosa da terra em gestos simples e precisos. Com mãos firmes e presença serena, prepara o solo, acolhe, ensina e orienta com olhar amoroso. Nela, o tempo da natureza encontra o tempo do afeto — e é desse encontro que Árvo aprende a existir.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Personagem 4: Brisa -->
+                <div class="d3-character-card">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Persongens/ChatGPT Image 18 de fev. de 2026, 13_06_02.png" alt="Brisa" class="d3-character-img">
+                    <div class="d3-character-info">
+                        <h3 class="d3-character-name">Brisa</h3>
+                        <p class="d3-character-desc">
+                            Brisa é o sopro que desperta movimento no Bosque das Raízes. Feita de leveza e luz, surge quando é preciso mudar, respirar ou transformar. Seus gestos dançam como o vento, e sua presença ilumina sem pesar. Representa a alma do ar — a energia sutil que inspira Árvo a crescer, lembrando que viver também é fluir.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Personagem 5: Lume -->
+                <div class="d3-character-card">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Persongens/ChatGPT Image 18 de fev. de 2026, 13_06_09.png" alt="Lume" class="d3-character-img">
+                    <div class="d3-character-info">
+                        <h3 class="d3-character-name">Lume</h3>
+                        <p class="d3-character-desc">
+                            Movido pela curiosidade e pela luz que carrega no peito, Lume é o amigo que impulsiona a jornada no Bosque das Raízes. Se Árvo escuta a terra, Lume sente o vento e a energia do sol. Criativo, leal e espirituoso, transforma incertezas em descoberta. Ele representa a consciência que desperta em movimento — a esperança que ilumina o próximo passo.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer Pill -->
+        <div class="d3-footer">
+            <p>
+                O teatro foi escolhido para abrir a primeira fase porque ele cria algo que nenhum outro formato consegue substituir: presença. A criança não apenas assiste — ela sente, reage, participa. É pela emoção que o aprendizado ganha significado.
+            </p>
+        </div>
+    </section>
+
+    <!-- Dobra 4 -->
+    <section class="section-dobra-4">
+        <picture class="d4-bg-picture">
+            <source media="(max-width: 768px)" srcset="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Primeira%20Fase/Dobra%204/fundo-Cel.jpg">
+            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 4/Fundo Dobra 4 .png" class="dobra-4-bg" alt="Fundo Dobra 4">
+        </picture>
+
+        <div class="dobra-4-content">
+            <div class="d4-col-left">
+                <div class="d4-header">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 4/LEIA-A-HISTORIA-COMPLETA-V2.png" alt="Leia a História Completa" class="d4-title-img">
+                    <p class="d4-subtitle">A versão completa do livro pode ser encontrada na janela abaixo.</p>
+                </div>
+
+                <div class="d4-document-container">
+                    <iframe class="d4-document-iframe" src="https://docs.google.com/document/d/1VHVm8P8T9mJypNmWKtfB2xpsM-66gVxYISVXcurvIWw/preview" title="Visualizador do Livro"></iframe>
+                </div>
+            </div>
+            
+            <div class="d4-col-right"></div>
+        </div>
+    </section>
 
     <script>
     (function () {
@@ -494,14 +936,8 @@
             const sample = imgs[0];
             if (!sample || !sample.naturalWidth) return;
             
-            let r;
-            if (window.innerWidth <= 768) {
-                // No mobile, encaixa a largura inteira (contain horizontal) para não cortar o título
-                r = canvas.width / sample.naturalWidth;
-            } else {
-                // No desktop, cover padrão
-                r = Math.max(canvas.width / sample.naturalWidth, canvas.height / sample.naturalHeight);
-            }
+            // Sempre faz o cover padrão para não sobrar faixa branca
+            let r = Math.max(canvas.width / sample.naturalWidth, canvas.height / sample.naturalHeight);
 
             cover.w = sample.naturalWidth  * r;
             cover.h = sample.naturalHeight * r;
