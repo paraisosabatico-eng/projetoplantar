@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Plantar — Hero</title>
+
+    <!-- GSAP + ScrollTrigger (SEM Lenis — scroll nativo do macOS é naturalmente fluido) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            /* Permite o scroll nativo do macOS funcionar sem interferência */
+            scroll-behavior: auto;
+        }
+
+        body {
+            background: #F3F4F0; /* Corrigido de #000 para a cor da marca */
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Canvas principal fixo cobrindo toda a viewport no desktop */
+        #hero-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            height: 100svh;
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            #hero-canvas {
+                position: relative; /* Fluxo normal no mobile */
+                width: 100vw;
+                height: 56.25vw; /* Mantém a proporção 16:9 do vídeo */
+                z-index: 1;
+            }
+        }
+
+        /* Espaço de scroll que controla o avanço do vídeo no desktop */
+        .scroll-spacer {
+            height: 200vh;
+        }
+        
+        @media (max-width: 768px) {
+            .scroll-spacer {
+                display: none; /* No mobile o vídeo é controlado pelo seu próprio scroll */
+            }
+        }
+
+        /* Próxima dobra (Dobra 2) */
+        .section-dobra-2 {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3rem 3rem 0 0;
+            box-shadow: 0 -20px 60px rgba(0,0,0,0.4);
+            overflow: hidden;
+            background-color: #F3F4F0;
+        }
+
+        .dobra-2-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Controle Responsivo do Background e Layout */
+        @media (max-width: 768px) {
+            .section-dobra-2 {
+                flex-direction: column;
+                background-color: #F3F4F0; /* Cor sólida em vez de transparente para cobrir o hero */
+                height: auto;
+                min-height: auto;
+                border-radius: 0; /* Remove curva no mobile para fluxo contínuo */
+                box-shadow: none; /* Remove sombra */
+                margin-top: 0;
+            }
+            .dobra-2-bg {
+                position: relative; /* Remove o absolute */
+                order: 2; /* Joga a imagem para baixo */
+                height: 55vh; /* Altura razoável para a foto do menino no celular */
+                object-position: top; /* Foca no rosto */
+                content: url('../_ASSETS_LOCAIS/Branding/Imagens - Site/Home/Dobra 2/Backgrund Cel.jpg');
+            }
+            .dobra-2-content {
+                order: 1; /* Joga o texto para cima */
+                padding: 1rem 1.5rem 3rem 1.5rem; /* Espaçamento reduzido no topo */
+            }
+        }
+        @media (min-width: 769px) {
+            .dobra-2-bg {
+                content: url('../_ASSETS_LOCAIS/Branding/Imagens - Site/Home/Dobra 2/Camada-3-V2.jpg');
+            }
+        }
+
+        .dobra-2-content {
+            position: relative;
+            z-index: 1;
+            max-width: 80rem; /* max-w-7xl */
+            width: 100%;
+            padding: 6rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Alinhado à esquerda por padrão */
+        }
+
+        .dobra-2-glass-card {
+            background-color: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 4rem 3rem;
+            border-radius: 2rem;
+            max-width: 600px;
+            box-shadow: 0 10px 40px rgba(148, 163, 184, 0.16);
+            /* Animação GSAP inicial */
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .dobra-2-logo {
+            max-width: 200px;
+            margin-top: 2.5rem; /* Margem movida para cima, já que o logo ficará em baixo */
+        }
+
+        .dobra-2-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #6B6B6B; /* Cor definida pelo usuário */
+            font-weight: 400;
+        }
+        
+        @media (max-width: 768px) {
+            .dobra-2-glass-card {
+                /* Remove o card de vidro no mobile (fica texto limpo) */
+                background: transparent;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                transform: translateY(20px); /* Animação mais sutil no mobile */
+            }
+            .dobra-2-text {
+                font-size: 1rem;
+                text-align: justify; /* Conforme a imagem 2 */
+            }
+            .dobra-2-logo {
+                margin: 2.5rem auto 0 auto; /* Centralizado */
+                display: block;
+                max-width: 220px;
+            }
+        }
+
+        /* ──────────────────────────────────────────────
+           DOBRA 3 (BENTO BOX SÓLIDO - REFERÊNCIA)
+        ────────────────────────────────────────────── */
+        .section-dobra-3 {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #FAFAFA; /* Fundo base da dobra */
+            padding: 6rem 1.5rem;
+            gap: 2rem;
+        }
+
+        .d3-main-container {
+            width: 100%;
+            max-width: 80rem;
+            background-color: #FFFFFF; /* Container branco principal */
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            display: flex;
+            padding: 1.5rem; /* Margem branca ao redor das caixas cinzas */
+            gap: 1.5rem; /* Divisória branca entre esquerda e direita */
+        }
+
+        .d3-col-left {
+            flex: 0 0 32%;
+            background-color: #F4F4F4; /* Coluna cinza esquerda */
+            border-radius: 1rem;
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .d3-title-img {
+            max-width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .d3-text-main {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #7A7A7A;
+            text-align: justify;
+        }
+
+        .d3-col-right {
+            flex: 1;
+            background-color: #F4F4F4; /* Coluna cinza direita */
+            border-radius: 1rem;
+            padding: 1.5rem; /* Espaçamento cinza ao redor do grid interno */
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; /* Espaço cinza entre as linhas do grid */
+        }
+
+        .d3-row-1 {
+            display: flex;
+            gap: 1.5rem;
+            flex: 1;
+        }
+        .d3-row-1 > :nth-child(1) {
+            flex: 1.15; /* Reduzido de 1.4 para dar mais largura à caixa da imagem (evita cortar o logo) */
+        }
+        .d3-row-1 > :nth-child(2) {
+            flex: 1; 
+        }
+
+        .d3-row-2 {
+            display: flex;
+            gap: 1.5rem;
+            flex: 1;
+        }
+        .d3-row-2 > :nth-child(1) {
+            flex: 1; 
+        }
+        .d3-row-2 > :nth-child(2) {
+            flex: 1.15; /* Reduzido de 1.4 para dar mais largura à caixa da imagem (evita cortar o logo) */
+        }
+
+        .d3-box {
+            border-radius: 0.75rem;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+        .d3-box:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ── DARK GLASS (Design System: bg-white/10 + border-white/20) ── */
+
+        .solid-brown, .solid-green {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+        }
+
+        .solid-brown {
+            background-color: #755738;
+            color: #FFFFFF;
+            box-shadow: 0 10px 40px rgba(117, 87, 56, 0.25);
+        }
+
+        .solid-green {
+            background-color: #899702;
+            color: #FFFFFF;
+            box-shadow: 0 10px 40px rgba(137, 151, 2, 0.25);
+        }
+
+        /* Painel de vidro interno (a camada "frosted" que fica por cima da cor sólida) */
+        .solid-brown::before,
+        .solid-green::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            border-radius: inherit;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Conteúdo acima da camada de vidro */
+        .solid-brown > *, .solid-green > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .solid-white {
+            background-color: #FFFFFF;
+            padding: 0; /* A imagem preenche a caixa */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .d3-box-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #FFFFFF;
+        }
+
+        .d3-box-text {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.92);
+            text-align: justify;
+        }
+        
+        .d3-box-text strong {
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        .d3-grid-picture {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .d3-grid-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 0.75rem;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        /* Ajustes precisos de crop interno por imagem */
+        .qavt-img {
+            object-fit: cover;
+            object-position: center;
+            transform: scale(0.92); /* Zoom out interno para não cortar as letras laterais no cover, mantendo a caixa preenchida */
+        }
+        .solid-white:hover .qavt-img {
+            transform: scale(0.96); /* Animação de hover calculada */
+        }
+
+        .doc-img {
+            object-fit: cover;
+            object-position: center;
+            transform: scale(0.92); /* Aplicando a mesma borda da Imagem 1 */
+        }
+        .solid-white:hover .doc-img {
+            transform: scale(0.96); /* Animação de hover acompanhando a proporção */
+        }
+
+        /* Ajustes específicos para mobile */
+        @media (max-width: 768px) {
+            .qavt-img {
+                object-fit: cover;
+                transform: scale(1);
+            }
+            .solid-white:hover .qavt-img {
+                transform: scale(1.05);
+            }
+            .doc-img {
+                object-position: center; /* Mantém o centro alinhado com a nova borda no mobile */
+            }
+        }
+
+        .d3-footer {
+            width: 100%;
+            max-width: 60rem;
+            background-color: #FFFFFF;
+            border-radius: 9999px; /* Pill-shape */
+            padding: 1.5rem 3rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+            text-align: center;
+        }
+        .d3-footer p {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #7A7A7A;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .d3-main-container {
+                flex-direction: column;
+            }
+            .d3-col-left {
+                flex: none;
+                width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            .section-dobra-3 {
+                padding: 4rem 1rem;
+            }
+            .d3-main-container {
+                padding: 1rem;
+                border-radius: 1rem;
+            }
+            .d3-col-left {
+                padding: 2rem 1.5rem;
+            }
+            .d3-col-right {
+                padding: 1rem;
+            }
+            .d3-row-1, .d3-row-2 {
+                flex-direction: column;
+            }
+            .d3-row-1 > :nth-child(1), .d3-row-1 > :nth-child(2),
+            .d3-row-2 > :nth-child(1), .d3-row-2 > :nth-child(2) {
+                flex: none;
+            }
+            .d3-box {
+                min-height: 250px;
+            }
+            .d3-footer {
+                padding: 1.5rem;
+                border-radius: 1.5rem; /* Quebra o formato pílula no celular */
+            }
+        }
+
+        /* ──────────────────────────────────────────────
+           NAVIGATION BAR (Davita Design System)
+        ────────────────────────────────────────────── */
+        .navbar-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 1rem 0 1rem;
+            z-index: 50;
+            display: flex;
+            justify-content: center;
+            opacity: 0; /* Para animação de entrada fade-up */
+            transform: translateY(30px);
+            animation: fadeUpNav 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeUpNav {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4.5rem; /* Aumentado para acomodar o logo maior */
+            width: 100%;
+            max-width: 80rem; /* max-w-7xl */
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 10px 40px rgba(148, 163, 184, 0.16);
+            padding: 0 1.5rem;
+        }
+        .nav-logo {
+            height: 2.5rem; /* Aumentado consideravelmente */
+            object-fit: contain;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+        .nav-link {
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 1rem; /* 16px - Aumentado a pedido */
+            font-weight: 400; /* Regular */
+            color: #9CA653; /* Verde sólido para o texto */
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #9CA653; 
+            background-color: rgba(156, 166, 83, 0.12); /* Verde com 12% de transparência */
+            font-weight: 600; /* Volta o efeito bold de antes ao passar o mouse */
+        }
+        .nav-cta {
+            text-decoration: none;
+            display: inline-flex;
+            height: 2.5rem;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 1px solid rgba(156, 166, 83, 0.25); /* Borda verde com transparência */
+            background: rgba(156, 166, 83, 0.08); /* Fundo verde com 8% de transparência (Glass effect) */
+            padding: 0 1.5rem;
+            font-size: 1rem; /* 16px - Aumentado a pedido */
+            font-weight: 400; /* Regular */
+            color: #9CA653; /* Texto verde do logo */
+            box-shadow: 0 2px 10px rgba(156, 166, 83, 0.05);
+            transition: all 0.3s ease;
+            margin-left: 0.5rem;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .nav-cta:hover {
+            box-shadow: 0 4px 15px rgba(156, 166, 83, 0.15);
+            background: rgba(156, 166, 83, 0.18); /* Mais visível no hover */
+            border-color: rgba(156, 166, 83, 0.5);
+            font-weight: 600; /* Volta o efeito bold de antes ao passar o mouse */
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .nav-hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: #9CA653; /* Verde do tema */
+            border-radius: 2px;
+        }
+
+        /* Navbar Mobile Ajustes */
+        @media (max-width: 768px) {
+            .navbar {
+                height: 3.5rem;
+                padding: 0 1rem;
+                justify-content: center; /* Centraliza tudo no celular */
+            }
+            .nav-brand {
+                display: none; /* Esconde o logo quando o menu hamburguer está presente */
+            }
+            .nav-cta {
+                display: none; /* Esconde o botão de contato no celular */
+            }
+            .nav-hamburger {
+                display: flex; /* Mostra o menu hamburguer */
+            }
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease;
+        }
+        #loader.hidden { opacity: 0; pointer-events: none; }
+        .bar-bg {
+            width: 180px;
+            height: 2px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            width: 0%;
+            background: #fff;
+            transition: width 80ms linear;
+        }
+        /* ══════════════════════════════════════════════════
+           DOBRA 5 — COMO O PROJETO SE DESDOBRA
+        ══════════════════════════════════════════════════ */
+        .section-dobra-5 {
+            position: relative;
+            z-index: 3; /* Sobrepõe a Dobra 4 para o efeito de borda arredondada */
+            background-color: #FFFFFF;
+            border-radius: 3rem 3rem 0 0;
+            padding: 8rem 2rem 6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 -20px 60px rgba(0,0,0,0.15); /* Sombra para destacar sobre o fundo escuro da Dobra 4 */
+        }
+
+        .d5-title-img {
+            max-width: 700px; /* Um pouco maior para mais destaque */
+            width: 100%;
+            margin-bottom: 4rem;
+        }
+
+        .d5-cards-container {
+            background-color: #F4F4F4;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 80rem;
+            width: 100%;
+        }
+
+        .d5-card {
+            background-color: #FFFFFF;
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative; /* Necessário para a animação GSAP sem conflito */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+        .d5-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .d5-card-img-wrapper {
+            width: 100%;
+            aspect-ratio: 3/2; /* Proporção mais horizontal e elegante */
+            overflow: hidden;
+        }
+
+        .d5-card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .d5-card:hover .d5-card-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .d5-card-content {
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .d5-card-title {
+            color: #899702; /* Verde Plantar - mais vibrante */
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .d5-card-text {
+            color: #7A7A7A;
+            font-size: 0.85rem; /* Fonte um pouco menor para mais respiro e elegância */
+            line-height: 1.6;
+        }
+
+        .d5-footer {
+            background-color: #F4F4F4;
+            border-radius: 1.5rem; /* Combinando com o raio da caixa dos cards */
+            padding: 2rem 4rem;
+            width: 100%;
+            max-width: 80rem; /* Alinhado exatamente à largura da caixa de cards */
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .d5-footer p {
+            color: #7A7A7A;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Responsividade Dobra 5 */
+        @media (max-width: 1024px) {
+            .d5-cards-container {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+            .d5-card-img-wrapper {
+                aspect-ratio: 16/9;
+            }
+        }
+        @media (max-width: 768px) {
+            .section-dobra-5 {
+                padding: 5rem 1rem 4rem;
+                border-radius: 1.5rem 1.5rem 0 0;
+            }
+            .d5-cards-container {
+                padding: 1rem;
+                gap: 1.5rem;
+                background-color: transparent; /* No mobile fica mais leve sem a caixa cinza */
+            }
+            .d5-card {
+                box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            }
+            .d5-footer {
+                padding: 1.5rem;
+                border-radius: 1.5rem; /* Quebra formato de pílula */
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar-wrapper">
+        <div class="navbar">
+            <div class="nav-brand">
+                <a href="#">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Home/Dobra 2/LogoTipografico.png" alt="Projeto Plantar" class="nav-logo">
+                </a>
+            </div>
+            
+            <div class="nav-right">
+                <nav class="nav-links">
+                    <a href="#projeto" class="nav-link">Projeto</a>
+                    <a href="#primeira-fase" class="nav-link">Primeira Fase</a>
+                    <a href="#segunda-fase" class="nav-link">Segunda Fase</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <a href="#contato" class="nav-cta">Contato</a>
+                </div>
+
+                <!-- Menu Hamburger Mobile -->
+                <div class="nav-hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Loader -->
+    <div id="loader">
+        <div class="bar-bg"><div class="bar-fill" id="bar"></div></div>
+    </div>
+
+    <!-- Canvas -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- Scroll trigger zone -->
+    <div class="scroll-spacer" id="trigger"></div>
+
+    <!-- Conteúdo do Site (Dobra 2 em diante) -->
+    <main id="projeto" class="section-dobra-2">
+        <!-- Background Imagem Responsiva -->
+        <img class="dobra-2-bg" src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Home/Dobra 2/Camada-3-V2.jpg" alt="Fundo Dobra 2">
+
+        <div class="dobra-2-content">
+            <div class="dobra-2-glass-card" id="dobra2-card">
+                <p class="dobra-2-text">
+                    Já avançamos bastante, talvez de maneira precipitada. Aprendemos a evoluir, mas nem sempre a cuidar. Agora, apenas corrigir não é suficiente. Algumas coisas exigem mais tempo e regeneração. Isso começa com os hábitos, e os hábitos são formados cedo. Portanto, o foco está nas crianças, não como uma promessa futura, mas como um espaço vivo e em formação, onde novas formas de existir ainda podem emergir. Regenerar e educar, e semear agora o que ainda pode brotar.
+                </p>
+                <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Home/Dobra 2/LogoTipografico.png" alt="Projeto Plantar" class="dobra-2-logo">
+            </div>
+        </div>
+    </main>
+
+    <!-- Dobra 3 -->
+    <section id="primeira-fase" class="section-dobra-3">
+        <!-- Container Principal (Caixa Branca) -->
+        <div class="d3-main-container">
+            
+            <!-- Coluna Esquerda (Fundo Cinza) -->
+            <div class="d3-col-left">
+                <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%202/O%20que%20é%20o%20%20PROJETO%20.png" alt="O que é o Projeto" class="d3-title-img">
+                <p class="d3-text-main">
+                    Plantar para Regenerar é uma iniciativa cultural e educacional que visa cultivar hábitos desde a infância, promovendo uma relação mais responsável com o mundo. O projeto ocorre em duas etapas que se inter-relacionam. A primeira é com as crianças, onde novos hábitos começam a se desenvolver por meio da educação, cultura e experiências simples e sensíveis, vivenciadas em seu cotidiano. A segunda etapa expande essa ação, estendendo a reflexão além da infância e convidando a sociedade a reconsiderar, reaprender e assumir, de forma mais consciente, o mundo que podemos construir coletivamente.
+                </p>
+            </div>
+
+            <!-- Coluna Direita (Fundo Cinza com as 4 caixas) -->
+            <div class="d3-col-right">
+                
+                <!-- Linha 1 -->
+                <div class="d3-row-1">
+                    <!-- Fase 1 (Caixa Marrom Sólida) -->
+                    <div class="d3-box solid-brown">
+                        <h3 class="d3-box-title">Fase 1: Conscientização Lúdica</h3>
+                        <p class="d3-box-text">
+                            Nesta fase inicial, a história é apresentada às crianças de forma acessível e envolvente através da <strong>peça teatral infantojuvenil</strong> e do <strong>livro interativo</strong>. O objetivo é fortalecer a consciência ambiental desde cedo, envolvendo escolas, famílias e comunidades. A narrativa encanta no palco e se aprofunda nas páginas do livro, criando uma experiência educativa completa para o público mais jovem.
+                        </p>
+                    </div>
+
+                    <!-- Imagem QAVT -->
+                    <div class="d3-box solid-white">
+                        <picture class="d3-grid-picture">
+                            <!-- Mobile / Desktop usam a mesma base mas ajustadas no CSS -->
+                            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Home/Dobra 2/QAVT.jpg" alt="Quantas Árvores Você Tem" class="d3-grid-img qavt-img">
+                        </picture>
+                    </div>
+                </div>
+
+                <!-- Linha 2 -->
+                <div class="d3-row-2">
+                    <!-- Imagem DOC -->
+                    <div class="d3-box solid-white">
+                        <picture class="d3-grid-picture">
+                            <!-- Imagem PNG para o Celular (Mobile) -->
+                            <source media="(max-width: 768px)" srcset="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%202/Capa-DOC.png">
+                            <!-- Imagem JPG para o Desktop -->
+                            <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%202/Capa-DOC.jpg" alt="Mundo Regenerativo" class="d3-grid-img doc-img">
+                        </picture>
+                    </div>
+
+                    <!-- Fase 2 (Caixa Verde Sólida) -->
+                    <div class="d3-box solid-green">
+                        <h3 class="d3-box-title">Fase 2: Reflexão Profunda</h3>
+                        <p class="d3-box-text">
+                            A reflexão é ampliada para adultos e a sociedade em geral por meio do <strong>documentário "Mundo Regenerativo"</strong>. Esta obra audiovisual aprofunda o debate sobre a regeneração ambiental e humana, propondo mudanças de hábitos e novos olhares sobre o futuro. Um dos pontos cruciais do documentário é a questão do aumento populacional, tema muitas vezes evitado, mas que precisa ser debatido.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer Pill -->
+        <div class="d3-footer">
+            <p>
+                Juntas, as duas etapas constroem uma conexão entre gerações, motivando crianças, jovens e adultos a converter o ato de comemorar a vida em um legado de plantio, preservação e renovação para o planeta.
+            </p>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         DOBRA 4 — POR QUE O PROJETO EXISTE
+    ══════════════════════════════════════════════════ -->
+    <style>
+        .section-dobra-4 {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10rem 2rem 6rem;
+            overflow: hidden;
+            background: #0a1a2a;
+        }
+
+        /* ── Backdrop (Imagem Completa) ── */
+        .d4-backdrop {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .d4-backdrop img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cobre todo o fundo, tanto no desktop quanto mobile */
+            object-position: center;
+            opacity: 1;
+        }
+
+        /* ── Título Tipográfico ── */
+        .d4-title-img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 60rem;
+            opacity: 1; /* Título bem visível */
+            margin-bottom: 2rem;
+            pointer-events: none;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+        }
+
+        /* ── Container de Conteúdo ── */
+        .d4-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 80rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Alinha no centro (junto com o planeta) */
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* ── Glass Panels (Light Glass) ── */
+        .d4-glass-panel {
+            flex: 0 1 24rem; /* Largura fixa flexível */
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.25rem;
+            background: rgba(255, 255, 255, 0.65); /* Fundo claro translúcido */
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            padding: 2.5rem 2rem;
+        }
+
+        /* Alinhamento desalinhado dos painéis */
+        .d4-glass-panel.left-panel {
+            margin-top: -6rem; /* Sobe um pouco o esquerdo */
+        }
+        
+        .d4-glass-panel.right-panel {
+            margin-top: 8rem; /* Desce o direito */
+        }
+
+        /* Texto escuro nos painéis */
+        .d4-panel-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #334155; /* Cor escura do design system */
+            text-align: justify;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Responsividade ── */
+        @media (max-width: 1024px) {
+            .d4-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 22rem; /* Espaço para o planeta respirar */
+                margin-top: 2rem;
+            }
+            .d4-glass-panel {
+                flex: 1 1 auto;
+                max-width: 40rem;
+            }
+            .d4-glass-panel.left-panel,
+            .d4-glass-panel.right-panel {
+                margin-top: 0;
+            }
+        }
+        @media (max-width: 768px) {
+            .section-dobra-4 {
+                padding: 6rem 1rem 4rem;
+                min-height: auto;
+            }
+            .d4-title-img {
+                margin-bottom: 2rem;
+            }
+            .d4-glass-panel {
+                padding: 1.5rem;
+            }
+            .d4-content {
+                gap: 20rem; /* Espaço ajustado para telas menores */
+            }
+        }
+    </style>
+
+    <section class="section-dobra-4">
+        <!-- Backdrop: Imagem Full-Bleed do Planeta -->
+        <div class="d4-backdrop">
+            <picture>
+                <!-- Espaços na URL devem ser convertidos para %20 no srcset para não quebrar no navegador -->
+                <source media="(max-width: 1024px)" srcset="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%203/Backdrop-Dobra-3-Verdical.jpg">
+                <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%203/Backdrop-dobra-3-gigapixel-cgi-6x.jpg" alt="Planeta Terra">
+            </picture>
+        </div>
+
+        <!-- Título Tipográfico Brilhante -->
+        <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%203/POR-QUE-O-PROJETO-EXISTE.png" alt="Por que o projeto existe" class="d4-title-img">
+
+        <!-- Conteúdo: Painéis laterais -->
+        <div class="d4-content">
+            <!-- Painel Esquerdo -->
+            <div class="d4-glass-panel left-panel">
+                <p class="d4-panel-text">
+                    Estamos vivendo um período de transição, o que se reflete no cotidiano. Decisões tomadas ao longo de muitos anos começam a exigir novos aprendizados. Não se trata de apontar erros, mas de reconhecer que o mundo mudou e continua em transformação. As relações entre indivíduos, consumo, meio ambiente e futuro estão sendo reavaliadas com mais cuidado e questionamentos. E uma questão surge com regularidade: como preparar as futuras gerações para desafios que ainda estão em desenvolvimento? Há intenção, mas o início do caminho muitas vezes é negligenciado.
+                </p>
+            </div>
+
+            <!-- Painel Direito -->
+            <div class="d4-glass-panel right-panel">
+                <p class="d4-panel-text">
+                    Muitas mudanças tendem ocorrer tarde demais, quando os hábitos já estão enraizados e são difíceis de modificar. Plantar para Regenerar surge com o propósito de atuar previamente, no momento em que os valores ainda estão sendo formados e a educação e a cultura têm a oportunidade de, com tranquilidade, estabelecer novas referências. Ao focar na infância, o projeto proporciona algo fundamental para quem pensa a longo prazo: a oportunidade de contribuir desde o começo, não como uma resposta imediata, mas como parte de um processo contínuo. Portanto, o projeto não surge para resolver o presente, mas para zelar pelo futuro, com tempo e presença, onde ainda é possível aprender e onde as decisões tomadas hoje podem continuar fazendo sentido mais adiante.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         DOBRA 5 — COMO O PROJETO SE DESDOBRA
+    ══════════════════════════════════════════════════ -->
+    <section id="como-se-desdobra" class="section-dobra-5">
+        <!-- Title -->
+        <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%204/COMO-O-PROJTEO-SE-DESDOBRA-copiar1.png" alt="Como o projeto se desdobra" class="d5-title-img">
+
+        <!-- Gray Container -->
+        <div class="d5-cards-container">
+            <!-- Card 1 -->
+            <div class="d5-card">
+                <div class="d5-card-img-wrapper">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%204/pacoantoninus_corrigir_o_dedo_--ar_32_--raw_--sref_httpss.mj.ru_2cd76260-fb76-4938-b3df-ae3ee9df5d91-gigapixel-high%20fidelity%20v2-2x.png" alt="Teatro">
+                </div>
+                <div class="d5-card-content">
+                    <h3 class="d5-card-title">TEATRO</h3>
+                    <p class="d5-card-text">Uma peça teatral de fantoches impressos em impressoras 3D, que de forma lúdica e envolvente, desperta nas crianças a importância da preservação ambiental e do legado que cada um pode deixar para o mundo. É o ponto de partida para a conscientização.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="d5-card">
+                <div class="d5-card-img-wrapper">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%204/CAPA-Livro.jpg" alt="Livro">
+                </div>
+                <div class="d5-card-content">
+                    <h3 class="d5-card-title">LIVRO</h3>
+                    <p class="d5-card-text">A mesma história cativante do espetáculo, adaptada em formato literário. Um material educativo e interativo que fortalece a conexão entre crianças, famílias e escolas, permitindo que a mensagem floresça em casa e na sala de aula.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="d5-card">
+                <div class="d5-card-img-wrapper">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%204/ChatGPT%20Image%2022%20de%20jan.%20de%202026,%2019_35_42.png" alt="Documentário">
+                </div>
+                <div class="d5-card-content">
+                    <h3 class="d5-card-title">DOCUMENTÁRIO</h3>
+                    <p class="d5-card-text">Uma obra audiovisual profunda e reflexiva que expande o debate sobre regeneração ambiental e humana para adultos e empresas, abordando temas cruciais como o crescimento populacional e a sustentabilidade.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Pill -->
+        <div class="d5-footer">
+            <p>O Plantar para Regenerar foi desenvolvido como um percurso contínuo, não como etapas separadas, mas como um caminho a ser seguido. Cada etapa se relaciona com uma fase da vida e exerce um papel dentro do todo.</p>
+        </div>
+    </section>
+
+    <script>
+    (function () {
+        /* ──────────────────────────────────────────────
+           CANVAS SETUP
+        ────────────────────────────────────────────── */
+        const canvas = document.getElementById('hero-canvas');
+        const ctx    = canvas.getContext('2d', { alpha: true }); 
+        
+        const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+
+        function sizeCanvas() {
+            canvas.width  = window.innerWidth  * DPR;
+            
+            if (window.innerWidth <= 768) {
+                const mobileHeight = window.innerWidth * (9/16);
+                canvas.height = mobileHeight * DPR;
+                canvas.style.width  = window.innerWidth  + 'px';
+                canvas.style.height = mobileHeight + 'px';
+            } else {
+                canvas.height = window.innerHeight * DPR;
+                canvas.style.width  = window.innerWidth  + 'px';
+                canvas.style.height = window.innerHeight + 'px';
+            }
+            
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            recalcCover();
+        }
+
+        // Cache de cover-fit (calculado uma vez, não a cada frame)
+        let cover = { x: 0, y: 0, w: 0, h: 0 };
+
+        function recalcCover() {
+            const sample = imgs[0];
+            if (!sample || !sample.naturalWidth) return;
+            
+            let r;
+            if (window.innerWidth <= 768) {
+                // No mobile, encaixa a largura inteira (contain horizontal) para não cortar o título
+                r = canvas.width / sample.naturalWidth;
+            } else {
+                // No desktop, cover padrão
+                r = Math.max(canvas.width / sample.naturalWidth, canvas.height / sample.naturalHeight);
+            }
+
+            cover.w = sample.naturalWidth  * r;
+            cover.h = sample.naturalHeight * r;
+            cover.x = (canvas.width  - cover.w) / 2;
+            cover.y = (canvas.height - cover.h) / 2;
+        }
+
+        // Previne o recálculo do canvas no mobile quando a barra de endereço some/aparece
+        let lastWindowWidth = window.innerWidth;
+        window.addEventListener('resize', () => { 
+            if (window.innerWidth !== lastWindowWidth) {
+                lastWindowWidth = window.innerWidth;
+                sizeCanvas(); 
+                draw(); 
+            }
+        });
+
+        /* ──────────────────────────────────────────────
+           IMAGE SEQUENCE PRELOAD
+        ────────────────────────────────────────────── */
+        const TOTAL  = 145;
+        const START  = 86400;
+        const imgs   = [];
+        let loaded   = 0;
+        const state  = { frame: 0 };
+
+        const bar    = document.getElementById('bar');
+        const loader = document.getElementById('loader');
+
+        for (let i = 0; i < TOTAL; i++) {
+            const img = new Image();
+            img.src = 'Jpeg Hero Web/Timeline 1_000' + (START + i) + '.jpg';
+            imgs.push(img);
+
+            img.onload = function () {
+                loaded++;
+                bar.style.width = ((loaded / TOTAL) * 100) + '%';
+
+                if (loaded === TOTAL) {
+                    sizeCanvas();
+                    draw();
+                    initScroll();
+                    // Esconde o loader
+                    requestAnimationFrame(() => {
+                        loader.classList.add('hidden');
+                        setTimeout(() => loader.remove(), 700);
+                    });
+                }
+            };
+        }
+
+        /* ──────────────────────────────────────────────
+           DRAW — pinta o frame atual no canvas
+        ────────────────────────────────────────────── */
+        function draw() {
+            const i = Math.round(state.frame);
+            const img = imgs[i];
+            if (!img || !img.naturalWidth) return;
+            if (cover.w === 0) recalcCover();
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, cover.x, cover.y, cover.w, cover.h);
+        }
+
+        /* ──────────────────────────────────────────────
+           GSAP SCROLL ANIMATION
+        ────────────────────────────────────────────── */
+        function initScroll() {
+            const isMobile = window.innerWidth <= 768;
+
+            if (isMobile) {
+                // No mobile, rola de acordo com o próprio elemento (que agora é relativo)
+                gsap.to(state, {
+                    frame: TOTAL - 1,
+                    snap: 'frame',
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#hero-canvas',
+                        start: 'top 15%', // Começa logo que a navbar passa
+                        end: 'bottom top',
+                        scrub: 0.3,
+                        onUpdate: draw
+                    }
+                });
+            } else {
+                // Desktop: usa o trigger spacer de 200vh
+                gsap.to(state, {
+                    frame: TOTAL - 1,
+                    snap: 'frame',
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#trigger',
+                        start: 'top top',
+                        end: 'bottom bottom',
+                        scrub: 0.3,
+                        onUpdate: draw
+                    }
+                });
+
+                // Parallax sutil no canvas (só desktop)
+                gsap.fromTo(canvas,
+                    { scale: 1, yPercent: 0 },
+                    {
+                        scale: 1.12,
+                        yPercent: 4,
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: '#trigger',
+                            start: 'top top',
+                            end: 'bottom bottom',
+                            scrub: 0.3
+                        }
+                    }
+                );
+            }
+
+            // Animação da Dobra 2 (ScrollTrigger para o Glass Card)
+            gsap.to("#dobra2-card", {
+                scrollTrigger: {
+                    trigger: ".section-dobra-2",
+                    start: "top 60%", // dispara quando o topo da dobra 2 cruzar 60% da tela
+                    end: "top 30%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power3.out"
+            });
+
+            // Otimização de Performance: Desliga a renderização do hero canvas quando a Dobra 2 cobre a tela
+            ScrollTrigger.create({
+                trigger: ".section-dobra-2",
+                start: "top top", // Quando o topo da dobra 2 bate no topo da tela (hero 100% coberto)
+                onEnter: () => document.getElementById("hero-canvas").style.visibility = "hidden",
+                onLeaveBack: () => document.getElementById("hero-canvas").style.visibility = "visible"
+            });
+
+            // Animação Bento Box Dobra 3
+            gsap.from(".d3-main-container", {
+                scrollTrigger: {
+                    trigger: ".section-dobra-3",
+                    start: "top 95%", // Dispara assim que a dobra 3 entra na tela
+                },
+                y: 40, opacity: 0, duration: 0.8, ease: "power3.out"
+            });
+            
+            gsap.from(".d3-footer", {
+                scrollTrigger: { trigger: ".d3-footer", start: "top 95%" },
+                y: 30, opacity: 0, duration: 0.8, ease: "power3.out"
+            });
+
+            // Animação Dobra 5
+            gsap.from(".d5-title-img", {
+                scrollTrigger: {
+                    trigger: ".section-dobra-5",
+                    start: "top 90%",
+                },
+                y: 30, opacity: 0, duration: 0.8, ease: "power3.out"
+            });
+            
+            gsap.from(".d5-card", {
+                scrollTrigger: {
+                    trigger: ".d5-cards-container",
+                    start: "top 85%",
+                },
+                top: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out"
+            });
+
+            gsap.from(".d5-footer", {
+                scrollTrigger: {
+                    trigger: ".d5-footer",
+                    start: "top 95%",
+                },
+                y: 30, opacity: 0, duration: 0.8, ease: "power3.out"
+            });
+        }
+
+    })();
+    </script>
+</body>
+</html>
