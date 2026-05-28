@@ -665,7 +665,7 @@
         .d5-card-title {
             color: #899702; /* Verde Plantar - mais vibrante */
             font-size: 1.15rem;
-            font-weight: 700;
+            font-weight: 600; /* Semi-Bold, como solicitado */
             margin-bottom: 1.25rem;
         }
 
@@ -719,6 +719,246 @@
                 padding: 1.5rem;
                 border-radius: 1.5rem; /* Quebra formato de pílula */
                 margin-top: 2rem;
+            }
+        }
+        /* ══════════════════════════════════════════════════
+           DOBRA 6 — ALCANCE DO PROJETO
+        ══════════════════════════════════════════════════ */
+        .section-dobra-6 {
+            position: relative;
+            z-index: 3;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Conteúdo alinhado à direita para liberar a semente na esquerda */
+            padding: 8rem 4rem 6rem;
+            overflow: hidden;
+            background-color: #F3F4F0; 
+            box-shadow: 0 -20px 60px rgba(0,0,0,0.1);
+        }
+
+        /* ── Fundo Imagem Responsivo ── */
+        .d6-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .d6-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center bottom;
+        }
+
+        /* ── Wrapper do Conteúdo ── */
+        .d6-content-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 65%; /* Ocupa a direita */
+            max-width: 75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* ── Glass Cards Gerais (Master e Footer) ── */
+        .d6-glass-card {
+            background: rgba(255, 255, 255, 0.45); 
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ── Card Principal (Agrupa as duas caixas internas) ── */
+        .d6-master-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        /* ── Caixas Internas (Título e Pilares) ── */
+        .d6-inner-glass {
+            background: rgba(255, 255, 255, 0.25); /* Mais transparente que a mãe */
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.4);
+        }
+
+        .d6-title-container {
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .d6-pillars-container {
+            padding: 2rem;
+        }
+
+        .d6-title-img {
+            max-width: 38rem; 
+            width: 100%;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.05));
+        }
+
+        .d6-pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            width: 100%;
+        }
+
+        /* ── Colunas Verdes ── */
+        .d6-pillar {
+            background-color: #A4B24B; /* Verde oliva da referência */
+            border-radius: 1rem;
+            padding: 2rem 1.25rem;
+            color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            position: relative; /* Evita conflito com o GSAP */
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+
+        .d6-pillar:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .d6-pillar h4 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .d6-pillar ol {
+            list-style-type: decimal;
+            padding-left: 1.2rem;
+            font-size: 0.82rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .d6-pillar ol li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* ── Card Rodapé (Texto) ── */
+        .d6-footer-card {
+            padding: 2rem 2.5rem; /* Menor que o principal */
+            text-align: center;
+        }
+
+        .d6-footer-card p {
+            color: #4A4A4A;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+            max-width: 65rem;
+            margin: 0 auto;
+        }
+
+        /* ── Responsividade Dobra 6 ── */
+        @media (max-width: 1440px) {
+            .d6-content-wrapper {
+                width: 75%;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .section-dobra-6 {
+                justify-content: center;
+                padding: 6rem 2rem;
+            }
+            .d6-content-wrapper {
+                width: 100%;
+            }
+            .d6-pillars-grid {
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-dobra-6 {
+                padding: 7rem 1rem 3rem; 
+                min-height: auto; /* Deixa o conteúdo ditar o tamanho */
+                background: #F3F4F0; 
+            }
+            .d6-bg {
+                display: block; 
+                height: 100%; 
+            }
+            .d6-bg img {
+                object-fit: cover; 
+                object-position: center 80%; /* Levanta a semente para ela cair dentro do quadrado transparente e não atrás do rodapé */
+            }
+            .d6-transparent-spacer {
+                display: block;
+                width: 100%;
+                aspect-ratio: 1 / 1; /* O bloco quadrado que você pediu! */
+                background: transparent;
+            }
+            .d6-content-wrapper {
+                justify-content: flex-start; 
+                gap: 0;
+            }
+            .d6-master-card {
+                margin-bottom: 0;
+            }
+            .d6-glass-card {
+                border-radius: 1.25rem;
+            }
+            .d6-master-card {
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .d6-inner-glass {
+                border-radius: 1rem;
+            }
+            .d6-title-container {
+                padding: 1rem;
+            }
+            .d6-pillars-container {
+                padding: 1rem;
+            }
+            .d6-title-img {
+                margin-bottom: 0;
+            }
+            .d6-pillars-grid {
+                grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas no celular como no design */
+                gap: 0.5rem;
+            }
+            .d6-pillar {
+                padding: 1rem 0.5rem;
+                border-radius: 0.75rem;
+            }
+            .d6-pillar h4 {
+                font-size: 0.85rem;
+                margin-bottom: 0.75rem;
+            }
+            .d6-pillar ol {
+                padding-left: 1rem;
+                font-size: 0.65rem; /* Fonte menor para caber em 2 colunas */
+                line-height: 1.6;
+            }
+            .d6-footer-card {
+                padding: 1.5rem 1rem;
+                margin-top: 0; /* Volta ao normal pois o blend mode esconde as bordas */
+                position: relative;
+                z-index: 2;
+            }
+            .d6-footer-card p {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -1051,6 +1291,107 @@
         </div>
     </section>
 
+    <!-- ══════════════════════════════════════════════════
+         DOBRA 6 — ALCANCE DO PROJETO
+    ══════════════════════════════════════════════════ -->
+    <section id="alcance" class="section-dobra-6">
+        <!-- Fundo Imagem Responsivo -->
+        <div class="d6-bg">
+            <picture>
+                <source media="(max-width: 768px)" srcset="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%205/ChatGPT-Image-12-de-jan.-de-2026,-21_34_38.jpg">
+                <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%205/Sem-T%C3%ADtulo-2.jpg" alt="Semente Germinando e Solo">
+            </picture>
+        </div>
+
+        <!-- Conteúdo por cima do fundo -->
+        <div class="d6-content-wrapper">
+            
+            <!-- Master Glass Card -->
+            <div class="d6-glass-card d6-master-card">
+                
+                <!-- Caixa Interna 1: Título -->
+                <div class="d6-inner-glass d6-title-container">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%205/ALCANCE-DO-PROJTETO-copiar.png" alt="Alcance do Projeto" class="d6-title-img">
+                </div>
+                
+                <!-- Caixa Interna 2: Pilares Verdes -->
+                <div class="d6-inner-glass d6-pillars-container">
+                    <div class="d6-pillars-grid">
+                        <!-- CRIANÇAS -->
+                        <div class="d6-pillar">
+                            <h4>CRIANÇAS</h4>
+                            <ol>
+                                <li>Consciência ambiental.</li>
+                                <li>Protagonismo infantil.</li>
+                                <li>Educação emocional.</li>
+                                <li>Imaginação ativa.</li>
+                                <li>Valores duradouros.</li>
+                                <li>Vínculo com a natureza.</li>
+                                <li>Cultura acessível.</li>
+                                <li>Memória afetiva.</li>
+                            </ol>
+                        </div>
+
+                        <!-- FAMÍLIAS -->
+                        <div class="d6-pillar">
+                            <h4>FAMÍLIAS</h4>
+                            <ol>
+                                <li>Diálogo geracional.</li>
+                                <li>Convívio consciente.</li>
+                                <li>Tempo de qualidade familiar.</li>
+                                <li>Valores familiares.</li>
+                                <li>Reflexão cotidiana.</li>
+                                <li>Vínculos fortalecidos.</li>
+                                <li>Exemplo prático.</li>
+                                <li>Sentido de legado.</li>
+                            </ol>
+                        </div>
+
+                        <!-- ESCOLAS -->
+                        <div class="d6-pillar">
+                            <h4>ESCOLAS</h4>
+                            <ol>
+                                <li>Educação integral.</li>
+                                <li>Conteúdo transversal.</li>
+                                <li>Formação cidadã.</li>
+                                <li>Cultura na escola.</li>
+                                <li>Engajamento pedagógico.</li>
+                                <li>Aprendizado sensível.</li>
+                                <li>Impacto duradouro.</li>
+                                <li>Repertório ampliado.</li>
+                            </ol>
+                        </div>
+
+                        <!-- EMPRESAS -->
+                        <div class="d6-pillar">
+                            <h4>EMPRESAS</h4>
+                            <ol>
+                                <li>Prática ESG mensurável.</li>
+                                <li>Incentivo cultural.</li>
+                                <li>Impacto social.</li>
+                                <li>Legado institucional.</li>
+                                <li>Marca consciente.</li>
+                                <li>Valor compartilhado.</li>
+                                <li>Responsabilidade corporativa.</li>
+                                <li>Futuro sustentável.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- O Novo Bloco Transparente e Quadrado! -->
+            <div class="d6-transparent-spacer"></div>
+
+            <!-- Glass Card Inferior (Texto de Apoio) -->
+            <div class="d6-glass-card d6-footer-card">
+                <p>Ao impactar crianças, famílias, escolas e empresas, o projeto cria um ciclo contínuo de consciência e responsabilidade. Cada frente se reforça na outra, expandindo o impacto cultural e educacional da ação. Dessa forma, o efeito deixa de ser isolado e começa a integrar a construção do futuro.</p>
+            </div>
+
+        </div>
+    </section>
+
     <script>
     (function () {
         /* ──────────────────────────────────────────────
@@ -1270,6 +1611,31 @@
                     start: "top 95%",
                 },
                 y: 30, opacity: 0, duration: 0.8, ease: "power3.out"
+            });
+
+            // Animação Dobra 6
+            gsap.from(".d6-glass-card", {
+                scrollTrigger: {
+                    trigger: ".section-dobra-6",
+                    start: "top 80%",
+                },
+                y: 50, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
+            });
+            
+            gsap.from(".d6-inner-glass", {
+                scrollTrigger: {
+                    trigger: ".d6-master-card",
+                    start: "top 75%",
+                },
+                y: 30, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
+            });
+            
+            gsap.from(".d6-pillar", {
+                scrollTrigger: {
+                    trigger: ".d6-pillars-container",
+                    start: "top 70%",
+                },
+                top: 40, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
             });
         }
 
