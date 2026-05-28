@@ -381,7 +381,7 @@
                 height: auto !important;
                 padding: 1rem 1rem 3rem 1rem !important;
                 width: 100% !important;
-                margin-top: 3rem !important; /* Mais espaço para empurrar a caixa para baixo do livro */
+                margin-top: -1.5rem !important; /* Margem ajustada para não cortar o livro */
             }
             .dobra-2-glass-card {
                 /* Reseta posicionamento do desktop */
@@ -390,11 +390,12 @@
                 margin-top: 0 !important;
                 z-index: 10 !important;
                 
-                background: rgba(255, 255, 255, 0.7);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, 0.6);
-                box-shadow: 0 10px 40px rgba(148, 163, 184, 0.16);
+                /* Mesmo efeito de vidro do Desktop */
+                background-color: rgba(255, 255, 255, 0.15) !important;
+                backdrop-filter: blur(32px) !important;
+                -webkit-backdrop-filter: blur(32px) !important;
+                border: 1px solid rgba(255, 255, 255, 0.8) !important;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
                 padding: 2rem 1.5rem;
                 width: 100%;
                 max-width: 100%;
@@ -1008,14 +1009,14 @@
             const isMobile = window.innerWidth <= 768;
 
             if (isMobile) {
-                // No mobile, rola de acordo com o próprio elemento (que agora é relativo)
+                // No mobile, rola de acordo com o próprio elemento
                 gsap.to(state, {
                     frame: TOTAL - 1,
                     snap: 'frame',
                     ease: 'none',
                     scrollTrigger: {
                         trigger: '#hero-canvas',
-                        start: 'top 15%', // Começa logo que a navbar passa
+                        start: 'top top', // Força o início exato no frame 0
                         end: 'bottom top',
                         scrub: 0.3,
                         onUpdate: draw
