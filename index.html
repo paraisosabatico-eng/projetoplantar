@@ -1041,9 +1041,9 @@
         }
 
         .d7-main-container {
-            background-color: #FFFFFF;
+            background-color: #F4F5F2; /* Cor de fundo que faz os gaps ficarem cinza */
             border-radius: 2rem;
-            padding: 2.5rem;
+            padding: 1.5rem;
             width: 100%;
             max-width: 85rem;
             box-shadow: 0 10px 40px rgba(0,0,0,0.03);
@@ -1054,14 +1054,9 @@
 
         .d7-column {
             flex: 1;
-            background-color: #F4F5F2; /* Cinza claro com tom mais natural */
-            border-radius: 1.5rem;
             display: flex;
             flex-direction: column;
-            padding: 1.5rem 1rem;
             gap: 1rem;
-            border: 1px solid #EBECE8;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
 
         .d7-col-header {
@@ -1093,86 +1088,90 @@
             padding: 0 0.5rem;
         }
 
-        .d7-white-box {
+        .d7-content-box {
             background-color: #FFFFFF;
             border-radius: 1.25rem;
-            padding: 1.5rem;
+            padding: 2.5rem 1.5rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
             border: 1px solid rgba(0,0,0,0.02);
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
+        }
+
+        .d7-topic-lead {
+            display: flex;
             gap: 1rem;
-        }
-
-        .d7-white-box.row-layout {
-            flex-direction: row;
             align-items: flex-start;
-            gap: 0.75rem;
+            margin-bottom: 2.5rem;
         }
 
-        .d7-white-box .icon {
+        .d7-topic-lead .icon {
             color: #899702;
             font-size: 1.2rem;
             line-height: 1.2;
             flex-shrink: 0;
-            font-weight: bold;
+            margin-top: 0.1rem;
         }
 
-        .d7-white-box p {
-            color: #4A4A4A;
-            font-size: 0.95rem;
+        .d7-topic-lead p {
+            color: #6B6B6B;
+            font-size: 1.05rem;
             font-weight: 500;
             line-height: 1.5;
             margin: 0;
         }
 
-        .d7-list {
+        .d7-simple-list {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 2.5rem;
         }
 
-        .d7-list-item {
+        .d7-simple-list p {
+            color: #7A7A7A;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .d7-list-item-bulleted {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.75rem;
             align-items: flex-start;
         }
 
-        .d7-list-item .bullet {
+        .d7-list-item-bulleted .bullet {
             color: #899702;
             font-size: 1.1rem;
-            line-height: 1.4;
-            flex-shrink: 0;
-            font-weight: bold;
+            line-height: 1.2;
+            margin-top: -0.1rem;
         }
 
-        .d7-list-item .d7-list-text {
-            color: #6B6B6B;
-            font-size: 0.85rem;
-            line-height: 1.6;
+        .d7-awards-container {
+            margin-top: 2.5rem;
         }
 
-        .d7-award-box {
-            background-color: #FFFFFF;
-            border-radius: 0.75rem;
-            padding: 1rem;
+        .d7-award-divider {
+            border-top: 1px solid #EAEAEA;
+            padding: 1.5rem 0;
             display: flex;
             align-items: center;
             gap: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid #F0F0F0;
         }
 
-        .d7-award-box img {
+        .d7-award-divider img {
             width: 70px;
             object-fit: contain;
+            flex-shrink: 0;
             border-radius: 0.25rem;
         }
 
-        .d7-award-box p {
+        .d7-award-divider p {
             font-size: 0.75rem;
-            color: #7A7A7A;
-            line-height: 1.4;
+            color: #6B6B6B;
+            line-height: 1.5;
             margin: 0;
         }
 
@@ -1183,11 +1182,10 @@
             text-align: center;
             box-shadow: 0 4px 12px rgba(0,0,0,0.04);
             border: 1px solid rgba(0,0,0,0.02);
-            margin-top: auto; /* Alinha no fundo da coluna */
         }
 
         .d7-footer-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #4A4A4A;
             font-weight: 700;
             line-height: 1.2;
@@ -1676,28 +1674,28 @@
                     <h3 class="d7-col-subtitle">Cultura que chega<br>onde importa</h3>
                 </div>
                 
-                <div class="d7-white-box row-layout">
-                    <span class="icon">➤</span>
-                    <p>4.500 crianças impactadas em três estados brasileiros.</p>
-                </div>
-                
-                <div class="d7-white-box">
-                    <div class="d7-list">
-                        <div class="d7-list-item">
+                <div class="d7-content-box">
+                    <div class="d7-topic-lead">
+                        <span class="icon">➤</span>
+                        <p>4.500 crianças<br>impactadas em três<br>estados brasileiros.</p>
+                    </div>
+                    
+                    <div class="d7-simple-list">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">📍</span>
-                            <span class="d7-list-text">21 apresentações gratuitas em escolas públicas.</span>
+                            <p>21 apresentações gratuitas em escolas públicas.</p>
                         </div>
-                        <div class="d7-list-item">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">✓</span>
-                            <span class="d7-list-text">Experiências sensíveis e presenciais.</span>
+                            <p>Experiências sensíveis e presenciais.</p>
                         </div>
-                        <div class="d7-list-item">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">•</span>
-                            <span class="d7-list-text">Acesso direto a quem menos recebe.</span>
+                            <p>Acesso direto a quem menos recebe.</p>
                         </div>
-                        <div class="d7-list-item">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">•</span>
-                            <span class="d7-list-text">21 apresentações gratuitas em escolas publicas……..</span>
+                            <p>21 apresentações gratuitas em escolas publicas……..</p>
                         </div>
                     </div>
                 </div>
@@ -1715,28 +1713,28 @@
                     <h3 class="d7-col-subtitle">O impacto continua<br>fora do palco</h3>
                 </div>
                 
-                <div class="d7-white-box row-layout">
-                    <span class="icon">➤</span>
-                    <p>5.000 serão entregues as crianças participantes e ONGs</p>
-                </div>
-                
-                <div class="d7-white-box">
-                    <div class="d7-list">
-                        <div class="d7-list-item">
+                <div class="d7-content-box">
+                    <div class="d7-topic-lead">
+                        <span class="icon">➤</span>
+                        <p>5.000 serão entregues<br>as crianças<br>participantes e ONGs</p>
+                    </div>
+                    
+                    <div class="d7-simple-list">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">📍</span>
-                            <span class="d7-list-text">O livro amplia a experiência teatral.</span>
+                            <p>O livro amplia a experiência teatral.</p>
                         </div>
-                        <div class="d7-list-item">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">✓</span>
-                            <span class="d7-list-text">Estimula leitura, diálogo e protagonismo.</span>
+                            <p>Estimula leitura, diálogo e protagonismo.</p>
                         </div>
-                        <div class="d7-list-item">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">•</span>
-                            <span class="d7-list-text">A mensagem segue circulando.</span>
+                            <p>A mensagem segue circulando.</p>
                         </div>
-                        <div class="d7-list-item">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">•</span>
-                            <span class="d7-list-text">21 apresentações gratuitas em escolas publicas……..</span>
+                            <p>21 apresentações gratuitas em escolas publicas……..</p>
                         </div>
                     </div>
                 </div>
@@ -1754,28 +1752,28 @@
                     <h3 class="d7-col-subtitle">DOC com alcance<br>ampliado</h3>
                 </div>
                 
-                <div class="d7-white-box row-layout">
-                    <span class="icon">➤</span>
-                    <p>A mensagem ganha tempo, escala e permanencia</p>
-                </div>
-                
-                <div class="d7-white-box">
-                    <div class="d7-list">
-                        <div class="d7-list-item">
+                <div class="d7-content-box">
+                    <div class="d7-topic-lead">
+                        <span class="icon">➤</span>
+                        <p>A mensagem ganha<br>tempo, escala e<br>permanencia</p>
+                    </div>
+                    
+                    <div class="d7-simple-list">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">✓</span>
-                            <span class="d7-list-text">O documentário amplia o alcance do projeto para além do território físico.</span>
+                            <p>O documentário amplia o alcance do projeto para além do território físico.</p>
                         </div>
-                        <div class="d7-list-item">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">•</span>
-                            <span class="d7-list-text">Conteúdo voltado ao público adulto, educadores, famílias e decisores.</span>
+                            <p>Conteúdo voltado ao público adulto, educadores, famílias e decisores.</p>
                         </div>
-                        <div class="d7-list-item">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">•</span>
-                            <span class="d7-list-text">Circulação em mostras, festivais, plataformas digitais e exibições educativas.</span>
+                            <p>Circulação em mostras, festivais, plataformas digitais e exibições educativas.</p>
                         </div>
-                        <div class="d7-list-item">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">•</span>
-                            <span class="d7-list-text">Registro audiovisual como legado cultural e material de reflexão.</span>
+                            <p>Registro audiovisual como legado cultural e material de reflexão.</p>
                         </div>
                     </div>
                 </div>
@@ -1793,24 +1791,26 @@
                     <h3 class="d7-col-subtitle">Um projeto pensado<br>para crescer</h3>
                 </div>
                 
-                <div class="d7-white-box row-layout">
-                    <span class="icon">➤</span>
-                    <p>Inscrições em premiações como forma de divulgação.</p>
-                </div>
-                
-                <div class="d7-white-box">
-                    <div class="d7-list">
-                        <div class="d7-list-item">
+                <div class="d7-content-box">
+                    <div class="d7-topic-lead">
+                        <span class="icon">➤</span>
+                        <p>Inscrições em<br>premiações como<br>forma de divulgação.</p>
+                    </div>
+                    
+                    <div class="d7-simple-list">
+                        <div class="d7-list-item-bulleted">
                             <span class="bullet">•</span>
-                            <span class="d7-list-text">Desde sua concepção, o projeto foi estruturado para inscrição em prêmios e festivais nacionais, como:</span>
+                            <p>Desde sua concepção, o projeto foi estruturado para inscrição em prêmios e festivais nacionais, como:</p>
                         </div>
-                        
-                        <div class="d7-award-box">
+                    </div>
+                    
+                    <div class="d7-awards-container">
+                        <div class="d7-award-divider">
                             <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%207/assets-fotos-787-premio-led-logo-principal-tagline-parceiros-1.png" alt="Prêmio LED">
                             <p>O <strong>Prêmio LED</strong> premia inovação educacional, realizado pela <strong>Globo</strong> e <strong>Fundação Roberto Marinho.</strong></p>
                         </div>
                         
-                        <div class="d7-award-box">
+                        <div class="d7-award-divider">
                             <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%207/assets-fotos-787-premio-led-logo-principal-tagline-parceiros-1%20-%20c%C3%B3pia.png" alt="Prêmio VivaLeitura">
                             <p><strong>Prêmio VivaLeitura</strong> reconhece iniciativas de leitura realizado pelo <strong>MEC, Ministério da Cultura e OEI.</strong></p>
                         </div>
