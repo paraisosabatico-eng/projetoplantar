@@ -546,12 +546,17 @@
             border-radius: 2px;
         }
 
+        .nav-mobile-dropdown {
+            display: none; /* Esconde no desktop obrigatoriamente */
+        }
+
         /* Navbar Mobile Ajustes */
         @media (max-width: 768px) {
             .navbar {
                 height: 3.5rem;
                 padding: 0 1rem;
                 justify-content: center; /* Centraliza tudo no celular */
+                position: relative; /* Necessário para ancorar o dropdown menu */
             }
             .nav-brand {
                 display: none; /* Esconde o logo quando o menu hamburguer está presente */
@@ -562,6 +567,61 @@
             .nav-hamburger {
                 display: flex; /* Mostra o menu hamburguer */
             }
+            
+            /* ── Dropdown Menu Mobile ── */
+            .nav-mobile-dropdown {
+                display: none;
+                position: absolute;
+                top: calc(100% + 0.5rem);
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(24px);
+                -webkit-backdrop-filter: blur(24px);
+                border-radius: 1.5rem;
+                border: 1px solid rgba(255, 255, 255, 0.6);
+                box-shadow: 0 10px 40px rgba(148, 163, 184, 0.16);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1rem;
+                z-index: 40;
+                text-align: center;
+            }
+            .navbar.nav-open .nav-mobile-dropdown {
+                display: flex;
+                animation: fadeDownMenu 0.3s ease forwards;
+            }
+            .nav-mobile-dropdown .nav-link {
+                padding: 1rem;
+                font-size: 1.1rem;
+                display: block;
+            }
+            .nav-mobile-dropdown .nav-cta {
+                display: inline-flex;
+                margin-top: 0.5rem;
+                justify-content: center;
+                margin-left: 0;
+                width: 100%;
+            }
+            
+            /* Animação do Ícone Hamburger -> X */
+            .nav-hamburger span {
+                transition: all 0.3s ease;
+                transform-origin: center;
+            }
+            .navbar.nav-open .nav-hamburger span:nth-child(1) {
+                transform: translateY(6px) rotate(45deg);
+            }
+            .navbar.nav-open .nav-hamburger span:nth-child(2) {
+                opacity: 0;
+            }
+            .navbar.nav-open .nav-hamburger span:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg);
+            }
+        }
+        @keyframes fadeDownMenu {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Loader */
@@ -890,8 +950,8 @@
 
         @media (max-width: 768px) {
             .section-dobra-6 {
-                padding: 7rem 1rem 3rem; 
-                min-height: auto; /* Deixa o conteúdo ditar o tamanho */
+                padding: 2rem 1rem 8rem; /* Joga os cartões para cima! */
+                min-height: auto; 
                 background: #F3F4F0; 
             }
             .d6-bg {
@@ -900,7 +960,7 @@
             }
             .d6-bg img {
                 object-fit: cover; 
-                object-position: center 80%; /* Levanta a semente para ela cair dentro do quadrado transparente e não atrás do rodapé */
+                object-position: center 65%; /* Desce a foto sutilmente para a ponta da folha aparecer por completo */
             }
             .d6-transparent-spacer {
                 display: block;
@@ -961,6 +1021,206 @@
                 font-size: 0.85rem;
             }
         }
+        /* ══════════════════════════════════════════════════
+           DOBRA 7 — IMPACTO QUE EXPANDE
+        ══════════════════════════════════════════════════ */
+        .section-dobra-7 {
+            position: relative;
+            z-index: 3;
+            background-color: #F3F4F0;
+            padding: 8rem 2rem 6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .d7-title-img {
+            max-width: 50rem;
+            width: 100%;
+            margin-bottom: 4rem;
+        }
+
+        .d7-main-container {
+            background-color: #FFFFFF;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 85rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            display: flex;
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        .d7-column {
+            flex: 1;
+            background-color: #F4F5F2; /* Cinza claro com tom mais natural */
+            border-radius: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem 1rem;
+            gap: 1rem;
+            border: 1px solid #EBECE8;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .d7-col-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .d7-pill {
+            background-color: #FFFFFF;
+            border-radius: 9999px;
+            padding: 0.75rem 1.25rem;
+            color: #899702;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .d7-col-subtitle {
+            text-align: center;
+            color: #6B6B6B;
+            font-size: 1.05rem;
+            font-weight: 500;
+            line-height: 1.4;
+            padding: 0 0.5rem;
+        }
+
+        .d7-white-box {
+            background-color: #FFFFFF;
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .d7-white-box.row-layout {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .d7-white-box .icon {
+            color: #899702;
+            font-size: 1.2rem;
+            line-height: 1.2;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .d7-white-box p {
+            color: #4A4A4A;
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .d7-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .d7-list-item {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .d7-list-item .bullet {
+            color: #899702;
+            font-size: 1.1rem;
+            line-height: 1.4;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .d7-list-item .d7-list-text {
+            color: #6B6B6B;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .d7-award-box {
+            background-color: #FFFFFF;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid #F0F0F0;
+        }
+
+        .d7-award-box img {
+            width: 70px;
+            object-fit: contain;
+            border-radius: 0.25rem;
+        }
+
+        .d7-award-box p {
+            font-size: 0.75rem;
+            color: #7A7A7A;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .d7-footer-box {
+            background-color: #FFFFFF;
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.02);
+            margin-top: auto; /* Alinha no fundo da coluna */
+        }
+
+        .d7-footer-title {
+            font-size: 1.5rem;
+            color: #4A4A4A;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .d7-footer-subtitle {
+            font-size: 0.95rem;
+            color: #7A7A7A;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .d7-main-container {
+                flex-wrap: wrap;
+            }
+            .d7-column {
+                flex: 1 1 calc(50% - 0.75rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-dobra-7 {
+                padding: 4rem 1rem;
+            }
+            .d7-main-container {
+                padding: 1.25rem;
+                flex-direction: column;
+            }
+            .d7-column {
+                flex: 1 1 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -992,6 +1252,15 @@
                     <span></span>
                 </div>
             </div>
+            
+            <!-- Menu Dropdown Mobile (Apenas visível via JS) -->
+            <div class="nav-mobile-dropdown">
+                <a href="#projeto" class="nav-link">Projeto</a>
+                <a href="#primeira-fase" class="nav-link">Primeira Fase</a>
+                <a href="#segunda-fase" class="nav-link">Segunda Fase</a>
+                <a href="#contato" class="nav-cta">Contato</a>
+            </div>
+            
         </div>
     </header>
 
@@ -1392,8 +1661,190 @@
         </div>
     </section>
 
+    <!-- ══════════════════════════════════════════════════
+         DOBRA 7 — IMPACTO QUE EXPANDE
+    ══════════════════════════════════════════════════ -->
+    <section id="impacto" class="section-dobra-7">
+        <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%207/IMPACTO-QUE-ESPANDE-copiar.png" alt="Impacto que expande" class="d7-title-img">
+        
+        <div class="d7-main-container">
+            
+            <!-- Coluna 1 -->
+            <div class="d7-column">
+                <div class="d7-col-header">
+                    <div class="d7-pill">Impacto Direto</div>
+                    <h3 class="d7-col-subtitle">Cultura que chega<br>onde importa</h3>
+                </div>
+                
+                <div class="d7-white-box row-layout">
+                    <span class="icon">➤</span>
+                    <p>4.500 crianças impactadas em três estados brasileiros.</p>
+                </div>
+                
+                <div class="d7-white-box">
+                    <div class="d7-list">
+                        <div class="d7-list-item">
+                            <span class="bullet">📍</span>
+                            <span class="d7-list-text">21 apresentações gratuitas em escolas públicas.</span>
+                        </div>
+                        <div class="d7-list-item">
+                            <span class="bullet">✓</span>
+                            <span class="d7-list-text">Experiências sensíveis e presenciais.</span>
+                        </div>
+                        <div class="d7-list-item">
+                            <span class="bullet">•</span>
+                            <span class="d7-list-text">Acesso direto a quem menos recebe.</span>
+                        </div>
+                        <div class="d7-list-item">
+                            <span class="bullet">•</span>
+                            <span class="d7-list-text">21 apresentações gratuitas em escolas publicas……..</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d7-footer-box">
+                    <div class="d7-footer-title">4.500 crianças<br>impactadas</div>
+                    <div class="d7-footer-subtitle">Diretamente</div>
+                </div>
+            </div>
+
+            <!-- Coluna 2 -->
+            <div class="d7-column">
+                <div class="d7-col-header">
+                    <div class="d7-pill">Distribuição de Livros</div>
+                    <h3 class="d7-col-subtitle">O impacto continua<br>fora do palco</h3>
+                </div>
+                
+                <div class="d7-white-box row-layout">
+                    <span class="icon">➤</span>
+                    <p>5.000 serão entregues as crianças participantes e ONGs</p>
+                </div>
+                
+                <div class="d7-white-box">
+                    <div class="d7-list">
+                        <div class="d7-list-item">
+                            <span class="bullet">📍</span>
+                            <span class="d7-list-text">O livro amplia a experiência teatral.</span>
+                        </div>
+                        <div class="d7-list-item">
+                            <span class="bullet">✓</span>
+                            <span class="d7-list-text">Estimula leitura, diálogo e protagonismo.</span>
+                        </div>
+                        <div class="d7-list-item">
+                            <span class="bullet">•</span>
+                            <span class="d7-list-text">A mensagem segue circulando.</span>
+                        </div>
+                        <div class="d7-list-item">
+                            <span class="bullet">•</span>
+                            <span class="d7-list-text">21 apresentações gratuitas em escolas publicas……..</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d7-footer-box">
+                    <div class="d7-footer-title">5.000 Livros<br>distribuidos</div>
+                    <div class="d7-footer-subtitle">Gratuitamente</div>
+                </div>
+            </div>
+
+            <!-- Coluna 3 -->
+            <div class="d7-column">
+                <div class="d7-col-header">
+                    <div class="d7-pill">Alcance Ampliado</div>
+                    <h3 class="d7-col-subtitle">DOC com alcance<br>ampliado</h3>
+                </div>
+                
+                <div class="d7-white-box row-layout">
+                    <span class="icon">➤</span>
+                    <p>A mensagem ganha tempo, escala e permanencia</p>
+                </div>
+                
+                <div class="d7-white-box">
+                    <div class="d7-list">
+                        <div class="d7-list-item">
+                            <span class="bullet">✓</span>
+                            <span class="d7-list-text">O documentário amplia o alcance do projeto para além do território físico.</span>
+                        </div>
+                        <div class="d7-list-item">
+                            <span class="bullet">•</span>
+                            <span class="d7-list-text">Conteúdo voltado ao público adulto, educadores, famílias e decisores.</span>
+                        </div>
+                        <div class="d7-list-item">
+                            <span class="bullet">•</span>
+                            <span class="d7-list-text">Circulação em mostras, festivais, plataformas digitais e exibições educativas.</span>
+                        </div>
+                        <div class="d7-list-item">
+                            <span class="bullet">•</span>
+                            <span class="d7-list-text">Registro audiovisual como legado cultural e material de reflexão.</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d7-footer-box">
+                    <div class="d7-footer-title">1 DOC<br>produzido</div>
+                    <div class="d7-footer-subtitle">Narrativa em expanção</div>
+                </div>
+            </div>
+
+            <!-- Coluna 4 -->
+            <div class="d7-column">
+                <div class="d7-col-header">
+                    <div class="d7-pill">Potencial de Escala</div>
+                    <h3 class="d7-col-subtitle">Um projeto pensado<br>para crescer</h3>
+                </div>
+                
+                <div class="d7-white-box row-layout">
+                    <span class="icon">➤</span>
+                    <p>Inscrições em premiações como forma de divulgação.</p>
+                </div>
+                
+                <div class="d7-white-box">
+                    <div class="d7-list">
+                        <div class="d7-list-item">
+                            <span class="bullet">•</span>
+                            <span class="d7-list-text">Desde sua concepção, o projeto foi estruturado para inscrição em prêmios e festivais nacionais, como:</span>
+                        </div>
+                        
+                        <div class="d7-award-box">
+                            <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%207/assets-fotos-787-premio-led-logo-principal-tagline-parceiros-1.png" alt="Prêmio LED">
+                            <p>O <strong>Prêmio LED</strong> premia inovação educacional, realizado pela <strong>Globo</strong> e <strong>Fundação Roberto Marinho.</strong></p>
+                        </div>
+                        
+                        <div class="d7-award-box">
+                            <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%207/assets-fotos-787-premio-led-logo-principal-tagline-parceiros-1%20-%20c%C3%B3pia.png" alt="Prêmio VivaLeitura">
+                            <p><strong>Prêmio VivaLeitura</strong> reconhece iniciativas de leitura realizado pelo <strong>MEC, Ministério da Cultura e OEI.</strong></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d7-footer-box">
+                    <div class="d7-footer-title">Concorrer a<br>prêmiações</div>
+                    <div class="d7-footer-subtitle">Apenas participar já aumenta a<br>visibilidade do projeto.</div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
     <script>
     (function () {
+        
+        // Controle do Menu Mobile (Hamburger)
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navbar = document.querySelector('.navbar');
+        if (hamburger && navbar) {
+            hamburger.addEventListener('click', () => {
+                navbar.classList.toggle('nav-open');
+            });
+            // Fecha o menu ao clicar em um link
+            const mobileLinks = document.querySelectorAll('.nav-mobile-dropdown a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navbar.classList.remove('nav-open');
+                });
+            });
+        }
+
         /* ──────────────────────────────────────────────
            CANVAS SETUP
         ────────────────────────────────────────────── */
