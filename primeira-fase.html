@@ -169,6 +169,17 @@
         }
 
         @media (max-width: 768px) {
+            .navbar-wrapper {
+                transform: translateY(-150%) !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            }
+            .navbar-wrapper.nav-scrolled {
+                transform: translateY(0) !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+            }
             .navbar {
                 height: 3.5rem;
                 padding: 0 1rem;
@@ -903,7 +914,7 @@
                 </div>
 
                 <div class="d4-document-container">
-                    <iframe class="d4-document-iframe" src="https://docs.google.com/document/d/1VHVm8P8T9mJypNmWKtfB2xpsM-66gVxYISVXcurvIWw/preview" title="Visualizador do Livro"></iframe>
+                    <iframe class="d4-document-iframe" data-src="https://docs.google.com/document/d/1VHVm8P8T9mJypNmWKtfB2xpsM-66gVxYISVXcurvIWw/preview" src="about:blank" title="Visualizador do Livro"></iframe>
                 </div>
             </div>
             
@@ -1104,6 +1115,41 @@
                 ease: "power3.out"
             });
         }
+
+        // Intercepta o carregamento do Google Docs para evitar o roubo de foco (bug que faz pular pra Dobra 4)
+        const iframe = document.querySelector('.d4-document-iframe');
+        if (iframe) {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    iframe.src = iframe.getAttribute('data-src');
+                    observer.disconnect();
+                }
+            }, { threshold: 0.1 });
+            observer.observe(document.querySelector('.section-dobra-4'));
+        }
+
+        // Lógica para esconder a navbar no mobile na home e revelar no scroll
+        const navbarWrapper = document.querySelector('.navbar-wrapper');
+        
+        function checkNavbarVisibility() {
+            if (window.innerWidth <= 768) {
+                // A altura do canvas hero no mobile (16:9)
+                const threshold = window.innerWidth * (9/16); 
+                if (window.scrollY > threshold * 0.8) { // Aparece um pouquinho antes de acabar o vídeo
+                    navbarWrapper.classList.add('nav-scrolled');
+                } else {
+                    navbarWrapper.classList.remove('nav-scrolled');
+                }
+            } else {
+                // Garante que no desktop não aplique a classe
+                navbarWrapper.classList.remove('nav-scrolled');
+            }
+        }
+
+        window.addEventListener('scroll', checkNavbarVisibility);
+        window.addEventListener('resize', checkNavbarVisibility);
+        // Checa imediatamente no carregamento
+        checkNavbarVisibility();
 
     })();
     </script>
