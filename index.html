@@ -1214,9 +1214,190 @@
             .d7-main-container {
                 padding: 1.25rem;
                 flex-direction: column;
+                gap: 4.5rem; /* Aumenta o espaço entre os blocos no celular */
             }
             .d7-column {
                 flex: 1 1 100%;
+            }
+        }
+        
+        /* ══════════════════════════════════════════════════
+           DOBRA 8 — ODS e LEGISLAÇÃO
+        ══════════════════════════════════════════════════ */
+        .section-dobra-8 {
+            position: relative;
+            background-color: #FFFFFF;
+            padding: 8rem 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .d8-container {
+            max-width: 85rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .d8-title-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .d8-title-img {
+            max-width: 45rem;
+            width: 100%;
+        }
+
+        .d8-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: stretch;
+        }
+
+        /* Esquerda: ODS */
+        .d8-ods-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .d8-ods-item {
+            background-color: #F4F5F2; 
+            border-radius: 1.5rem;
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border: 1px solid #EBECE8;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+        
+        .d8-ods-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+        }
+
+        .d8-ods-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .d8-ods-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .d8-ods-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #4A4A4A;
+        }
+
+        .d8-ods-desc {
+            font-size: 1.05rem;
+            color: #6B6B6B;
+            line-height: 1.5;
+            margin: 0;
+            margin-top: 0.5rem;
+        }
+
+        .d8-ods-footer {
+            background-color: #FFFFFF;
+            border-radius: 1.5rem;
+            padding: 2rem 2.5rem;
+            font-size: 1.05rem;
+            color: #4A4A4A;
+            font-weight: 500;
+            line-height: 1.5;
+            border: 1px solid rgba(0,0,0,0.02);
+            margin-top: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        /* Direita: Legal Conformity */
+        .d8-legal-section {
+            background-color: #F4F5F2;
+            border-radius: 1.5rem;
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            border: 1px solid #EBECE8;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            justify-content: space-between;
+        }
+
+        .d8-legal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4A4A4A;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .d8-legal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .d8-legal-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            background-color: #FFFFFF;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .d8-legal-item .icon {
+            color: #899702;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .d8-legal-item p {
+            font-size: 1rem;
+            color: #6B6B6B;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .d8-legal-item strong {
+            color: #4A4A4A;
+        }
+
+        .d8-legal-conclusion {
+            background-color: #FFFFFF;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+            color: #4A4A4A;
+            line-height: 1.6;
+            font-weight: 500;
+            border: 1px solid rgba(0,0,0,0.02);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Responsividade D8 */
+        @media (max-width: 1024px) {
+            .d8-grid {
+                grid-template-columns: 1fr;
+            }
+            .d8-legal-section {
+                position: static;
+            }
+            .section-dobra-8 {
+                padding: 4rem 1rem;
             }
         }
     </style>
@@ -1823,6 +2004,92 @@
                 </div>
             </div>
             
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         DOBRA 8 — ODS e LEGISLAÇÃO
+    ══════════════════════════════════════════════════ -->
+    <section id="ods-legislacao" class="section-dobra-8">
+        <div class="d8-container">
+            <div class="d8-title-wrapper">
+                <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%208/ODS-e-LEGISLA%C3%87%C3%83O-copiar1.png" alt="ODS e Legislação" class="d8-title-img">
+            </div>
+            
+            <div class="d8-grid">
+                <!-- Esquerda: ODS -->
+                <div class="d8-ods-section">
+                    
+                    <div class="d8-ods-item" style="border-left: 6px solid #4C9F38;">
+                        <div class="d8-ods-header">
+                            <span class="d8-ods-icon">🩺</span>
+                            <span class="d8-ods-title">ODS 3: Saúde e Bem-Estar</span>
+                        </div>
+                        <p class="d8-ods-desc">Consciência sobre qualidade de vida e equilíbrio ambiental.</p>
+                    </div>
+
+                    <div class="d8-ods-item" style="border-left: 6px solid #C5192D;">
+                        <div class="d8-ods-header">
+                            <span class="d8-ods-icon">📚</span>
+                            <span class="d8-ods-title">ODS 4: Educação de Qualidade</span>
+                        </div>
+                        <p class="d8-ods-desc">Ações educativas com crianças, famílias e escolas.</p>
+                    </div>
+
+                    <div class="d8-ods-item" style="border-left: 6px solid #BF8B2E;">
+                        <div class="d8-ods-header">
+                            <span class="d8-ods-icon">♻️</span>
+                            <span class="d8-ods-title">ODS 12: Consumo Responsável</span>
+                        </div>
+                        <p class="d8-ods-desc">Incentivo a práticas mais conscientes no dia a dia.</p>
+                    </div>
+
+                    <div class="d8-ods-item" style="border-left: 6px solid #3F7E44;">
+                        <div class="d8-ods-header">
+                            <span class="d8-ods-icon">🌍</span>
+                            <span class="d8-ods-title">ODS 13: Ação Contra o Clima</span>
+                        </div>
+                        <p class="d8-ods-desc">Estímulo ao plantio de árvores e regeneração ambiental.</p>
+                    </div>
+
+                    <div class="d8-ods-item" style="border-left: 6px solid #56C02B;">
+                        <div class="d8-ods-header">
+                            <span class="d8-ods-icon">🌳</span>
+                            <span class="d8-ods-title">ODS 15: Vida Terrestre</span>
+                        </div>
+                        <p class="d8-ods-desc">Contribuição para a preservação de ecossistemas e biodiversidade.</p>
+                    </div>
+                    
+                </div>
+
+                <!-- Direita: Legislação -->
+                <div class="d8-legal-section">
+                    <div class="d8-legal-title">Conformidade Legal</div>
+                    
+                    <div class="d8-legal-list">
+                        <div class="d8-legal-item">
+                            <span class="icon">§</span>
+                            <p><strong>Lei nº 9.795/1999:</strong> Política Nacional de Educação Ambiental, promovendo a cidadania.</p>
+                        </div>
+                        <div class="d8-legal-item">
+                            <span class="icon">§</span>
+                            <p><strong>Lei nº 9.394/1996 (LDB):</strong> Inclui temas transversais como educação ambiental no currículo.</p>
+                        </div>
+                        <div class="d8-legal-item">
+                            <span class="icon">§</span>
+                            <p><strong>Constituição Federal (Art. 225, §1º, VI):</strong> Promove a educação ambiental em todos os níveis de ensino.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d8-legal-conclusion">
+                        Nosso projeto pode ser implementado de forma integrada às semanas temáticas, como a <strong>Semana do Meio Ambiente</strong> e a <strong>Semana Nacional da Educação Ambiental</strong>, transformando-se em um recurso educacional de grande relevância.
+                    </div>
+                </div>
+            </div>
+
+            <div class="d8-ods-footer" style="margin-top: -2rem;">
+                O projeto também dialoga com os <strong>ODS 10, 11, 16 e 17</strong>, totalizando nove Objetivos de Desenvolvimento Sustentável atendidos.
+            </div>
         </div>
     </section>
 
