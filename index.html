@@ -1400,6 +1400,93 @@
                 padding: 4rem 1rem;
             }
         }
+
+        /* ══════════════════════════════════════════════════
+           DOBRA 9 — INCENTIVO CULTURAL
+        ══════════════════════════════════════════════════ */
+        .section-dobra-9 {
+            position: relative;
+            padding: 8rem 2rem;
+            background-image: url('../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%209/Dobra%208%20fundo.jpg');
+            background-size: cover;
+            background-position: center left;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .d9-container {
+            max-width: 85rem;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .d9-content-card {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 4rem;
+            max-width: 45rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .d9-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #4A4A4A;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .d9-title span {
+            color: #899702;
+        }
+
+        .d9-text {
+            font-size: 1.05rem;
+            color: #6B6B6B;
+            line-height: 1.8;
+            margin: 0;
+            text-align: justify;
+        }
+
+        @media (max-width: 1024px) {
+            .section-dobra-9 {
+                justify-content: center;
+                background-position: center;
+            }
+            .d9-container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-dobra-9 {
+                padding: 26rem 1rem 3rem; /* Espaço bem maior para a imagem brilhar */
+                background-position: 15% top; /* Traz o foco para o lado esquerdo da imagem, revelando o braço de terno */
+                background-size: 160%; /* Reduzindo o zoom para que os dois braços fiquem mais visíveis */
+                background-repeat: no-repeat;
+                background-color: #FFFFFF;
+                min-height: auto;
+            }
+            .d9-content-card {
+                padding: 2.5rem 1.5rem;
+                border-radius: 2rem;
+                width: 100%;
+            }
+            .d9-title {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+            .d9-text {
+                text-align: justify;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2089,6 +2176,20 @@
 
             <div class="d8-ods-footer" style="margin-top: -2rem;">
                 O projeto também dialoga com os <strong>ODS 10, 11, 16 e 17</strong>, totalizando nove Objetivos de Desenvolvimento Sustentável atendidos.
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         DOBRA 9 — INCENTIVO CULTURAL
+    ══════════════════════════════════════════════════ -->
+    <section id="incentivo-cultural" class="section-dobra-9">
+        <div class="d9-container">
+            <div class="d9-content-card">
+                <h2 class="d9-title">Incentivo <span>Cultural</span></h2>
+                <p class="d9-text">
+                    Iniciativas como o Plantar para Regenerar precisam de colaboradores para se realizarem. Empresas patrocinadoras viabilizam um projeto cultural e educacional voltado para a formação, a educação e o cuidado com o futuro. Essa parceria traz vantagens para todos os envolvidos. O projeto se expande e se torna contínuo, e a sociedade se beneficia de um processo de ensino mais abrangente. Com isso, as empresas transformam seus compromissos ESG em algo tangível, experienciado e autêntico. Esses mecanismos de promoção da cultura possibilitam essa participação de forma clara e em conformidade com as práticas institucionais. Além de apoiar um projeto, as empresas contribuem para a construção de um legado que educa pessoas, restabelece conexões e converte intenção em ação.
+                </p>
             </div>
         </div>
     </section>
