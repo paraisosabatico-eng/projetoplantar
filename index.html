@@ -1753,8 +1753,8 @@
             
             <div class="nav-right">
                 <nav class="nav-links">
-                    <a href="#projeto" class="nav-link">Projeto</a>
-                    <a href="#primeira-fase" class="nav-link">Primeira Fase</a>
+                    <a href="#" class="nav-link">Projeto</a>
+                    <a href="primeira-fase.html" class="nav-link">Primeira Fase</a>
                     <a href="#segunda-fase" class="nav-link">Segunda Fase</a>
                 </nav>
 
@@ -1772,8 +1772,8 @@
             
             <!-- Menu Dropdown Mobile (Apenas visível via JS) -->
             <div class="nav-mobile-dropdown">
-                <a href="#projeto" class="nav-link">Projeto</a>
-                <a href="#primeira-fase" class="nav-link">Primeira Fase</a>
+                <a href="#" class="nav-link">Projeto</a>
+                <a href="primeira-fase.html" class="nav-link">Primeira Fase</a>
                 <a href="#segunda-fase" class="nav-link">Segunda Fase</a>
                 <a href="#contato" class="nav-cta">Contato</a>
             </div>
@@ -2454,7 +2454,7 @@
             <p class="d10-subtitle">Você pode conhecer cada uma delas — ou entrar em contato para conversar com a gente.</p>
             
             <div class="d10-buttons-wrapper">
-                <a href="#primeira-fase" class="d10-btn d10-btn-secondary">Primeira Fase</a>
+                <a href="primeira-fase.html" class="d10-btn d10-btn-secondary">Primeira Fase</a>
                 <a href="#segunda-fase" class="d10-btn d10-btn-secondary">Segunda Fase</a>
                 <a href="#contato" class="d10-btn d10-btn-secondary">Entre em Contato</a>
             </div>
@@ -2523,7 +2523,7 @@
         const canvas = document.getElementById('hero-canvas');
         const ctx    = canvas.getContext('2d', { alpha: true }); 
         
-        const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+        const DPR = window.devicePixelRatio || 1;
 
         function sizeCanvas() {
             canvas.width  = window.innerWidth  * DPR;
