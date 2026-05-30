@@ -734,6 +734,535 @@
                 font-size: 0.85rem;
             }
         }
+
+        /* ──────────────────────────────────────────────
+           DOBRA 5 (O LIVRO A SEMENTE IMPRESSA)
+        ────────────────────────────────────────────── */
+        .section-dobra-5 {
+            position: relative;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            z-index: 2;
+            background-color: #F8F5F1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .d5-bg-picture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .dobra-5-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .dobra-5-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 90rem;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            min-height: 100vh;
+        }
+
+        .d5-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .d5-etapa-text {
+            background-color: rgba(117, 87, 56, 0.08);
+            border: 1px solid rgba(117, 87, 56, 0.25);
+            color: #755738;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .d5-title-img {
+            max-width: 40rem;
+            width: 100%;
+            height: auto;
+        }
+
+        .d5-header-desc {
+            max-width: 55rem;
+            color: #5A5A5A;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .d5-main {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .d5-blocks-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 26rem;
+        }
+
+        .d5-block {
+            background-color: rgba(248, 245, 241, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid #755738;
+            border-left: 12px solid #899701;
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .d5-block:hover {
+            transform: translateX(10px);
+        }
+
+        .d5-block p {
+            color: #5A5A5A;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 0;
+            text-align: left;
+        }
+
+        .d5-footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+            text-align: center;
+            padding-bottom: 2rem;
+        }
+
+        .d5-footer-text {
+            max-width: 60rem;
+            color: #5A5A5A;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-dobra-5 {
+                min-height: auto;
+            }
+            .dobra-5-content {
+                padding: 3rem 1.5rem;
+                min-height: auto;
+            }
+            .dobra-5-bg {
+                object-position: 60% center;
+            }
+            .d5-main {
+                flex-direction: column;
+                margin-top: 15rem;
+            }
+            .d5-blocks-container {
+                max-width: 100%;
+                width: 100%;
+            }
+            .d5-block:hover {
+                transform: none;
+            }
+        }
+
+        /* ──────────────────────────────────────────────
+           DOBRA 6 (ALINHAMENTO PEDAGÓGICO BNCC)
+        ────────────────────────────────────────────── */
+        .section-dobra-6 {
+            position: relative;
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+            overflow: hidden;
+            z-index: 2;
+            background-color: #FAFAF7; /* Softer, slightly warmer background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 6rem;
+        }
+
+        /* Ambient glowing orbs in the background for a magical feel */
+        .section-dobra-6::before, .section-dobra-6::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .section-dobra-6::before {
+            width: 45rem;
+            height: 45rem;
+            background: #D4B27C;
+            top: -15rem;
+            left: -15rem;
+        }
+
+        .section-dobra-6::after {
+            width: 55rem;
+            height: 55rem;
+            background: #A3C69C;
+            bottom: -20rem;
+            right: -20rem;
+        }
+
+        .dobra-6-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 90rem;
+            padding: 6rem 2rem 5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5rem;
+            flex-grow: 1;
+        }
+
+        .d6-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .d6-title-img {
+            max-width: 45rem; /* Slightly smaller for elegance */
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
+        }
+
+        .d6-subtitle {
+            font-size: 1.4rem;
+            color: #6A6A6A;
+            font-weight: 500;
+            margin: 0;
+            letter-spacing: 0.03em;
+        }
+
+        .d6-glass-base {
+            background-color: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 3rem;
+            padding: 4rem 3rem;
+            width: 100%;
+            max-width: 85rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .d6-cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            width: 100%;
+            align-items: stretch; /* Keep aligned */
+        }
+
+        .d6-card {
+            background-color: rgba(255, 255, 255, 0.85); /* Less transparent to stand out */
+            border: 1px solid rgba(212, 178, 124, 0.6);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2rem;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .d6-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+            border-color: rgba(212, 178, 124, 1);
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .d6-card-title {
+            font-size: 1.4rem;
+            color: #3A3A3A;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0;
+            min-height: 3.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: -0.01em;
+        }
+
+        .d6-card-icon {
+            width: 100%;
+            max-width: 13rem;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            margin: 0 auto;
+            border: 1px solid #D4B27C; /* Moldura dourada mais fina e delicada */
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .d6-card:hover .d6-card-icon {
+            transform: scale(1.05);
+        }
+
+        .d6-card-text {
+            font-size: 1.05rem;
+            color: #6A6A6A;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .d6-footer-banner {
+            position: relative; /* relative instead of absolute */
+            background-color: #1A3E2B;
+            color: #FFFFFF;
+            padding: 2rem 3rem;
+            text-align: center;
+            z-index: 3;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(26, 62, 43, 0.2);
+            max-width: 70rem;
+            width: 90%;
+            margin-top: -3rem; /* overlap slightly */
+        }
+
+        .d6-footer-banner p {
+            max-width: 65rem;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.5;
+            font-weight: 300;
+            color: #F8F5F1;
+        }
+
+        .d6-footer-banner strong {
+            font-weight: 600;
+            color: #FFFFFF;
+        }
+
+        @media (max-width: 992px) {
+            .d6-glass-base {
+                padding: 3rem 2rem;
+            }
+            .d6-cards-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .d6-cards-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .dobra-6-content {
+                padding: 4rem 1.5rem 6rem 1.5rem;
+                gap: 3.5rem;
+            }
+            .d6-subtitle {
+                font-size: 1.15rem;
+            }
+            .d6-glass-base {
+                padding: 2rem 1.5rem;
+                border-radius: 2rem;
+            }
+            .d6-card {
+                padding: 2.5rem 1.5rem;
+                min-height: auto;
+                gap: 1.5rem;
+            }
+            .d6-footer-banner {
+                padding: 1.5rem;
+                border-radius: 1.5rem;
+                margin-top: -2rem;
+                width: 95%;
+            }
+            .d6-footer-banner p {
+                font-size: 1.05rem;
+            }
+        }
+
+        /* ──────────────────────────────────────────────
+           DOBRA 7 (DIÁRIO DE BORDO E QR CODE)
+        ────────────────────────────────────────────── */
+        .section-dobra-7 {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            z-index: 2;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 5rem 2rem 4rem 2rem; /* Menos padding no topo para subir a pílula */
+        }
+
+        .d7-bg-picture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .dobra-7-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: bottom center; /* Fixa a imagem embaixo, jogando o livro para baixo */
+        }
+
+        .dobra-7-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 80rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem; /* Gap levemente menor */
+            margin-top: 0; /* Remove margem extra */
+        }
+
+        .d7-main-title-img {
+            width: 100%;
+            max-width: 48rem; /* Título um pouquinho menor */
+            height: auto;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+        }
+
+        .d7-intro-glass {
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4rem;
+            padding: 1.5rem 3rem;
+            text-align: center;
+            max-width: 60rem;
+        }
+
+        .d7-intro-glass p {
+            font-size: 0.95rem;
+            color: #4A4A4A;
+            line-height: 1.5;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .d7-bottom-row {
+            display: flex;
+            justify-content: flex-end; /* Push QR glass to the right */
+            align-items: center;
+            width: 100%;
+            margin-top: 1rem;
+            height: 40vh; /* gives space for the background hands to show on the left */
+        }
+
+        .d7-qr-glass {
+            max-width: 26rem;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            margin-right: 2rem;
+        }
+
+        .d7-qr-text {
+            font-size: 1rem;
+            color: #4A4A4A;
+            line-height: 1.5;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .d7-qr-img {
+            width: 100%;
+            max-width: 12rem;
+            height: auto;
+            border-radius: 1rem;
+        }
+
+        .d7-footer-text {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            font-size: 1rem;
+            color: #FFFFFF;
+            font-weight: 400;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+            z-index: 2;
+        }
+
+        @media (max-width: 992px) {
+            .d7-bottom-row {
+                justify-content: center;
+                height: auto;
+                margin-top: 4rem;
+            }
+            .d7-qr-glass {
+                margin-right: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -805,7 +1334,7 @@
                         <strong>Quantas árvores você teria plantado até hoje?</strong>
                     </p>
                     <p style="margin-bottom: 1.5rem;">
-                        E se nós plantássemos essa ideia na cabeça de uma nova geração?
+                        <strong style="color: #755738;">E se nós plantássemos essa ideia na cabeça de uma nova geração?</strong>
                     </p>
                     <p>
                         É isso — e muito mais — que essa fase do projeto propõe como uma solução para um futuro de regeneração do planeta!
@@ -920,6 +1449,106 @@
             
             <div class="d4-col-right"></div>
         </div>
+    </section>
+
+    <!-- Dobra 5 -->
+    <section class="section-dobra-5">
+        <picture class="d5-bg-picture">
+            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 5/Fundo-Dobra-5.jpg" class="dobra-5-bg" alt="Fundo Dobra 5">
+        </picture>
+
+        <div class="dobra-5-content">
+            <div class="d5-header">
+                <span class="d5-etapa-text">segunda etapa</span>
+                <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 5/O-LIVRO-‘A-SEMENTE-IMPRESSA’.png" alt="O Livro 'A Semente Impressa'" class="d5-title-img">
+                <p class="d5-header-desc">
+                    Agora, essa história é convertida em um livro interativo, que estende e aprofunda a conexão com a mensagem, estabelecendo um vínculo entre escola, família e comunidade e enfatizando a importância de cuidar e respeitar o meio ambiente.
+                </p>
+            </div>
+
+            <div class="d5-main">
+                <div class="d5-blocks-container">
+                    <div class="d5-block">
+                        <p>Páginas vibrantes com ilustrações que remetem à peça</p>
+                    </div>
+                    <div class="d5-block">
+                        <p>Atividades práticas e jogos educativos sobre ecologia</p>
+                    </div>
+                    <div class="d5-block">
+                        <p>Espaços para desenho e reflexão, estimulando a criatividade</p>
+                    </div>
+                    <div class="d5-block">
+                        <p>Sugestões de ações sustentáveis para o dia a dia</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d5-footer">
+                <p class="d5-footer-text">
+                    Este material é essencial para estabelecer uma conexão constante entre escola, família e comunidade, assegurando que os valores de regeneração e cuidado com o planeta sejam cultivados de maneira orgânica e sustentável.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dobra 6 -->
+    <section class="section-dobra-6">
+        <div class="dobra-6-content">
+            <div class="d6-header">
+                <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 6/ALINHAMENTO-PEDAGOGICO-(BNCC).png" alt="Alinhamento Pedagógico (BNCC)" class="d6-title-img">
+                <h3 class="d6-subtitle">Metodologia de Aprendizagem Significativa e Lúdica</h3>
+            </div>
+
+            <div class="d6-glass-base">
+                <div class="d6-cards-container">
+                    <div class="d6-card">
+                        <h4 class="d6-card-title">Letramento<br>Literário</h4>
+                        <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 6/book_nature_icon.png" alt="Livro com Natureza" class="d6-card-icon">
+                        <p class="d6-card-text">Fruição, reconto e ampliação de vocabulário sobre natureza e ciclos.</p>
+                    </div>
+
+                    <div class="d6-card">
+                        <h4 class="d6-card-title">Ciências<br>Educação Ambiental</h4>
+                        <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 6/science_nature_icon.png" alt="Engrenagens e Natureza" class="d6-card-icon">
+                        <p class="d6-card-text">Observação de ciclos de vida, impactos humanos e corresponsabilidade.</p>
+                    </div>
+
+                    <div class="d6-card">
+                        <h4 class="d6-card-title">Competências<br>Socioemocionais</h4>
+                        <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 6/kids_nature_icon.png" alt="Crianças com Planta" class="d6-card-icon">
+                        <p class="d6-card-text">Empatia, cooperação e cidadania (o cuidado com o comum).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d6-footer-banner">
+                <p><strong>Entregáveis:</strong> Guia digital para professores com sequências didáticas (do Diário da Árvore ao Mapeamento do Entorno Verde).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dobra 7 -->
+    <section class="section-dobra-7">
+        <picture class="d7-bg-picture">
+            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dorbra 7/Sem-Título-1-V2.jpg" class="dobra-7-bg" alt="Fundo Dobra 7">
+        </picture>
+
+        <div class="dobra-7-content">
+            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dorbra 7/Fundo-Dobra-5.png" alt="Livro como uma ponte" class="d7-main-title-img">
+
+            <div class="d7-intro-glass">
+                <p>O encantamento não termina quando a cortina fecha. O livro funciona como um Diário de Bordo interativo.<br>É um espaço para a criança desenhar, escrever, refletir e registrar sua<br>própria jornada de plantio.</p>
+            </div>
+
+            <div class="d7-bottom-row">
+                <div class="d7-qr-glass">
+                    <p class="d7-qr-text">A Ponte: O livro contém um QR Code<br>que leva os pais diretamente ao<br>Documentário, conectando a fantasia<br>infantil à responsabilidade adulta.</p>
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dorbra 7/QR.jpg" alt="QR Code" class="d7-qr-img">
+                </div>
+            </div>
+        </div>
+
+        <p class="d7-footer-text">Levar a conversa da sala de aula para a mesa de jantar.</p>
     </section>
 
     <script>
