@@ -170,15 +170,10 @@
 
         @media (max-width: 768px) {
             .navbar-wrapper {
-                transform: translateY(-150%) !important;
-                opacity: 0 !important;
-                pointer-events: none !important;
-                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-            }
-            .navbar-wrapper.nav-scrolled {
                 transform: translateY(0) !important;
                 opacity: 1 !important;
                 pointer-events: auto !important;
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
             }
             .navbar {
                 height: 3.5rem;
@@ -1609,31 +1604,10 @@
         </div>
     </header>
 
-    <main class="section-dobra-2">
-        <!-- Background Imagem Unificada (A nova V2 possui o livro mágico) -->
-        <picture class="d2-bg-picture">
-            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Segunda Fase/Hero-Section/Capa-DOC 1 .jpg" class="dobra-2-bg" alt="Fundo Dobra 2">
-        </picture>
-
-        <div class="dobra-2-content">
-            <div class="dobra-2-glass-card" id="dobra2-card">
-                <div class="dobra-2-text">
-                    <p style="margin-bottom: 1.5rem;">
-                        Imagine se, a cada ano de vida, você tivesse comemorado plantando uma árvore.
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        <strong>Quantas árvores você teria plantado até hoje?</strong>
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        <strong style="color: #755738;">E se nós plantássemos essa ideia na cabeça de uma nova geração?</strong>
-                    </p>
-                    <p>
-                        É isso — e muito mais — que essa fase do projeto propõe como uma solução para um futuro de regeneração do planeta!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </main>
+    <!-- Imagem Hero DOC -->
+    <section class="section-hero-doc" style="width: 100%; position: relative; margin-top: 4.5rem;"> <!-- margin-top para compensar a navbar fixa -->
+        <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Segunda Fase/Hero-Section/Capa-DOC 1 .jpg" alt="DOC Mundo Regenerativo" style="width: 100%; height: auto; display: block;">
+    </section>
 
     
     <!-- Página em Construção -->
