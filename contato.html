@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Plantar — Primeira Fase</title>
+    <title>Projeto Plantar - Contato</title>
 
     <!-- GSAP + ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -1566,7 +1566,239 @@
             .footer-logo-box.minc img { height: 100px; }
         }
 
-    </style>
+    
+        /* ══════════════════════════════════════════════════
+           CONTATO PAGE STYLES
+        ══════════════════════════════════════════════════ */
+        .section-contato {
+            position: relative;
+            padding: 12rem 2rem 5rem 2rem;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+            background-color: #DBDCD8; /* Fallback */
+        }
+        
+        .contato-bg-picture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .contato-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 15% center;
+        }
+        
+        .contato-content-global {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contato-header {
+            width: 100%;
+            max-width: 70rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .contato-title-img {
+            max-width: 60rem;
+            width: 100%;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .contato-intro-text {
+            text-align: center;
+            color: #8C8A84;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 45rem;
+            margin-bottom: 3rem;
+        }
+
+        .contato-content-wrapper {
+            width: 100%;
+            max-width: 90rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contato-col-left {
+            flex: 1;
+        }
+
+        .contato-col-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contato-footer-centered {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .contato-form-box {
+            background-color: #899702;
+            border-radius: 1.5rem;
+            padding: 2.5rem 2.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 35rem;
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            color: #FFFFFF;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            background-color: #F3F4ED;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-size: 1rem;
+            color: #4A4A4A;
+            font-family: inherit;
+            width: 100%;
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 8rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: 2px solid #FFFFFF;
+        }
+
+        .form-submit-btn {
+            width: 100%;
+            background-color: #FFFFFF;
+            color: #4A4A4A;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .form-submit-btn:hover {
+            background-color: #E6E6E6;
+            transform: translateY(-2px);
+        }
+
+        .contato-footer-desc {
+            text-align: center;
+            color: #8C8A84;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 45rem;
+            margin-bottom: 4rem;
+        }
+
+        .contato-whatsapp-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .whatsapp-label {
+            color: #899702;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-btn-img {
+            max-width: 20rem;
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-btn-img:hover {
+            transform: scale(1.03);
+        }
+
+        .contato-final-text {
+            text-align: center;
+            color: #6B6B6B;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        /* Removemos o crop container pois usaremos a imagem como fundo (background) */
+        @media (max-width: 992px) {
+            .contato-bg {
+                /* No celular, a imagem (agora a versão mobile cel.jpg via <picture>)
+                   preenche o fundo e alinhamos para que o menino fique no centro da tela */
+                object-position: center 30%;
+            }
+            .contato-content-wrapper {
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+                z-index: 1; /* Garante que o form fique por cima da margem negativa da imagem */
+            }
+            .contato-col-left {
+                display: block;
+                width: 100%;
+                height: 25rem; /* Cria um "buraco" vazio na página para o menino do fundo aparecer */
+            }
+            .contato-col-right {
+                padding-left: 0;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-contato {
+                padding: 12rem 1.5rem 4rem 1.5rem;
+            }
+            .contato-form-box {
+                padding: 2rem 1.5rem;
+            }
+            .contato-bg {
+                object-position: center bottom;
+            }
+        }
+</style>
 </head>
 <body>
 
@@ -1609,271 +1841,77 @@
         </div>
     </header>
 
-    <!-- Loader -->
-    <div id="loader">
-        <div class="bar-bg"><div class="bar-fill" id="bar"></div></div>
-    </div>
-
-    <!-- Canvas -->
-    <canvas id="hero-canvas"></canvas>
-
-    <!-- Scroll trigger zone -->
-    <div class="scroll-spacer" id="trigger"></div>
-
-    <!-- Conteúdo da Página (Dobra 2 em diante) -->
-    <main class="section-dobra-2">
-        <!-- Background Imagem Unificada (A nova V2 possui o livro mágico) -->
-        <picture class="d2-bg-picture">
-            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 2/Primeira-fase-Dobras V2.jpg" class="dobra-2-bg" alt="Fundo Dobra 2">
+    <!-- CONTEÚDO PRINCIPAL DE CONTATO -->
+    <main class="section-contato" id="contato">
+        
+        <!-- Fundo como na referência: usa <picture> para trocar a imagem no celular -->
+        <picture class="contato-bg-picture">
+            <!-- Imagem para Mobile (Celular) -->
+            <source media="(max-width: 992px)" srcset="../_ASSETS_LOCAIS/Branding/Imagens - Site/Contato/cel.jpg">
+            <!-- Imagem Padrão (Desktop) -->
+            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Contato/ChatGPT-Image-19-de-jan.-de-2026,-17_27_05.jpg" alt="Fundo Menino Plantando" class="contato-bg">
         </picture>
 
-        <div class="dobra-2-content">
-            <div class="dobra-2-glass-card" id="dobra2-card">
-                <div class="dobra-2-text">
-                    <p style="margin-bottom: 1.5rem;">
-                        Imagine se, a cada ano de vida, você tivesse comemorado plantando uma árvore.
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        <strong>Quantas árvores você teria plantado até hoje?</strong>
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        <strong style="color: #755738;">E se nós plantássemos essa ideia na cabeça de uma nova geração?</strong>
-                    </p>
-                    <p>
-                        É isso — e muito mais — que essa fase do projeto propõe como uma solução para um futuro de regeneração do planeta!
-                    </p>
+        <!-- Wrapper Global do Conteúdo -->
+        <div class="contato-content-global">
+            
+            <!-- HEADER: Título e Intro (Centralizados) -->
+            <div class="contato-header">
+                <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Contato/Ajuden-os.png" alt="Ajude-nos a plantar essa semente" class="contato-title-img">
+                <div class="contato-intro-text">
+                    <p>Toda transformação começa pequena — como uma semente na terra.<br>O Projeto Plantar para Regenerar nasce dessa mesma ideia: cultivar consciência, cuidado e responsabilidade com o futuro.</p>
                 </div>
             </div>
+
+            <!-- DUAS COLUNAS: Menino e Form -->
+            <div class="contato-content-wrapper">
+                <!-- Coluna Esquerda: Vazia para mostrar o menino -->
+                <div class="contato-col-left"></div>
+
+                <!-- Coluna Direita: Formulário e infos -->
+                <div class="contato-col-right">
+                    <div class="contato-form-box">
+                        <form action="https://formspree.io/f/mleadyen" method="POST">
+                            <div class="form-group">
+                                <label for="nome">Seu Nome</label>
+                                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="exemplo@gmail.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mensagem">Sua Mensagem</label>
+                                <textarea id="mensagem" name="mensagem" placeholder="Digite sua mensagem" required></textarea>
+                            </div>
+                            <button type="submit" class="form-submit-btn">Enviar</button>
+                        </form>
+                    </div>
+
+                    <div class="contato-footer-desc">
+                        <p>Se você acredita que a cultura pode inspirar novas escolhas, que histórias podem despertar novos olhares e que cada gesto pode gerar um impacto real, queremos ouvir você.</p>
+                        <br>
+                        <p>Parcerias, dúvidas, convites ou ideias: cada mensagem pode ser o início de algo maior.</p>
+                    </div>
+
+                    <div class="contato-whatsapp-box">
+                        <span class="whatsapp-label">Contato por WhatsApp</span>
+                        <a href="https://wa.me/5511965484044?text=Entrei%20no%20site%20do%20Projeto%20Plantar%20Para%20Regenerar." target="_blank">
+                            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Contato/Click-aqui.png" alt="Clique Aqui - WhatsApp" class="whatsapp-btn-img">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER: Texto Final (Centralizado) -->
+            <div class="contato-footer-centered">
+                <div class="contato-final-text">
+                    <p>Entre em contato.<br>Vamos plantar essa semente juntos.</p>
+                </div>
+            </div>
+
         </div>
     </main>
-
-    <!-- Dobra 3 -->
-    <section class="section-dobra-3">
-        <!-- Header da Seção -->
-        <div class="d3-header">
-            <span class="d3-etapa-badge">primeira etapa</span>
-            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 3/A-MAGIA-DO-TEATRO.png" alt="A Magia do Teatro" class="d3-magia-img">
-            <p class="d3-quote-text">
-                "Onde realidade e imaginação se encontram, as sementes da transformação são lançadas.”
-            </p>
-        </div>
-
-        <!-- Container Principal (Caixa Branca) -->
-        <div class="d3-main-container">
-            <h2 class="d3-grid-title">Conheça um pouco mais sobre os personagens.</h2>
-            
-            <!-- Linha de Personagens -->
-            <div class="d3-characters-row">
-                
-                <!-- Personagem 1: Árvo -->
-                <div class="d3-character-card">
-                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Persongens/ChatGPT Image 18 de fev. de 2026, 13_05_29.png" alt="Árvo" class="d3-character-img">
-                    <div class="d3-character-info">
-                        <h3 class="d3-character-name">Árvo</h3>
-                        <p class="d3-character-desc">
-                            Árvo é o Guardião das Sementes no Bosque das Raízes — um menino de 8 anos que escuta a voz das árvores e sente o chão pulsar sob seus pés. Curioso, empático e corajoso, carrega sementes e luz nas mãos. Representa a infância desperta: a semente consciente que aprende que cuidar é uma forma de existir.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Personagem 2: Dona Sávia -->
-                <div class="d3-character-card">
-                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Persongens/ChatGPT Image 18 de fev. de 2026, 13_05_43.png" alt="Dona Sávia" class="d3-character-img">
-                    <div class="d3-character-info">
-                        <h3 class="d3-character-name">Dona Sávia</h3>
-                        <p class="d3-character-desc">
-                            Dona Sávia é a Guardiã Ancestral do Bosque das Raízes — presença serena que carrega a sabedoria da floresta. Com olhar profundo e mãos marcadas pelo tempo, ensina sem impor, orienta com silêncio e gesto. Representa as raízes do tempo: a memória viva que sustenta, cura e lembra que tudo está conectado.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Personagem 3: Mãe de Árvo -->
-                <div class="d3-character-card">
-                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Persongens/ChatGPT Image 18 de fev. de 2026, 13_05_55.png" alt="Mãe de Árvo" class="d3-character-img">
-                    <div class="d3-character-info">
-                        <h3 class="d3-character-name">Mãe de Árvo</h3>
-                        <p class="d3-character-desc">
-                            Símbolo do amor que sustenta e da tradição que floresce no cotidiano, a Mãe de Árvo traduz a força silenciosa da terra em gestos simples e precisos. Com mãos firmes e presença serena, prepara o solo, acolhe, ensina e orienta com olhar amoroso. Nela, o tempo da natureza encontra o tempo do afeto — e é desse encontro que Árvo aprende a existir.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Personagem 4: Brisa -->
-                <div class="d3-character-card">
-                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Persongens/ChatGPT Image 18 de fev. de 2026, 13_06_02.png" alt="Brisa" class="d3-character-img">
-                    <div class="d3-character-info">
-                        <h3 class="d3-character-name">Brisa</h3>
-                        <p class="d3-character-desc">
-                            Brisa é o sopro que desperta movimento no Bosque das Raízes. Feita de leveza e luz, surge quando é preciso mudar, respirar ou transformar. Seus gestos dançam como o vento, e sua presença ilumina sem pesar. Representa a alma do ar — a energia sutil que inspira Árvo a crescer, lembrando que viver também é fluir.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Personagem 5: Lume -->
-                <div class="d3-character-card">
-                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Persongens/ChatGPT Image 18 de fev. de 2026, 13_06_09.png" alt="Lume" class="d3-character-img">
-                    <div class="d3-character-info">
-                        <h3 class="d3-character-name">Lume</h3>
-                        <p class="d3-character-desc">
-                            Movido pela curiosidade e pela luz que carrega no peito, Lume é o amigo que impulsiona a jornada no Bosque das Raízes. Se Árvo escuta a terra, Lume sente o vento e a energia do sol. Criativo, leal e espirituoso, transforma incertezas em descoberta. Ele representa a consciência que desperta em movimento — a esperança que ilumina o próximo passo.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Footer Pill -->
-        <div class="d3-footer">
-            <p>
-                O teatro foi escolhido para abrir a primeira fase porque ele cria algo que nenhum outro formato consegue substituir: presença. A criança não apenas assiste — ela sente, reage, participa. É pela emoção que o aprendizado ganha significado.
-            </p>
-        </div>
-    </section>
-
-    <!-- Dobra 4 -->
-    <section class="section-dobra-4">
-        <picture class="d4-bg-picture">
-            <source media="(max-width: 768px)" srcset="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Primeira%20Fase/Dobra%204/fundo-Cel.jpg">
-            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 4/Fundo Dobra 4 .png" class="dobra-4-bg" alt="Fundo Dobra 4">
-        </picture>
-
-        <div class="dobra-4-content">
-            <div class="d4-col-left">
-                <div class="d4-header">
-                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 4/LEIA-A-HISTORIA-COMPLETA-V2.png" alt="Leia a História Completa" class="d4-title-img">
-                    <p class="d4-subtitle">A versão completa do livro pode ser encontrada<br>na janela abaixo.</p>
-                </div>
-
-                <div class="d4-document-container">
-                    <div class="d4-doc-overlay" id="doc-overlay">
-                        <span>Clique para carregar e ler o documento</span>
-                    </div>
-                    <iframe class="d4-document-iframe" data-src="https://docs.google.com/document/d/1VHVm8P8T9mJypNmWKtfB2xpsM-66gVxYISVXcurvIWw/preview" src="about:blank" title="Visualizador do Livro"></iframe>
-                </div>
-            </div>
-            
-            <div class="d4-col-right"></div>
-        </div>
-    </section>
-
-    <!-- Dobra 5 -->
-    <section class="section-dobra-5">
-        <picture class="d5-bg-picture">
-            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 5/Fundo-Dobra-5.jpg" class="dobra-5-bg" alt="Fundo Dobra 5">
-        </picture>
-
-        <div class="dobra-5-content">
-            <div class="d5-header">
-                <span class="d5-etapa-text">segunda etapa</span>
-                <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 5/O-LIVRO-‘A-SEMENTE-IMPRESSA’.png" alt="O Livro 'A Semente Impressa'" class="d5-title-img">
-                <p class="d5-header-desc">
-                    Agora, essa história é convertida em um livro interativo, que estende e aprofunda a conexão com a mensagem, estabelecendo um vínculo entre escola, família e comunidade e enfatizando a importância de cuidar e respeitar o meio ambiente.
-                </p>
-            </div>
-
-            <div class="d5-main">
-                <div class="d5-blocks-container">
-                    <div class="d5-block">
-                        <p>Páginas vibrantes com ilustrações que remetem à peça</p>
-                    </div>
-                    <div class="d5-block">
-                        <p>Atividades práticas e jogos educativos sobre ecologia</p>
-                    </div>
-                    <div class="d5-block">
-                        <p>Espaços para desenho e reflexão, estimulando a criatividade</p>
-                    </div>
-                    <div class="d5-block">
-                        <p>Sugestões de ações sustentáveis para o dia a dia</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="d5-footer">
-                <p class="d5-footer-text">
-                    Este material é essencial para estabelecer uma conexão constante entre escola, família e comunidade, assegurando que os valores de regeneração e cuidado com o planeta sejam cultivados de maneira orgânica e sustentável.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dobra 6 -->
-    <section class="section-dobra-6">
-        <div class="dobra-6-content">
-            <div class="d6-header">
-                <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 6/ALINHAMENTO-PEDAGOGICO-(BNCC).png" alt="Alinhamento Pedagógico (BNCC)" class="d6-title-img">
-                <h3 class="d6-subtitle">Metodologia de Aprendizagem Significativa e Lúdica</h3>
-            </div>
-
-            <div class="d6-glass-base">
-                <div class="d6-cards-container">
-                    <div class="d6-card">
-                        <h4 class="d6-card-title">Letramento<br>Literário</h4>
-                        <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 6/book_nature_icon.png" alt="Livro com Natureza" class="d6-card-icon">
-                        <p class="d6-card-text">Fruição, reconto e ampliação de vocabulário sobre natureza e ciclos.</p>
-                    </div>
-
-                    <div class="d6-card">
-                        <h4 class="d6-card-title">Ciências<br>Educação Ambiental</h4>
-                        <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 6/science_nature_icon.png" alt="Engrenagens e Natureza" class="d6-card-icon">
-                        <p class="d6-card-text">Observação de ciclos de vida, impactos humanos e corresponsabilidade.</p>
-                    </div>
-
-                    <div class="d6-card">
-                        <h4 class="d6-card-title">Competências<br>Socioemocionais</h4>
-                        <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dobra 6/kids_nature_icon.png" alt="Crianças com Planta" class="d6-card-icon">
-                        <p class="d6-card-text">Empatia, cooperação e cidadania (o cuidado com o comum).</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="d6-footer-banner">
-                <p><strong>Entregáveis:</strong> Guia digital para professores com sequências didáticas (do Diário da Árvore ao Mapeamento do Entorno Verde).</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dobra 7 -->
-    <section class="section-dobra-7">
-        <picture class="d7-bg-picture">
-            <source media="(max-width: 768px)" srcset="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Primeira%20Fase/Dorbra%207/Funda-Cel.jpg">
-            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dorbra 7/Sem-Título-1-V2.jpg" class="dobra-7-bg" alt="Fundo Dobra 7">
-        </picture>
-
-        <div class="dobra-7-content">
-            <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dorbra 7/Fundo-Dobra-5.png" alt="Livro como uma ponte" class="d7-main-title-img">
-
-            <div class="d7-intro-glass">
-                <p>O encantamento não termina quando a cortina fecha. O livro funciona como um Diário de Bordo interativo.<br>É um espaço para a criança desenhar, escrever, refletir e registrar sua<br>própria jornada de plantio.</p>
-            </div>
-
-            <div class="d7-bottom-row">
-                <div class="d7-qr-glass">
-                    <p class="d7-qr-text">A Ponte: O livro contém um QR Code<br>que leva os pais diretamente ao<br>Documentário, conectando a fantasia<br>infantil à responsabilidade adulta.</p>
-                    <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Primeira Fase/Dorbra 7/QR.jpg" alt="QR Code" class="d7-qr-img">
-                </div>
-            </div>
-        </div>
-
-        <p class="d7-footer-text">Levar a conversa da sala de aula para a mesa de jantar.</p>
-    </section>
-
-
-    <!-- ══════════════════════════════════════════════════
-         DOBRA 10 — ETAPAS DO PROJETO
-    ══════════════════════════════════════════════════ -->
-    <section id="etapas-do-projeto" class="section-dobra-10">
-        <div class="d10-container">
-            <h2 class="d10-title">O Projeto Segue em <span>Etapas</span></h2>
-            <p class="d10-subtitle">Você pode conhecer cada uma delas — ou entrar em contato para conversar com a gente.</p>
-            
-            <div class="d10-buttons-wrapper">
-                <a href="primeira-fase.html" class="d10-btn d10-btn-secondary">Primeira Fase</a>
-                <a href="segunda-fase.html" class="d10-btn d10-btn-secondary">Segunda Fase</a>
-                <a href="contato.html" class="d10-btn d10-btn-secondary">Entre em Contato</a>
-            </div>
-        </div>
-    </section>
 
     <!-- ══════════════════════════════════════════════════
          FOOTER
@@ -1914,7 +1952,6 @@
 
     <script>
     (function () {
-        
         // Controle do Menu Mobile (Hamburger)
         const hamburger = document.querySelector('.nav-hamburger');
         const navbar = document.querySelector('.navbar');
@@ -1930,215 +1967,6 @@
                 });
             });
         }
-
-        /* ──────────────────────────────────────────────
-           CANVAS SETUP
-        ────────────────────────────────────────────── */
-        const canvas = document.getElementById('hero-canvas');
-        const ctx    = canvas.getContext('2d', { alpha: true }); 
-        
-        const DPR = window.devicePixelRatio || 1;
-
-        function sizeCanvas() {
-            canvas.width  = window.innerWidth  * DPR;
-            
-            if (window.innerWidth <= 768) {
-                const mobileHeight = window.innerWidth * (9/16);
-                canvas.height = mobileHeight * DPR;
-                canvas.style.width  = window.innerWidth  + 'px';
-                canvas.style.height = mobileHeight + 'px';
-            } else {
-                canvas.height = window.innerHeight * DPR;
-                canvas.style.width  = window.innerWidth  + 'px';
-                canvas.style.height = window.innerHeight + 'px';
-            }
-            
-            ctx.imageSmoothingEnabled = true;
-            ctx.imageSmoothingQuality = 'high';
-            recalcCover();
-        }
-
-        // Cache de cover-fit (calculado uma vez, não a cada frame)
-        let cover = { x: 0, y: 0, w: 0, h: 0 };
-
-        function recalcCover() {
-            const sample = imgs[0];
-            if (!sample || !sample.naturalWidth) return;
-            
-            // Sempre faz o cover padrão para não sobrar faixa branca
-            let r = Math.max(canvas.width / sample.naturalWidth, canvas.height / sample.naturalHeight);
-
-            cover.w = sample.naturalWidth  * r;
-            cover.h = sample.naturalHeight * r;
-            cover.x = (canvas.width  - cover.w) / 2;
-            cover.y = (canvas.height - cover.h) / 2;
-        }
-
-        // Previne o recálculo do canvas no mobile quando a barra de endereço some/aparece
-        let lastWindowWidth = window.innerWidth;
-        window.addEventListener('resize', () => { 
-            if (window.innerWidth !== lastWindowWidth) {
-                lastWindowWidth = window.innerWidth;
-                sizeCanvas(); 
-                draw(); 
-            }
-        });
-
-        /* ──────────────────────────────────────────────
-           IMAGE SEQUENCE PRELOAD
-        ────────────────────────────────────────────── */
-        const TOTAL  = 145;
-        const START  = 86400;
-        const imgs   = [];
-        let loaded   = 0;
-        const state  = { frame: 0 };
-
-        const bar    = document.getElementById('bar');
-        const loader = document.getElementById('loader');
-
-        for (let i = 0; i < TOTAL; i++) {
-            const img = new Image();
-            img.src = 'Jpeg Hero Primeira Fase/Timeline 2_000' + (START + i) + '.jpg';
-            imgs.push(img);
-
-            img.onload = function () {
-                loaded++;
-                bar.style.width = ((loaded / TOTAL) * 100) + '%';
-
-                if (loaded === TOTAL) {
-                    sizeCanvas();
-                    draw();
-                    initScroll();
-                    // Esconde o loader
-                    requestAnimationFrame(() => {
-                        loader.classList.add('hidden');
-                        setTimeout(() => loader.remove(), 700);
-                    });
-                }
-            };
-        }
-
-        /* ──────────────────────────────────────────────
-           DRAW — pinta o frame atual no canvas
-        ────────────────────────────────────────────── */
-        function draw() {
-            const i = Math.round(state.frame);
-            const img = imgs[i];
-            if (!img || !img.naturalWidth) return;
-            if (cover.w === 0) recalcCover();
-            
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(img, cover.x, cover.y, cover.w, cover.h);
-        }
-
-        /* ──────────────────────────────────────────────
-           GSAP SCROLL ANIMATION
-        ────────────────────────────────────────────── */
-        function initScroll() {
-            const isMobile = window.innerWidth <= 768;
-
-            if (isMobile) {
-                // No mobile, rola de acordo com o próprio elemento
-                gsap.to(state, {
-                    frame: TOTAL - 1,
-                    snap: 'frame',
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: '#hero-canvas',
-                        start: 'top top', // Força o início exato no frame 0
-                        end: 'bottom top',
-                        scrub: 0.3,
-                        onUpdate: draw
-                    }
-                });
-            } else {
-                // Desktop: usa o trigger spacer de 200vh
-                gsap.to(state, {
-                    frame: TOTAL - 1,
-                    snap: 'frame',
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: '#trigger',
-                        start: 'top top',
-                        end: 'bottom bottom',
-                        scrub: 0.3,
-                        onUpdate: draw
-                    }
-                });
-
-                // Parallax sutil no canvas (só desktop)
-                gsap.fromTo(canvas,
-                    { scale: 1, yPercent: 0 },
-                    {
-                        scale: 1.12,
-                        yPercent: 4,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: '#trigger',
-                            start: 'top top',
-                            end: 'bottom bottom',
-                            scrub: 0.3
-                        }
-                    }
-                );
-            }
-
-            // Otimização de Performance: Desliga a renderização do hero canvas quando a Dobra 2 cobre a tela
-            ScrollTrigger.create({
-                trigger: ".section-dobra-2",
-                start: "top top", // Quando o topo da dobra 2 bate no topo da tela (hero 100% coberto)
-                onEnter: () => document.getElementById("hero-canvas").style.visibility = "hidden",
-                onLeaveBack: () => document.getElementById("hero-canvas").style.visibility = "visible"
-            });
-
-            // Animação da Dobra 2 (ScrollTrigger para o Glass Card)
-            gsap.to("#dobra2-card", {
-                scrollTrigger: {
-                    trigger: ".section-dobra-2",
-                    start: "top 60%", // dispara quando o topo da dobra 2 cruzar 60% da tela
-                    end: "top 30%",
-                    toggleActions: "play none none reverse"
-                },
-                y: 0,
-                opacity: 1,
-                duration: 1.2,
-                ease: "power3.out"
-            });
-        }
-
-        // Carregamento do iframe apenas via clique do usuário para evitar roubo de foco pelo Google Docs
-        const docOverlay = document.getElementById('doc-overlay');
-        const iframe = document.querySelector('.d4-document-iframe');
-        if (docOverlay && iframe) {
-            docOverlay.addEventListener('click', function() {
-                this.style.display = 'none';
-                iframe.src = iframe.getAttribute('data-src');
-            });
-        }
-
-        // Lógica para esconder a navbar no mobile na home e revelar no scroll
-        const navbarWrapper = document.querySelector('.navbar-wrapper');
-        
-        function checkNavbarVisibility() {
-            if (window.innerWidth <= 768) {
-                // A altura do canvas hero no mobile (16:9)
-                const threshold = window.innerWidth * (9/16); 
-                if (window.scrollY > threshold * 0.8) { // Aparece um pouquinho antes de acabar o vídeo
-                    navbarWrapper.classList.add('nav-scrolled');
-                } else {
-                    navbarWrapper.classList.remove('nav-scrolled');
-                }
-            } else {
-                // Garante que no desktop não aplique a classe
-                navbarWrapper.classList.remove('nav-scrolled');
-            }
-        }
-
-        window.addEventListener('scroll', checkNavbarVisibility);
-        window.addEventListener('resize', checkNavbarVisibility);
-        // Checa imediatamente no carregamento
-        checkNavbarVisibility();
-
     })();
     </script>
 </body>
