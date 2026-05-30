@@ -679,6 +679,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
 
         .d4-document-iframe {
@@ -687,6 +688,38 @@
             height: 100%;
             border: none;
             background-color: #F8F9FA;
+        }
+
+        .d4-doc-overlay {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            border: 2px dashed #899702;
+            transition: all 0.3s ease;
+        }
+
+        .d4-doc-overlay:hover {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-color: #727e02;
+        }
+
+        .d4-doc-overlay span {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #4A4A4A;
+            text-align: center;
+            padding: 1rem;
         }
 
         @media (max-width: 768px) {
@@ -1263,6 +1296,239 @@
                 margin-right: 0;
             }
         }
+
+        /* ══════════════════════════════════════════════════
+           DOBRA 10 — ETAPAS DO PROJETO (CTA)
+        ══════════════════════════════════════════════════ */
+        .section-dobra-10 {
+            padding: 8rem 2rem;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .d10-container {
+            max-width: 65rem;
+            width: 100%;
+            background-color: #F4F5F2; /* Tom de fundo suave que intercala bem com a dobra 9 e footer */
+            border-radius: 2rem;
+            padding: 5rem 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .d10-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #4A4A4A;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .d10-title span {
+            color: #899702;
+        }
+
+        .d10-subtitle {
+            font-size: 1.2rem;
+            color: #6B6B6B;
+            margin-top: 0;
+            margin-bottom: 3.5rem;
+            line-height: 1.6;
+            max-width: 45rem;
+        }
+
+        .d10-buttons-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .d10-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 2.8rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border-radius: 3rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .d10-btn-primary {
+            background-color: #899702;
+            color: #FFFFFF;
+            border: 2px solid #899702;
+        }
+
+        .d10-btn-primary:hover {
+            background-color: #727e02;
+            border-color: #727e02;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(137, 151, 2, 0.2);
+            color: #FFFFFF;
+        }
+
+        .d10-btn-secondary {
+            background-color: transparent;
+            color: #899702;
+            border: 2px solid #899702;
+        }
+
+        .d10-btn-secondary:hover {
+            background-color: #899702;
+            color: #FFFFFF;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(137, 151, 2, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .section-dobra-10 {
+                padding: 4rem 1rem;
+            }
+            .d10-container {
+                padding: 3rem 1.5rem;
+                border-radius: 1.5rem;
+            }
+            .d10-title {
+                font-size: 2.2rem;
+            }
+            .d10-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+            }
+            .d10-buttons-wrapper {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .d10-btn {
+                width: 100%;
+                padding: 1.2rem;
+            }
+        }
+
+        /* ══════════════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════════════ */
+        .site-footer {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-top {
+            background-color: #939490; /* Cinza claro da referência */
+            padding: 5rem 2rem; /* Mais respiro para as logos maiores */
+            display: flex;
+            justify-content: center;
+        }
+
+        .footer-bottom {
+            background-color: #555752; /* Cinza escuro da base */
+            height: 3.5rem;
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 85rem; /* Segue o padrão exato de colunas do site */
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Espalha as colunas igualmente */
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo-box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: flex-start; /* Alinhamento esquerdo para caixas com texto */
+        }
+        
+        .footer-logo-box.rouanet,
+        .footer-logo-box.minc {
+            align-items: center; /* Sem texto, podem se alinhar ao centro da própria caixa */
+        }
+
+        .footer-logo-title {
+            color: #FFFFFF;
+            font-size: 0.9rem; /* Um pouquinho maior também */
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: -0.25rem;
+        }
+
+        .footer-logo-box img {
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Proporções substancialmente maiores para ótima leitura */
+        .footer-logo-box.rouanet img { height: 135px; }
+        .footer-logo-box.apoio img { height: 85px; }
+        .footer-logo-box.patrocinio img { height: 85px; }
+        .footer-logo-box.realizacao img { height: 120px; }
+        .footer-logo-box.minc img { height: 105px; }
+
+        .footer-divider {
+            width: 1px;
+            height: 140px;
+            background-color: rgba(255, 255, 255, 0.4);
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 1200px) {
+            .footer-container {
+                gap: 1.5rem;
+            }
+            .footer-logo-box.rouanet img { height: 110px; }
+            .footer-logo-box.minc img { height: 90px; }
+            .footer-logo-box.realizacao img { height: 100px; }
+        }
+
+        @media (max-width: 1024px) {
+            .footer-container {
+                justify-content: center;
+                gap: 4rem;
+            }
+            .footer-divider {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-top {
+                padding: 4rem 1.5rem;
+            }
+            .footer-container {
+                flex-direction: column;
+                gap: 4rem;
+            }
+            .footer-logo-box {
+                align-items: center; /* No mobile, centraliza tudo */
+            }
+            .footer-logo-title {
+                text-align: center;
+            }
+            .footer-logo-box.rouanet img { height: 120px; }
+            .footer-logo-box.apoio img { height: 80px; }
+            .footer-logo-box.patrocinio img { height: 80px; }
+            .footer-logo-box.realizacao img { height: 110px; }
+            .footer-logo-box.minc img { height: 100px; }
+        }
+
     </style>
 </head>
 <body>
@@ -1443,6 +1709,9 @@
                 </div>
 
                 <div class="d4-document-container">
+                    <div class="d4-doc-overlay" id="doc-overlay">
+                        <span>Clique para carregar e ler o documento</span>
+                    </div>
                     <iframe class="d4-document-iframe" data-src="https://docs.google.com/document/d/1VHVm8P8T9mJypNmWKtfB2xpsM-66gVxYISVXcurvIWw/preview" src="about:blank" title="Visualizador do Livro"></iframe>
                 </div>
             </div>
@@ -1550,6 +1819,60 @@
 
         <p class="d7-footer-text">Levar a conversa da sala de aula para a mesa de jantar.</p>
     </section>
+
+
+    <!-- ══════════════════════════════════════════════════
+         DOBRA 10 — ETAPAS DO PROJETO
+    ══════════════════════════════════════════════════ -->
+    <section id="etapas-do-projeto" class="section-dobra-10">
+        <div class="d10-container">
+            <h2 class="d10-title">O Projeto Segue em <span>Etapas</span></h2>
+            <p class="d10-subtitle">Você pode conhecer cada uma delas — ou entrar em contato para conversar com a gente.</p>
+            
+            <div class="d10-buttons-wrapper">
+                <a href="primeira-fase.html" class="d10-btn d10-btn-secondary">Primeira Fase</a>
+                <a href="#segunda-fase" class="d10-btn d10-btn-secondary">Segunda Fase</a>
+                <a href="#contato" class="d10-btn d10-btn-secondary">Entre em Contato</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="footer-container">
+                <div class="footer-logo-box rouanet">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%2010/leirouanetincentivoaprojetosemlinhaspositiva-branco.png" alt="Lei Rouanet">
+                </div>
+                
+                <div class="footer-logo-box apoio">
+                    <span class="footer-logo-title">Apoio</span>
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%2010/Apoio.png" alt="Apoio: Sua Empresa Aqui">
+                </div>
+
+                <div class="footer-logo-box patrocinio">
+                    <span class="footer-logo-title">Patrocínio</span>
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%2010/leirouanetincentivoaprojetosemlinhaspositiva-Patrocínio.png" alt="Patrocínio: Sua Empresa Aqui">
+                </div>
+
+                <div class="footer-logo-box realizacao">
+                    <span class="footer-logo-title">Realização</span>
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%2010/Logo-vector-HashTag.png" alt="Realização HashTag">
+                </div>
+
+                <div class="footer-divider"></div>
+
+                <div class="footer-logo-box minc">
+                    <img src="../_ASSETS_LOCAIS/Branding/Imagens%20-%20Site/Home/Dobra%2010/minc-govbr_horizontal_branco-1.png" alt="Ministério da Cultura - Governo do Brasil">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Faixa de base (cinza mais escuro) -->
+        <div class="footer-bottom"></div>
+    </footer>
 
     <script>
     (function () {
@@ -1745,16 +2068,14 @@
             });
         }
 
-        // Intercepta o carregamento do Google Docs para evitar o roubo de foco (bug que faz pular pra Dobra 4)
+        // Carregamento do iframe apenas via clique do usuário para evitar roubo de foco pelo Google Docs
+        const docOverlay = document.getElementById('doc-overlay');
         const iframe = document.querySelector('.d4-document-iframe');
-        if (iframe) {
-            const observer = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    iframe.src = iframe.getAttribute('data-src');
-                    observer.disconnect();
-                }
-            }, { threshold: 0.1 });
-            observer.observe(document.querySelector('.section-dobra-4'));
+        if (docOverlay && iframe) {
+            docOverlay.addEventListener('click', function() {
+                this.style.display = 'none';
+                iframe.src = iframe.getAttribute('data-src');
+            });
         }
 
         // Lógica para esconder a navbar no mobile na home e revelar no scroll
