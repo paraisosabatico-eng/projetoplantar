@@ -1765,23 +1765,34 @@
             margin-bottom: 2rem;
         }
 
-        /* Removemos o crop container pois usaremos a imagem como fundo (background) */
+        .mobile-boy-bg {
+            display: none;
+        }
+
         @media (max-width: 992px) {
-            .contato-bg {
-                /* No celular, a imagem (agora a versão mobile cel.jpg via <picture>)
-                   preenche o fundo e alinhamos para que o menino fique no centro da tela */
-                object-position: center 30%;
+            .contato-bg-picture {
+                display: none; /* Esconde o fundo global do desktop */
+            }
+            .mobile-boy-bg {
+                display: block; /* Div dedicada que usa a imagem como fundo */
+                width: 100%;
+                height: 28rem;
+                background-image: url('../_ASSETS_LOCAIS/Branding/Imagens - Site/Contato/cel.jpg');
+                background-size: cover;
+                background-position: center 15%; /* Posiciona para mostrar o menino e cortar a base */
+                background-repeat: no-repeat;
+                mix-blend-mode: multiply;
+                margin: 1rem 0 2rem 0;
+                border-radius: 1rem;
             }
             .contato-content-wrapper {
                 flex-direction: column;
                 align-items: center;
                 position: relative;
-                z-index: 1; /* Garante que o form fique por cima da margem negativa da imagem */
+                z-index: 1; 
             }
             .contato-col-left {
-                display: block;
-                width: 100%;
-                height: 25rem; /* Cria um "buraco" vazio na página para o menino do fundo aparecer */
+                display: none; /* Remove o espaço vazio pois o menino agora está no próprio bloco acima */
             }
             .contato-col-right {
                 padding-left: 0;
@@ -1796,8 +1807,8 @@
             .contato-form-box {
                 padding: 2rem 1.5rem;
             }
-            .contato-bg {
-                object-position: center bottom;
+            .mobile-boy-bg {
+                height: 25rem;
             }
         }
 </style>
@@ -1846,11 +1857,8 @@
     <!-- CONTEÚDO PRINCIPAL DE CONTATO -->
     <main class="section-contato" id="contato">
         
-        <!-- Fundo como na referência: usa <picture> para trocar a imagem no celular -->
+        <!-- Fundo global (APENAS DESKTOP) -->
         <picture class="contato-bg-picture">
-            <!-- Imagem para Mobile (Celular) -->
-            <source media="(max-width: 992px)" srcset="../_ASSETS_LOCAIS/Branding/Imagens - Site/Contato/cel.jpg">
-            <!-- Imagem Padrão (Desktop) -->
             <img src="../_ASSETS_LOCAIS/Branding/Imagens - Site/Contato/ChatGPT-Image-19-de-jan.-de-2026,-17_27_05.jpg" alt="Fundo Menino Plantando" class="contato-bg">
         </picture>
 
@@ -1864,6 +1872,9 @@
                     <p>Toda transformação começa pequena — como uma semente na terra.<br>O Projeto Plantar para Regenerar nasce dessa mesma ideia: cultivar consciência, cuidado e responsabilidade com o futuro.</p>
                 </div>
             </div>
+
+            <!-- BLOCO DE FUNDO MOBILE (O menino entre as caixas) -->
+            <div class="mobile-boy-bg"></div>
 
             <!-- DUAS COLUNAS: Menino e Form -->
             <div class="contato-content-wrapper">
