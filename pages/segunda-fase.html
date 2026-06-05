@@ -1819,62 +1819,6 @@
             pointer-events: none;
         }
 
-        /* Bloco 5: Footer Transition */
-        .section-dobra-3-transition {
-            width: 100%;
-            height: 60vh;
-            min-height: 400px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .section-dobra-3-transition::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
-            z-index: 1;
-        }
-
-        .d3-transition-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3rem;
-            padding: 0 2rem;
-        }
-
-        .d3-serif-title-white {
-            font-family: 'Montserrat', serif;
-            font-size: 3.2rem;
-            font-weight: 700; /* Mais peso para dar ênfase */
-            color: #899701;
-            line-height: 1.2;
-            margin-top: 2rem;
-            text-shadow: none; /* Sem sombra porque o fundo agora é o vidro claro */
-        }
-
-        .d3-chevron-down {
-            width: 3rem;
-            height: 3rem;
-            stroke: #899701;
-            fill: none;
-            stroke-width: 1.5;
-            animation: bounce 2s infinite ease-in-out;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(15px); }
         }
 
         @media (max-width: 1024px) {
@@ -1906,9 +1850,6 @@
             .d3-serif-title {
                 font-size: 2.2rem;
             }
-            .d3-serif-title-white {
-                font-size: 2.5rem;
-            }
         }
 
         @media (max-width: 768px) {
@@ -1931,9 +1872,6 @@
             }
             .d3-subtitle {
                 font-size: 1.2rem;
-            }
-            .d3-serif-title-white {
-                font-size: 2rem;
             }
             .d3-leaf-watermark {
                 width: 15rem;
