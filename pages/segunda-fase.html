@@ -1570,12 +1570,32 @@
             flex-direction: column;
             align-items: center;
             padding: 8rem 2rem 2rem;
-            background-color: transparent; /* Puxando a cor #EAE9E2 padrão do body */
+            background-color: #EAE9E2; /* Cor exata da Dobra 2 */
+            gap: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-dobra-3::before {
+            content: '';
+            position: absolute;
+            inset: -20px; /* Evita bordas duras do blur */
             background-image: url('/projetoplantar/assets/images/textura_papel_organico_1780619777884.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            gap: 3.5rem;
+            filter: blur(15px); /* Efeito desfoque forte */
+            opacity: 0.55; /* Mescla a imagem com o fundo #EAE9E2 */
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Garante que o conteúdo fique na frente do fundo */
+        .section-dobra-3 > div, 
+        .section-dobra-3 > h2, 
+        .section-dobra-3 > p {
+            position: relative;
+            z-index: 1;
         }
 
         .d3-block {
