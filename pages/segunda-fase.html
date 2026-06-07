@@ -1561,342 +1561,439 @@
             .footer-logo-box.minc img { height: 100px; }
         }
 
-        /* ══════════════════════════════════════════════════
-           DOBRA 3 — A PERGUNTA ERRADA
-        ══════════════════════════════════════════════════ */
+        /* ──────────────────────────────────────────────
+           DOBRA 3 (NOVO LAYOUT ZIG-ZAG BENTO)
+        ────────────────────────────────────────────── */
         .section-dobra-3 {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 8rem 2rem 2rem;
-            background-color: #EAE9E2; /* Cor exata da Dobra 2 */
-            gap: 3.5rem;
             position: relative;
-            overflow: hidden;
-
-        }
-
-        .section-dobra-3::before {
-            content: '';
-            position: absolute;
-            inset: -20px; /* Evita bordas duras do blur */
-            background-image: url('/projetoplantar/assets/images/textura_papel_organico_1780619777884.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            filter: blur(15px); /* Efeito desfoque forte */
-            opacity: 0.55; /* Mescla a imagem com o fundo #EAE9E2 */
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Garante que o conteúdo fique na frente do fundo */
-        .section-dobra-3 > div, 
-        .section-dobra-3 > h2, 
-        .section-dobra-3 > p {
-            position: relative;
-            z-index: 1;
-        }
-
-        .d3-block {
-            max-width: 85rem;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2.5rem;
-        }
-
-        .d3-text-side {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .d3-image-side {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .d3-rounded-img {
-            width: 100%;
-            max-width: 40rem;
-            height: auto;
-            border-radius: 1.5rem;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        }
-
-        .d3-green-dash {
-            width: 2.5rem;
-            height: 3px;
-            background-color: #4A5D23;
-            margin-bottom: 0.5rem;
-        }
-
-        .d3-title {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #899701;
-            line-height: 1.2;
-            margin: 0;
-            letter-spacing: -0.02em;
-        }
-
-        .d3-text-side p {
-            font-size: 1.15rem;
-            color: #3A3A3A;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .d3-highlight {
-            font-weight: 700;
-            font-size: 1.25rem !important;
-            color: #1A2E1C !important;
-        }
-
-        /* Bloco 2: Banner do Globo */
-        .d3-banner-dark {
-            max-width: 85rem;
-            width: 100%;
-            background-color: #1F2D21; /* Dark green */
-            border-radius: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(31, 45, 33, 0.3);
-        }
-
-        .d3-banner-left {
-            display: flex;
-            align-items: center;
-            padding: 2.5rem;
-            gap: 2.5rem;
             z-index: 2;
-            width: 60%;
-        }
-
-        .d3-globe-icon {
-            width: 8rem;
-            height: auto;
-            flex-shrink: 0;
-        }
-
-        .d3-banner-text {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            align-items: center;
+            padding: 8rem 2rem;
+            gap: 4rem;
+            overflow: hidden;
+            background-color: #F3F4F0;
         }
 
-        .d3-banner-text p {
-            color: #EAEBE6;
-            font-size: 1.15rem;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        .d3-banner-text .d3-green-text {
-            color: #A3C69C;
-            font-weight: 600;
-        }
-
-        .d3-banner-right {
+        /* Fundo Paralax Wavy */
+        .d3-bg-parallax {
             position: absolute;
-            right: 0;
-            top: 0;
-            height: 100%;
-            width: 45%;
-            z-index: 1;
+            top: -10%;
+            left: 0;
+            width: 100%;
+            height: 120%; /* Para o efeito parallax funcionar */
+            object-fit: cover;
+            z-index: 0;
         }
 
-        .d3-banner-right img {
+        .d3-content-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 80rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .d3-title-img {
+            width: 100%;
+            max-width: 50rem;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .d3-grid-row {
+            display: flex;
+            width: 100%;
+            gap: 2rem;
+            align-items: stretch;
+            min-height: 400px;
+        }
+
+        .d3-glass-box {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .d3-text-content {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #6B6B6B;
+            text-align: justify;
+        }
+
+        .d3-text-highlight {
+            color: #899702;
+            font-weight: 700;
+        }
+
+        .d3-image-box {
+            flex: 1;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .d3-image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: left center;
-            mask-image: linear-gradient(to right, transparent, black 30%);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 30%);
+            display: block;
+            transition: transform 0.6s ease;
         }
-
-        /* Bloco 3: Ícones */
-        .d3-icons-row {
-            display: flex;
-            justify-content: flex-start;
-            gap: 3rem;
-            margin: 1.5rem 0;
-        }
-
-        .d3-icon-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 1rem;
-        }
-
-        .d3-icon-item svg {
-            width: 3.5rem;
-            height: 3.5rem;
-        }
-
-        .d3-icon-item span {
-            font-size: 0.95rem;
-            color: #1A2E1C;
-            font-weight: 600;
-            max-width: 8rem;
-        }
-
-        .d3-paragraph-bold {
-            font-weight: 600;
-            color: #1A2E1C !important;
-        }
-
-        /* Bloco 4: Glass Card */
-        .d3-glass-card {
-            max-width: 85rem;
-            width: 100%;
-            background-color: rgba(234, 233, 226, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 1.5rem;
-            padding: 3.5rem 2rem;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-        }
-
-        .d3-glass-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .d3-serif-title {
-            font-family: 'Montserrat', serif;
-            font-size: 2.2rem; /* Tamanho médio */
-            font-weight: 500;
-            color: #1A2E1C;
-            line-height: 1.2;
-            margin: 0;
-        }
-
-        .d3-subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.4rem; /* Tamanho pequeno */
-            font-weight: 400;
-            color: #3A3A3A;
-            line-height: 1.3;
-            margin: 0;
-        }
-
-        .d3-serif-title-white {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #899701;
-            line-height: 1.2;
-            margin: 0; /* Removido o margin-top excessivo para subir o texto e seguir o gap do card */
-            letter-spacing: -0.02em;
-        }
-
-        .d3-green-dash-center {
-            width: 3rem;
-            height: 2px;
-            background-color: #A3C69C;
-            margin-top: 1rem;
-        }
-
-        .d3-leaf-watermark {
-            position: absolute;
-            right: 2rem;
-            bottom: -5rem;
-            width: 30rem;
-            height: auto;
-            opacity: 0.05;
-            z-index: 1;
-            pointer-events: none;
-        }
-
+        
+        .d3-image-box:hover img {
+            transform: scale(1.03);
         }
 
         @media (max-width: 1024px) {
-            .d3-block {
+            .d3-grid-row {
                 flex-direction: column;
-                gap: 3rem;
+                min-height: auto;
             }
-            .d3-image-side {
-                justify-content: center !important;
+            .d3-grid-row.reverse-mobile {
+                flex-direction: column-reverse; 
             }
-            .d3-banner-dark {
-                flex-direction: column;
-            }
-            .d3-banner-left {
-                width: 100%;
-                padding: 3rem;
-                flex-direction: column;
-                text-align: center;
-            }
-            .d3-banner-right {
-                position: relative;
-                width: 100%;
-                height: 300px;
-            }
-            .d3-banner-right img {
-                mask-image: linear-gradient(to bottom, transparent, black 30%);
-                -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%);
-            }
-            .d3-serif-title {
-                font-size: 1.8rem;
-            }
-            .d3-serif-title-white {
-                font-size: 2.4rem;
+            .d3-image-box {
+                min-height: 300px;
             }
         }
 
         @media (max-width: 768px) {
             .section-dobra-3 {
                 padding: 4rem 1.5rem;
-                gap: 4rem;
+                gap: 2.5rem;
             }
-            .d3-title {
-                font-size: 2.2rem;
+            .d3-content-wrapper {
+                gap: 2.5rem;
             }
-            .d3-icons-row {
-                justify-content: center;
-                flex-wrap: wrap;
+            .d3-glass-box {
+                padding: 2rem;
             }
-            .d3-glass-card {
-                padding: 4rem 1.5rem;
+        }
+
+
+        /* ──────────────────────────────────────────────
+           DOBRA 4 (A FRIEZA DOS NÚMEROS)
+        ────────────────────────────────────────────── */
+        .section-dobra-4 {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5rem 2rem;
+            gap: 4rem;
+            overflow: hidden;
+            background-color: #2A3318; /* Dark Olive Green background */
+        }
+
+        .d4-content-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 85rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .d4-header {
+            text-align: center;
+        }
+
+        .d4-title {
+            font-family: 'Montserrat', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #EAE9E2;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .d4-grid-row {
+            display: flex;
+            width: 100%;
+            gap: 4rem;
+            align-items: stretch;
+        }
+
+        /* Glass Box Dark Mode */
+        .d4-glass-box-dark {
+            background-color: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 3.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .d4-text-side {
+            flex: 1.3;
+            gap: 2rem;
+        }
+
+        .d4-text-side p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #B0B5A7;
+            margin: 0;
+            text-align: justify;
+        }
+        
+        .d4-text-side p:first-child {
+            margin-bottom: 1.5rem;
+        }
+
+        .d4-text-highlight {
+            color: #A3C69C;
+            font-weight: 600;
+        }
+
+        /* Infographic Bento Grid */
+        .d4-info-side {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            align-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .d4-info-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            justify-content: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .d4-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .d4-info-card.wide {
+            grid-column: span 2;
+        }
+
+        .d4-info-number {
+            font-family: 'Montserrat', serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: #899702; /* Bright Green */
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .d4-info-subtitle {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #EAE9E2;
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .d4-info-desc {
+            font-size: 0.95rem;
+            color: #8B9483;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .d4-grid-row {
+                flex-direction: column;
             }
-            .d3-serif-title {
-                font-size: 1.6rem;
+            .d4-title {
+                font-size: 2.8rem;
             }
-            .d3-subtitle {
-                font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .section-dobra-4 {
+                padding: 5rem 1.5rem;
             }
-            .d3-serif-title-white {
-                font-size: 2.2rem;
+            .d4-info-side {
+                grid-template-columns: 1fr;
             }
-            .d3-leaf-watermark {
-                width: 15rem;
-                right: 50%;
-                transform: translateX(50%);
+            .d4-info-card.wide {
+                grid-column: span 1;
+            }
+            .d4-glass-box-dark {
+                padding: 2rem;
+            }
+            .d4-title {
+                font-size: 2.3rem;
+            }
+        }
+
+
+        /* ──────────────────────────────────────────────
+           DOBRA 5 (A CONTA SIMPLES)
+        ────────────────────────────────────────────── */
+        .section-dobra-5 {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8rem 2rem;
+            background-color: #F3F4F0; /* Light organic background */
+            color: #1F2D21;
+        }
+
+        .d5-content-wrapper {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .d5-title {
+            font-family: 'Montserrat', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1F2D21;
+            margin: 0 0 2rem 0;
+            line-height: 1.1;
+        }
+
+        .d5-intro {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #3A3A3A;
+            max-width: 55rem;
+            margin-bottom: 5rem;
+        }
+
+        .d5-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            width: 100%;
+            margin-bottom: 5rem;
+        }
+
+        .d5-col {
+            background-color: #FFFFFF;
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.4s ease;
+        }
+        
+        .d5-col:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .d5-dot-matrix {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 4px;
+            width: 100%;
+            max-width: 140px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .d5-dot {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: #E0E2D8;
+        }
+
+        .d5-percent {
+            font-family: 'Montserrat', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #899702;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.05em;
+        }
+
+        .d5-col-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1F2D21;
+            margin-bottom: 1rem;
+        }
+
+        .d5-col-desc {
+            font-size: 0.95rem;
+            color: #555555;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .d5-quote-box {
+            background-color: #EAE9E2;
+            border-left: 5px solid #899702;
+            padding: 2.5rem 3rem;
+            border-radius: 0 1rem 1rem 0;
+            max-width: 60rem;
+            text-align: left;
+        }
+
+        .d5-quote-box p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #3A3A3A;
+            margin: 0;
+        }
+
+        @media (max-width: 992px) {
+            .d5-grid {
+                grid-template-columns: 1fr;
+                max-width: 25rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .d5-title {
+                font-size: 2.8rem;
             }
         }
 
     </style>
+
+
 </head>
 <body>
 
@@ -1905,7 +2002,7 @@
         <div class="navbar">
             <div class="nav-brand">
                 <a href="/projetoplantar/">
-                    <img src="/projetoplantar/assets/images/Branding-Imagens_-_Site-Home-Dobra_2-LogoTipografico.png" alt="Projeto Plantar" class="nav-logo">
+                    <img src="../assets/images/Branding-Imagens_-_Site-Home-Dobra_2-LogoTipografico.png" alt="Projeto Plantar" class="nav-logo">
                 </a>
             </div>
             
@@ -1941,116 +2038,454 @@
 
     <!-- Imagem Hero DOC -->
     <section class="section-hero-doc" style="width: 100%; position: relative; margin-top: 4.5rem;"> <!-- Compensa a navbar -->
-        <img src="/projetoplantar/assets/images/Branding-Imagens_-_Site-Segunda_Fase-Hero-Section-Capa-DOC_1_.jpg" alt="DOC Mundo Regenerativo" style="width: 100%; aspect-ratio: 2.2 / 1; object-fit: cover; object-position: center; display: block;">
+        <img src="../assets/images/Branding-Imagens_-_Site-Segunda_Fase-Hero-Section-Capa-DOC_1_.jpg" alt="DOC Mundo Regenerativo" style="width: 100%; aspect-ratio: 2.2 / 1; object-fit: cover; object-position: center; display: block;">
     </section>
 
     
     <!-- ══════════════════════════════════════════════════
          DOBRA 3 — A PERGUNTA ERRADA
     ══════════════════════════════════════════════════ -->
-    <section id="dobra-3" class="section-dobra-3">
-        
-        <!-- Bloco 1: Pergunta Errada -->
-        <div class="d3-block">
-            <div class="d3-text-side">
-                <div class="d3-green-dash"></div>
-                <h2 class="d3-title">E se estivermos fazendo<br>a pergunta errada?</h2>
-                <p>Durante muito tempo ouvimos a mesma mensagem.</p>
-                <p class="d3-highlight">"Precisamos salvar o planeta."</p>
-                <p>Mas talvez exista uma pergunta anterior que raramente ocupa o centro dessa conversa.</p>
-            </div>
-            <div class="d3-image-side">
-                <img src="/projetoplantar/assets/images/doc_dobra3_montanha_1780617433197.png" alt="Pessoa na montanha" class="d3-rounded-img">
-            </div>
-        </div>
+    <section id="terceira-dobra" class="section-dobra-3">
+        <!-- Background Wavy Paralax -->
+        <img src="../assets/images/Fundo-Dobra-3-Desfoque v2.jpg" alt="Fundo Orgânico" class="d3-bg-parallax" id="dobra3-bg-parallax">
 
-        <!-- Bloco 2: O Planeta -->
-        <div class="d3-banner-dark">
-            <div class="d3-banner-left">
-                <!-- Globo Terrestre Ícone -->
-                <svg class="d3-globe-icon" viewBox="0 0 100 100" fill="none" stroke="#A3C69C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="50" cy="50" r="45"></circle>
-                    <path d="M50 5C65 5 75 25 75 50C75 75 65 95 50 95C35 95 25 75 25 50C25 25 35 5 50 5Z"></path>
-                    <path d="M5 50H95"></path>
-                    <path d="M15 25H85"></path>
-                    <path d="M15 75H85"></path>
-                    <path d="M30 20C35 25 35 35 25 40C20 45 30 55 25 60C20 65 35 75 40 85"></path>
-                    <path d="M60 15C65 25 75 30 80 40C85 50 70 65 65 75C60 85 70 90 75 95"></path>
-                </svg>
-                <div class="d3-banner-text">
-                    <p>O planeta já atravessou impactos de meteoros,<br>eras glaciais e transformações profundas ao<br>longo de bilhões de anos.</p>
-                    <p class="d3-green-text">Ele continuará existindo.<br>A questão talvez seja outra.</p>
+        <div class="d3-content-wrapper">
+            
+            <!-- Título Superior -->
+            <img src="../assets/images/Se-estamos-focando-na-questão-errada.png" alt="E se estivermos fazendo a pergunta errada?" class="d3-title-img">
+
+            <!-- Linha 1: Texto Esquerda / Imagem Direita (Menino) -->
+            <div class="d3-grid-row reverse-mobile">
+                <div class="d3-glass-box">
+                    <p class="d3-text-content">
+                        Durante muito tempo ouvimos a mesma mensagem:<br>
+                        <span class="d3-text-highlight">"Precisamos salvar o planeta."</span> Mas existe uma verdade incômoda que raramente aparece nas conversas. O planeta já provou que sobreviveu a meteoros e a eras glaciais. Nós não somos a primeira ameaça — e, longe disso, precisamos usar toda a nossa inteligência coletiva para decidir como queremos viver aqui, aceitando de uma vez por todas os limites físicos dessa nossa estadia.
+                    </p>
+                </div>
+                <div class="d3-image-box">
+                    <img src="../assets/images/Menino.jpg" alt="Menino olhando para a cidade">
                 </div>
             </div>
-            <div class="d3-banner-right">
-                <img src="/projetoplantar/assets/images/doc_dobra3_globo_1780617443933.png" alt="Terra do espaço">
-            </div>
-        </div>
 
-        <!-- Bloco 3: Impacto Humano -->
-        <div class="d3-block">
-            <div class="d3-text-side">
-                <p class="d3-paragraph-bold">Pela primeira vez na história, uma única espécie<br>passou a influenciar sistemas inteiros da Terra.</p>
-                <div class="d3-icons-row">
-                    <div class="d3-icon-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#6B7955" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="4" y="10" width="6" height="10"></rect>
-                            <rect x="10" y="4" width="6" height="16"></rect>
-                            <rect x="16" y="14" width="4" height="6"></rect>
-                            <path d="M6 14h2"></path>
-                            <path d="M12 8h2"></path>
-                            <path d="M12 12h2"></path>
-                            <path d="M12 16h2"></path>
-                        </svg>
-                        <span>Expandimos<br>cidades.</span>
+            <!-- Linha 2: Imagem Esquerda (Cidade) / Texto Direita -->
+            <div class="d3-grid-row">
+                <div class="d3-image-box">
+                    <img src="../assets/images/Cidade.png" alt="Rodovia da cidade grande">
+                </div>
+                <div class="d3-glass-box">
+                    <p class="d3-text-content">
+                        A questão real é outra:<br>
+                        <span class="d3-text-highlight">"Nós sobreviveremos ao modelo de crescimento que construímos?"</span><br>
+                        Enquanto discutimos pequenos hábitos de consumo, uma transformação estrutural acontece — ou deveria acontecer — a partir dos nossos atos. Em apenas 300 anos, passamos de 600 milhões para 8 bilhões de pessoas. Produzimos mais, consumimos mais, extraímos mais. E exigimos de um planeta finito algo impossível: crescimento infinito.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Título Inferior -->
+            <img src="../assets/images/Nós-sobreviveremos-ao-modelo-de-crescimento-que-construímos.png" alt="Nós sobreviveremos ao modelo de crescimento que construímos?" class="d3-title-img">
+
+        </div>
+    </section>
+
+
+
+    <!-- ══════════════════════════════════════════════════
+         DOBRA 4 — A FRIEZA DOS NÚMEROS
+    ══════════════════════════════════════════════════ -->
+    <section id="frieza-dos-numeros" class="section-dobra-4">
+        <div class="d4-content-wrapper">
+            
+            <div class="d4-header">
+                <img src="../assets/images/A-Frieza-dos-Números.png" alt="A Frieza dos Números" class="d4-title d4-title-img" style="max-width: 100%; height: auto;">
+            </div>
+
+            <div class="d4-grid-row">
+                <!-- Text Box -->
+                <div class="d4-glass-box-dark d4-text-side">
+                    <p>O colapso começou muito antes do plástico. Em apenas três séculos, a humanidade passou de 600 milhões para 8 bilhões de pessoas — uma multiplicação vertiginosa que transformou radicalmente a relação entre nossa espécie e os recursos finitos da Terra. <span class="d4-text-highlight">Produzimos mais, consumimos mais e extraímos mais a cada geração</span>, exigindo de um planeta com limites físicos algo matematicamente impossível: crescimento infinito. A linha do tempo é implacável e não admite negociação.</p>
+                    
+                    <p>Mas o crescimento é apenas parte da história. A matemática demográfica é brutal, mas inegável: a taxa de reposição populacional determina o futuro. Se dois adultos geram três filhos e esses três filhos, no futuro, geram mais três cada um, ocorre uma expansão vertiginosa — aquele crescimento exponencial que mencionamos. Agora, se dois adultos geram dois filhos, a população empata. Para que haja uma redução real que alivie significativamente a pressão sobre os recursos da Terra, é necessário que, em média, a humanidade passe a ter <span class="d4-text-highlight">muito menos de dois filhos por casal</span>. A equação não é opinião — é matemática, é demografia, é ecologia aplicada.</p>
+                </div>
+
+                <!-- Infographic Bento -->
+                <div class="d4-info-side">
+                    <!-- Wide Card -->
+                    <div class="d4-info-card wide">
+                        <div class="d4-info-number counter" data-target="300" data-suffix=" anos">0 anos</div>
+                        <h3 class="d4-info-subtitle">Anos de aceleração</h3>
+                        <p class="d4-info-desc">O período em que a curva demográfica se tornou exponencial e insustentável.</p>
                     </div>
-                    <div class="d3-icon-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#6B7955" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M8 22L12 2"></path>
-                            <path d="M16 22L12 2"></path>
-                            <path d="M12 8v2"></path>
-                            <path d="M12 14v2"></path>
-                        </svg>
-                        <span>Multiplicamos<br>estradas.</span>
+
+                    <!-- Small Card 1 -->
+                    <div class="d4-info-card">
+                        <div class="d4-info-number counter" data-target="600" data-suffix="M">0M</div>
+                        <h3 class="d4-info-subtitle">População em 1700</h3>
+                        <p class="d4-info-desc">O ponto de partida antes da aceleração exponencial do crescimento humano.</p>
                     </div>
-                    <div class="d3-icon-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#6B7955" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="9" cy="21" r="1"></circle>
-                            <circle cx="20" cy="21" r="1"></circle>
-                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                            <path d="M11 10h4"></path>
-                            <path d="M13 8v4"></path>
-                        </svg>
-                        <span>Aceleramos<br>o consumo.</span>
+
+                    <!-- Small Card 2 -->
+                    <div class="d4-info-card">
+                        <div class="d4-info-number counter" data-target="8" data-suffix="B">0B</div>
+                        <h3 class="d4-info-subtitle">População hoje em dia</h3>
+                        <p class="d4-info-desc">Em apenas três séculos, multiplicamos nossa presença no planeta por mais de 13 vezes.</p>
                     </div>
                 </div>
-                <p class="d3-paragraph-bold">Transformamos paisagens em uma velocidade<br>sem precedentes.</p>
             </div>
-            <div class="d3-image-side" style="justify-content: flex-start;">
-                <img src="/projetoplantar/assets/images/doc_dobra3_cidades_1780617454941.png" alt="Cidade moderna" class="d3-rounded-img">
-            </div>
-        </div>
 
-        <!-- Bloco 4: O Verdadeiro Desafio -->
-        <div class="d3-glass-card">
-            <div class="d3-glass-content">
-                <h3 class="d3-serif-title">Talvez o verdadeiro desafio<br>não seja salvar o planeta.</h3>
-                <p class="d3-subtitle">Talvez seja aprender a viver<br>dentro dos limites dele.</p>
-                <div class="d3-green-dash-center"></div>
-                <h3 class="d3-serif-title-white">Nós sobreviveremos ao modelo<br>de crescimento que construímos?</h3>
-            </div>
-            <!-- Folha SVG Marca D'água -->
-            <svg class="d3-leaf-watermark" viewBox="0 0 100 100" fill="none" stroke="#4A5D23" stroke-width="1.5">
-                <path d="M50 90C50 90 20 70 20 40C20 20 40 10 50 10C60 10 80 20 80 40C80 70 50 90 50 90Z"></path>
-                <path d="M50 90C50 70 40 50 30 40"></path>
-                <path d="M50 65C60 55 70 50 70 50"></path>
-            </svg>
         </div>
+    </section>
 
+
+
+    <!-- ══════════════════════════════════════════════════
+         DOBRA 5 — A CONTA SIMPLES
+    ══════════════════════════════════════════════════ -->
+    <section id="a-conta-simples" class="section-dobra-5">
+        <div class="d5-content-wrapper">
+            
+            <h2 class="d5-title">A Conta Simples Que Ninguém Quer Fazer</h2>
+            
+            <p class="d5-intro">A matemática demográfica é clara e irrefutável. A taxa de fertilidade determina o destino da população humana — e, consequentemente, a pressão sobre os recursos finitos da Terra. Não há escapatória dessa equação: ela não é opinião, é demografia e ecologia aplicada. Sem discutir natalidade, não há sustentabilidade possível. Sem reduzir gradualmente o ritmo de crescimento da população, qualquer discurso sobre salvar o planeta é, no máximo, uma fantasia confortável.</p>
+            
+            <div class="d5-grid">
+                
+                <div class="d5-col">
+                    <div class="d5-dot-matrix">
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                    </div>
+                    <div class="d5-percent">75%</div>
+                    <h3 class="d5-col-title">Crescimento</h3>
+                    <p class="d5-col-desc">Casais com três ou mais filhos. A população cresce exponencialmente. A demanda por recursos se torna insustentável e a pressão sobre o meio ambiente aumenta de forma acelerada a cada geração.</p>
+                </div>
+
+                <div class="d5-col">
+                    <div class="d5-dot-matrix">
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                    </div>
+                    <div class="d5-percent">50%</div>
+                    <h3 class="d5-col-title">Estabilidade</h3>
+                    <p class="d5-col-desc">Casais com dois filhos. A população se mantém no mesmo patamar. O índice já é excessivamente alto para a capacidade de regeneração dos recursos naturais — o impacto ambiental continua crítico.</p>
+                </div>
+
+                <div class="d5-col">
+                    <div class="d5-dot-matrix">
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                        <div class="d5-dot filled"></div>
+                    </div>
+                    <div class="d5-percent">25%</div>
+                    <h3 class="d5-col-title">Redução</h3>
+                    <p class="d5-col-desc">Casais com um filho. A população começa a reduzir. A real regeneração só começa a acontecer com essa média — um desafio cultural, social e ético que frequentemente leva ao silêncio.</p>
+                </div>
+
+            </div>
+
+            <div class="d5-quote-box">
+                <p>A redução real só começa a acontecer quando, em média, cada casal tem apenas um filho — um cenário que, embora matematicamente simples, envolve complexas questões culturais, sociais e éticas. Discutir isso é crucial, mas a delicadeza do tema frequentemente leva ao silêncio, agravando o problema.</p>
+            </div>
+
+        </div>
     </section>
 
     <!-- ══════════════════════════════════════════════════
          DOBRA 10 — ETAPAS DO PROJETO
+
+
     ══════════════════════════════════════════════════ -->
     <section id="etapas-do-projeto" class="section-dobra-10" style="padding-top: 2rem;">
         <div class="d10-container">
@@ -2072,28 +2507,28 @@
         <div class="footer-top">
             <div class="footer-container">
                 <div class="footer-logo-box rouanet">
-                    <img src="/projetoplantar/assets/images/Branding-Imagens_-_Site-Home-Dobra_10-leirouanetincentivoaprojetosemlinhaspositiva-branco.png" alt="Lei Rouanet">
+                    <img src="../assets/images/Branding-Imagens_-_Site-Home-Dobra_10-leirouanetincentivoaprojetosemlinhaspositiva-branco.png" alt="Lei Rouanet">
                 </div>
                 
                 <div class="footer-logo-box apoio">
                     <span class="footer-logo-title">Apoio</span>
-                    <img src="/projetoplantar/assets/images/Branding-Imagens_-_Site-Home-Dobra_10-Apoio.png" alt="Apoio: Sua Empresa Aqui">
+                    <img src="../assets/images/Branding-Imagens_-_Site-Home-Dobra_10-Apoio.png" alt="Apoio: Sua Empresa Aqui">
                 </div>
 
                 <div class="footer-logo-box patrocinio">
                     <span class="footer-logo-title">Patrocínio</span>
-                    <img src="/projetoplantar/assets/images/Branding-Imagens_-_Site-Home-Dobra_10-leirouanetincentivoaprojetosemlinhaspositiva-Patrocinio.png" alt="Patrocínio: Sua Empresa Aqui">
+                    <img src="../assets/images/Branding-Imagens_-_Site-Home-Dobra_10-leirouanetincentivoaprojetosemlinhaspositiva-Patrocinio.png" alt="Patrocínio: Sua Empresa Aqui">
                 </div>
 
                 <div class="footer-logo-box realizacao">
                     <span class="footer-logo-title">Realização</span>
-                    <img src="/projetoplantar/assets/images/Branding-Imagens_-_Site-Home-Dobra_10-Logo-vector-HashTag.png" alt="Realização HashTag">
+                    <img src="../assets/images/Branding-Imagens_-_Site-Home-Dobra_10-Logo-vector-HashTag.png" alt="Realização HashTag">
                 </div>
 
                 <div class="footer-divider"></div>
 
                 <div class="footer-logo-box minc">
-                    <img src="/projetoplantar/assets/images/Branding-Imagens_-_Site-Home-Dobra_10-minc-govbr_horizontal_branco-1.png" alt="Ministério da Cultura - Governo do Brasil">
+                    <img src="../assets/images/Branding-Imagens_-_Site-Home-Dobra_10-minc-govbr_horizontal_branco-1.png" alt="Ministério da Cultura - Governo do Brasil">
                 </div>
             </div>
         </div>
@@ -2121,5 +2556,134 @@
         }
     })();
     </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Parallax e Animação Dobra 3
+        gsap.to("#dobra3-bg-parallax", {
+            scrollTrigger: {
+                trigger: ".section-dobra-3",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            },
+            yPercent: 20,
+            ease: "none"
+        });
+        
+        gsap.from(".d3-glass-box, .d3-image-box", {
+            scrollTrigger: {
+                trigger: ".section-dobra-3",
+                start: "top 80%",
+            },
+            y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out"
+        });
+        
+        gsap.from(".d3-title-img", {
+            scrollTrigger: {
+                trigger: ".section-dobra-3",
+                start: "top 90%",
+            },
+            y: 30, opacity: 0, duration: 0.8, stagger: 0.3, ease: "power3.out"
+        });
+
+        // Animação Dobra 4
+        gsap.from(".d4-title", {
+            scrollTrigger: {
+                trigger: ".section-dobra-4",
+                start: "top 85%",
+            },
+            y: 30, opacity: 0, duration: 0.8, ease: "power3.out"
+        });
+
+        gsap.from(".d4-text-side", {
+            scrollTrigger: {
+                trigger: ".section-dobra-4",
+                start: "top 75%",
+            },
+            x: -40, opacity: 0, duration: 1, ease: "power3.out"
+        });
+
+        gsap.from(".d4-info-card", {
+            scrollTrigger: {
+                trigger: ".section-dobra-4",
+                start: "top 75%",
+            },
+            y: 40, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
+        });
+
+        // Efeito Contador
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            let targetStr = counter.getAttribute('data-target');
+            let target = parseFloat(targetStr);
+            let suffix = counter.getAttribute('data-suffix');
+            
+            ScrollTrigger.create({
+                trigger: counter,
+                start: "top 85%",
+                once: true,
+                onEnter: () => {
+                    let obj = { val: 0 };
+                    gsap.to(obj, {
+                        val: target,
+                        duration: 2.5,
+                        ease: "power2.out",
+                        onUpdate: () => {
+                            counter.innerHTML = Math.ceil(obj.val) + suffix;
+                        }
+                    });
+                }
+            });
+        });
+
+        // Animação Dobra 5
+        gsap.from(".d5-title, .d5-intro", {
+            scrollTrigger: {
+                trigger: ".section-dobra-5",
+                start: "top 80%",
+            },
+            y: 30, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
+        });
+
+        gsap.from(".d5-col", {
+            scrollTrigger: {
+                trigger: ".d5-grid",
+                start: "top 75%",
+            },
+            y: 50, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out"
+        });
+
+        gsap.utils.toArray('.d5-col').forEach(col => {
+            let filledDots = col.querySelectorAll('.d5-dot.filled');
+            ScrollTrigger.create({
+                trigger: col,
+                start: "top 75%",
+                onEnter: () => {
+                    gsap.to(filledDots, {
+                        backgroundColor: "#2A3318",
+                        duration: 0.05,
+                        stagger: {
+                            amount: 1,
+                            from: "end"
+                        }
+                    });
+                }
+            });
+        });
+
+        gsap.from(".d5-quote-box", {
+            scrollTrigger: {
+                trigger: ".d5-quote-box",
+                start: "top 85%",
+            },
+            x: -40, opacity: 0, duration: 0.8, ease: "power3.out"
+        });
+    });
+    </script>
+
+
 </body>
 </html>

@@ -2601,7 +2601,7 @@
 
         for (let i = 0; i < TOTAL; i++) {
             const img = new Image();
-            img.src = '/projetoplantar/Jpeg Hero Web/Timeline 1_000' + (START + i) + '.jpg';
+            img.src = './Jpeg Hero Web/Timeline 1_000' + (START + i) + '.jpg';
             imgs.push(img);
 
             img.onload = function () {
@@ -2613,6 +2613,20 @@
                     draw();
                     initScroll();
                     // Esconde o loader
+                    requestAnimationFrame(() => {
+                        loader.classList.add('hidden');
+                        setTimeout(() => loader.remove(), 700);
+                    });
+                }
+            };
+            
+            img.onerror = function () {
+                loaded++; // Continua mesmo com erro para não travar o site
+                bar.style.width = ((loaded / TOTAL) * 100) + '%';
+                if (loaded === TOTAL) {
+                    sizeCanvas();
+                    draw();
+                    initScroll();
                     requestAnimationFrame(() => {
                         loader.classList.add('hidden');
                         setTimeout(() => loader.remove(), 700);
