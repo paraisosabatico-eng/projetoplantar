@@ -2016,13 +2016,11 @@
 
         .d6-sticky-side {
             flex: 1;
-            position: sticky;
-            top: 20vh;
-            align-self: flex-start;
             height: fit-content;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            margin-top: 10vh; /* Espaço inicial */
         }
 
         .d6-title {
@@ -2806,6 +2804,16 @@
                 start: "top 85%",
             },
             x: -40, opacity: 0, duration: 0.8, ease: "power3.out"
+        });
+
+        // Pinning Dobra 6 via GSAP (Garante o sticky independente do CSS)
+        ScrollTrigger.create({
+            trigger: ".d6-sticky-side",
+            start: "top 20%",
+            endTrigger: ".section-dobra-6",
+            end: "bottom 80%",
+            pin: true,
+            pinSpacing: false
         });
 
         // Animação Dobra 6 (Sticky e Fade)
