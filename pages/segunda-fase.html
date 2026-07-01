@@ -2023,14 +2023,12 @@
             margin-top: 10vh; /* Espaço inicial */
         }
 
-        .d6-title {
-            font-family: 'Montserrat', serif;
-            font-size: 4rem;
-            font-weight: 800;
-            color: #FFFFFF;
-            line-height: 1.1;
-            margin: 0;
-            text-transform: uppercase;
+        .d6-title-img {
+            width: 100%;
+            max-width: 40rem;
+            height: auto;
+            margin-bottom: 0.5rem;
+            display: block;
         }
 
         .d6-subtitle {
@@ -2080,8 +2078,8 @@
             .d6-sticky-side {
                 margin-top: 0;
             }
-            .d6-title {
-                font-size: 3rem;
+            .d6-title-img {
+                max-width: 80%;
             }
             .d6-scroll-side {
                 gap: 6rem;
@@ -2093,8 +2091,8 @@
             .section-dobra-6 {
                 padding: 4rem 0;
             }
-            .d6-title {
-                font-size: 2.2rem;
+            .d6-title-img {
+                max-width: 100%;
             }
             .d6-subtitle {
                 font-size: 1.25rem;
@@ -2605,7 +2603,7 @@
         <div class="d6-container">
             
             <div class="d6-sticky-side">
-                <h2 class="d6-title">O Limite de Suporte</h2>
+                <img src="/projetoplantar/assets/images/Limite.png" alt="O Limite de Suporte" class="d6-title-img">
                 <h3 class="d6-subtitle">Esgotamento: quando esgotarmos os limites, quem realmente pagará a conta?</h3>
             </div>
 
@@ -2837,7 +2835,7 @@
         });
 
         // Animação Dobra 6 (Sticky e Fade)
-        gsap.from(".d6-title, .d6-subtitle", {
+        gsap.from(".d6-title-img, .d6-subtitle", {
             scrollTrigger: {
                 trigger: ".section-dobra-6",
                 start: "top 75%",
