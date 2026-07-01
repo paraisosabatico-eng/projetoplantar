@@ -1993,6 +1993,106 @@
             }
         }
 
+        /* ──────────────────────────────────────────────
+           DOBRA 6 (O LIMITE DE SUPORTE)
+        ────────────────────────────────────────────── */
+        .section-dobra-6 {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            background-color: #111311; /* Asfalto escuro */
+            color: #EAE9E2;
+            padding: 8rem 0;
+            overflow: hidden;
+        }
+
+        .d6-container {
+            width: 100%;
+            max-width: 85rem;
+            display: flex;
+            gap: 4rem;
+            padding: 0 2rem;
+        }
+
+        .d6-sticky-side {
+            flex: 1;
+            position: sticky;
+            top: 20vh;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .d6-title {
+            font-family: 'Montserrat', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.1;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .d6-subtitle {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #A3C69C; /* Verde opaco */
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .d6-scroll-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15rem; /* Espaço negativo para leitura lenta */
+            padding-bottom: 20vh;
+        }
+
+        .d6-paragraph {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #B0B5A7;
+            margin: 0;
+            text-align: justify;
+        }
+
+        .d6-image-container {
+            width: 100%;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            margin-top: -5rem;
+        }
+
+        .d6-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.8;
+            filter: contrast(1.1) brightness(0.9);
+        }
+
+        @media (max-width: 992px) {
+            .d6-container {
+                flex-direction: column;
+                gap: 6rem;
+            }
+            .d6-sticky-side {
+                position: relative;
+                top: 0;
+            }
+            .d6-title {
+                font-size: 3rem;
+            }
+            .d6-scroll-side {
+                gap: 6rem;
+                padding-bottom: 0;
+            }
+        }
+
     </style>
 
 
@@ -2485,6 +2585,30 @@
     </section>
 
     <!-- ══════════════════════════════════════════════════
+         DOBRA 6 — O LIMITE DE SUPORTE
+    ══════════════════════════════════════════════════ -->
+    <section id="limite-de-suporte" class="section-dobra-6">
+        <div class="d6-container">
+            
+            <div class="d6-sticky-side">
+                <h2 class="d6-title">O Limite de Suporte</h2>
+                <h3 class="d6-subtitle">Esgotamento: quando esgotarmos os limites, quem realmente pagará a conta?</h3>
+            </div>
+
+            <div class="d6-scroll-side">
+                <p class="d6-paragraph d6-p1">Quando foi que passamos a acreditar que apenas reciclar ou economizar água seria suficiente diante da escala do nosso impacto? Ao aceitarmos o discurso do "consumo consciente", muitas vezes desviamos o olhar da raiz estrutural da questão. A reflexão que precisamos fazer é mais profunda e exige coragem: o desafio real é que somos bilhões de indivíduos consumindo intensamente sobre uma superfície que não se expande.</p>
+                
+                <p class="d6-paragraph d6-p2">A matemática do nosso impacto é implacável. Se toda a humanidade vivesse com o padrão de consumo de um cidadão médio dos Estados Unidos, precisaríamos de cinco planetas Terra para nos sustentar. O motor da nossa evolução nos trouxe conforto, mas fechamos os olhos para a conta que esse crescimento geraria. Não se trata apenas de poluir, mas de esgotar. O planeta Terra, como um organismo finito, já está sobrecarregado. Ele não precisa ser salvo, pois a natureza sabe se regenerar naturalmente; quem precisa rever suas crenças e transformar a si mesmo somos nós.</p>
+                
+                <div class="d6-image-container">
+                    <img src="/projetoplantar/assets/images/respiro-solitario.png" alt="Respiro solitário no concreto">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
          DOBRA 10 — ETAPAS DO PROJETO
 
 
@@ -2682,6 +2806,33 @@
                 start: "top 85%",
             },
             x: -40, opacity: 0, duration: 0.8, ease: "power3.out"
+        });
+
+        // Animação Dobra 6 (Sticky e Fade)
+        gsap.from(".d6-title, .d6-subtitle", {
+            scrollTrigger: {
+                trigger: ".section-dobra-6",
+                start: "top 75%",
+            },
+            y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out"
+        });
+
+        gsap.utils.toArray(".d6-paragraph").forEach(p => {
+            gsap.from(p, {
+                scrollTrigger: {
+                    trigger: p,
+                    start: "top 85%",
+                },
+                y: 30, opacity: 0, duration: 1, ease: "power2.out"
+            });
+        });
+
+        gsap.from(".d6-image-container", {
+            scrollTrigger: {
+                trigger: ".d6-image-container",
+                start: "top 85%",
+            },
+            y: 50, opacity: 0, duration: 1.2, ease: "power3.out"
         });
     });
     </script>
