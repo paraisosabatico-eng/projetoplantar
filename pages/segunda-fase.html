@@ -2194,10 +2194,11 @@
         
         .d7-pyramid-box.box-left {
             display: grid;
-            grid-template-columns: auto 1fr;
+            grid-template-columns: auto auto;
             grid-template-rows: auto 1fr;
             column-gap: 1.5rem;
             row-gap: 1.5rem;
+            justify-content: center;
         }
         .d7-pyramid-box.box-left .d7-pyramid-header,
         .d7-pyramid-box.box-left .d7-pyramid-structure {
@@ -2208,16 +2209,17 @@
         .d7-pyramid-box.box-left .d7-labels {
             grid-column: 1 / 2;
             grid-row: 2 / 3;
-            justify-self: stretch;
+            height: 100%;
         }
         .d7-pyramid-box.box-left .d7-pyramid-structure { grid-row: 2 / 3; }
 
         .d7-pyramid-box.box-right {
             display: grid;
-            grid-template-columns: 1fr auto;
+            grid-template-columns: auto auto;
             grid-template-rows: auto 1fr;
             column-gap: 1.5rem;
             row-gap: 1.5rem;
+            justify-content: center;
         }
         .d7-pyramid-box.box-right .d7-pyramid-header,
         .d7-pyramid-box.box-right .d7-pyramid-structure {
