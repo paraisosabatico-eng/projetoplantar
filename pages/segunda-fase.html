@@ -2387,8 +2387,8 @@
 
         .d8-header {
             margin-bottom: 0;
-            max-width: 65rem; /* Aumentado de 55rem para permitir a imagem crescer mais */
-            flex: 1;
+            flex: 0 0 calc(66.666% - 1.333rem);
+            max-width: calc(66.666% - 1.333rem);
         }
 
         .d8-top {
@@ -2486,6 +2486,10 @@
                 text-align: left;
                 align-items: flex-start;
                 margin-bottom: 3rem;
+            }
+            .d8-header {
+                max-width: 100%;
+                flex: 1 1 auto;
             }
             .d8-visual {
                 flex: 0 0 120px;
