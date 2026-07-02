@@ -2386,8 +2386,42 @@
         }
 
         .d8-header {
+            margin-bottom: 0;
+            max-width: 55rem;
+            flex: 1;
+        }
+
+        .d8-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 5rem;
-            max-width: 60rem;
+            gap: 2rem;
+        }
+
+        .d8-visual {
+            flex: 0 0 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .d8-ai-core {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ai-core-pulse {
+            transform-origin: center;
+        }
+        .ai-ring-1, .ai-ring-2, .ai-ring-3 {
+            transform-origin: center;
+        }
+
+        .d8-icon-wrapper {
+            margin-bottom: 0.5rem;
+            height: 48px;
         }
 
         .d8-title {
@@ -2424,6 +2458,9 @@
             color: #F4F4F4;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
         .d8-paragraph {
@@ -2445,13 +2482,24 @@
             .section-dobra-8 {
                 padding: 5rem 1.5rem;
             }
+            .d8-top {
+                flex-direction: column;
+                text-align: left;
+                align-items: flex-start;
+                margin-bottom: 3rem;
+            }
+            .d8-visual {
+                flex: 0 0 120px;
+                height: 120px;
+                align-self: center;
+                margin-top: 1rem;
+            }
             .d8-grid {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
             .d8-title { font-size: 2.5rem; }
             .d8-subtitle { font-size: 1.25rem; }
-            .d8-header { margin-bottom: 3rem; }
         }
         </style>
 
@@ -3053,23 +3101,59 @@
     ══════════════════════════════════════════════════ -->
     <section class="section-dobra-8">
         <div class="d8-container">
-            <div class="d8-header">
-                <h2 class="d8-title">Nem tudo está perdido.</h2>
-                <h3 class="d8-subtitle">Parecia ser um impasse insolúvel, mas a saída pode estar exatamente onde menos esperávamos...</h3>
+            <div class="d8-top">
+                <div class="d8-header">
+                    <h2 class="d8-title">Nem tudo está perdido.</h2>
+                    <h3 class="d8-subtitle">Parecia ser um impasse insolúvel, mas a saída pode estar exatamente onde menos esperávamos...</h3>
+                </div>
+                <div class="d8-visual">
+                    <svg class="d8-ai-core" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="90" stroke="#4D6842" stroke-width="0.5" stroke-dasharray="4 8" class="ai-ring-1"/>
+                        <circle cx="100" cy="100" r="70" stroke="#7C9B66" stroke-width="1" class="ai-ring-2"/>
+                        <circle cx="100" cy="100" r="50" stroke="#B5B5B5" stroke-width="0.5" stroke-dasharray="2 4" class="ai-ring-3"/>
+                        <circle cx="100" cy="100" r="12" fill="#6D8E58" class="ai-core-pulse"/>
+                        <path d="M100 10 L100 30 M100 170 L100 190 M10 100 L30 100 M170 100 L190 100" stroke="#B5B5B5" stroke-width="1" opacity="0.3"/>
+                        <circle cx="100" cy="30" r="3" fill="#A9C08C" />
+                        <circle cx="100" cy="170" r="3" fill="#A9C08C" />
+                        <circle cx="30" cy="100" r="3" fill="#A9C08C" />
+                        <circle cx="170" cy="100" r="3" fill="#A9C08C" />
+                    </svg>
+                </div>
             </div>
             
             <div class="d8-grid">
                 <div class="d8-text-block">
+                    <div class="d8-icon-wrapper">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#6D8E58" stroke-width="1.5">
+                            <path d="M 8 8 L 24 32 L 40 8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="24" cy="32" r="4" fill="#6D8E58"/>
+                        </svg>
+                    </div>
                     <div class="d8-text-title">O Abismo e a Virada</div>
                     <p class="d8-paragraph">O documentário não termina em desespero. Se o problema da redução populacional é a falta de braços jovens para manter as cidades e cuidar de uma população que envelhece em massa, a resposta não está em forçar o crescimento humano. As gerações Alpha e Beta já nascem imersas em um mundo que exige uma nova dinâmica de sobrevivência.</p>
                 </div>
                 
                 <div class="d8-text-block">
+                    <div class="d8-icon-wrapper">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#6D8E58" stroke-width="1.5">
+                            <rect x="8" y="20" width="8" height="20" rx="1"/>
+                            <rect x="32" y="20" width="8" height="20" rx="1"/>
+                            <path d="M 12 20 Q 24 4 36 20" stroke-dasharray="4 4" stroke-linecap="round"/>
+                            <circle cx="24" cy="12" r="3" fill="#6D8E58" />
+                        </svg>
+                    </div>
                     <div class="d8-text-title">A Tecnologia como Ponte</div>
                     <p class="d8-paragraph">A Inteligência Artificial e a automação avançada não são os vilões exterminadores do nosso futuro. Máquinas assumirão a base da pirâmide econômica, suprindo a escassez de mão de obra. Essa é a peça que faltava: permitir que a economia continue entregando bem-estar sem precisar da expansão infinita de novos consumidores de carne e osso.</p>
                 </div>
 
                 <div class="d8-text-block">
+                    <div class="d8-icon-wrapper">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#6D8E58" stroke-width="1.5">
+                            <circle cx="24" cy="24" r="16" stroke-dasharray="2 4"/>
+                            <circle cx="24" cy="24" r="8" />
+                            <path d="M 4 24 L 44 24" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                     <div class="d8-text-title">Um Passo Estratégico</div>
                     <p class="d8-paragraph">De forma inédita na história, a população humana poderá diminuir de maneira segura, amortecendo a queda do sistema. A mesma obsessão tecnológica que nos trouxe à beira do precipício ecológico será o paraquedas que nos permitirá envelhecer com dignidade. Ganhamos o tempo necessário para que o planeta possa, finalmente, respirar e se regenerar.</p>
                 </div>
@@ -3374,15 +3458,21 @@
         });
 
         // Animação Dobra 8
-        gsap.from(".d8-header > *", {
+        gsap.from(".d8-top > *", {
             scrollTrigger: { trigger: ".section-dobra-8", start: "top 80%" },
             y: 30, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
         });
 
         gsap.from(".d8-text-block", {
             scrollTrigger: { trigger: ".d8-grid", start: "top 85%" },
-            y: 40, opacity: 0, duration: 1.2, stagger: 0.3, ease: "power3.out"
+            y: 40, opacity: 0, duration: 1.2, stagger: 0.2, ease: "power3.out"
         });
+
+        // Loop Infinito do AI Core (Dobra 8)
+        gsap.to(".ai-ring-1", { rotation: 360, duration: 40, repeat: -1, ease: "none" });
+        gsap.to(".ai-ring-2", { rotation: -360, duration: 30, repeat: -1, ease: "none" });
+        gsap.to(".ai-ring-3", { rotation: 360, duration: 20, repeat: -1, ease: "none" });
+        gsap.to(".ai-core-pulse", { scale: 1.3, opacity: 0.7, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
     });
     </script>
