@@ -2368,6 +2368,91 @@
                 transform: rotate(90deg);
             }
         }
+        /* ══════════════════════════════════════════════════
+           DOBRA 8 — PRÓXIMAS GERAÇÕES (UX Editorial)
+        ══════════════════════════════════════════════════ */
+        .section-dobra-8 {
+            padding: 8rem 2rem;
+            background-color: var(--color-bg);
+            color: #F4F4F4;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .d8-container {
+            width: 100%;
+            max-width: 85rem;
+            margin: 0 auto;
+        }
+
+        .d8-header {
+            margin-bottom: 5rem;
+            max-width: 60rem;
+        }
+
+        .d8-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #F4F4F4;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .d8-subtitle {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #6D8E58; /* Verde principal */
+            line-height: 1.4;
+        }
+
+        .d8-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .d8-text-block {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .d8-text-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #F4F4F4;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .d8-paragraph {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #B5B5B5; /* Cinza claro */
+            font-weight: 400;
+        }
+
+        /* Responsivo Dobra 8 */
+        @media (max-width: 1100px) {
+            .d8-grid {
+                gap: 2.5rem;
+            }
+            .d8-title { font-size: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .section-dobra-8 {
+                padding: 5rem 1.5rem;
+            }
+            .d8-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .d8-title { font-size: 2.5rem; }
+            .d8-subtitle { font-size: 1.25rem; }
+            .d8-header { margin-bottom: 3rem; }
+        }
         </style>
 
 
@@ -2964,6 +3049,35 @@
     </section>
 
     <!-- ══════════════════════════════════════════════════
+         DOBRA 8 — PRÓXIMAS GERAÇÕES
+    ══════════════════════════════════════════════════ -->
+    <section class="section-dobra-8">
+        <div class="d8-container">
+            <div class="d8-header">
+                <h2 class="d8-title">Nem tudo está perdido.</h2>
+                <h3 class="d8-subtitle">Parecia ser um impasse insolúvel, mas a saída pode estar exatamente onde menos esperávamos...</h3>
+            </div>
+            
+            <div class="d8-grid">
+                <div class="d8-text-block">
+                    <div class="d8-text-title">O Abismo e a Virada</div>
+                    <p class="d8-paragraph">O documentário não termina em desespero. Se o problema da redução populacional é a falta de braços jovens para manter as cidades e cuidar de uma população que envelhece em massa, a resposta não está em forçar o crescimento humano. As gerações Alpha e Beta já nascem imersas em um mundo que exige uma nova dinâmica de sobrevivência.</p>
+                </div>
+                
+                <div class="d8-text-block">
+                    <div class="d8-text-title">A Tecnologia como Ponte</div>
+                    <p class="d8-paragraph">A Inteligência Artificial e a automação avançada não são os vilões exterminadores do nosso futuro. Máquinas assumirão a base da pirâmide econômica, suprindo a escassez de mão de obra. Essa é a peça que faltava: permitir que a economia continue entregando bem-estar sem precisar da expansão infinita de novos consumidores de carne e osso.</p>
+                </div>
+
+                <div class="d8-text-block">
+                    <div class="d8-text-title">Um Passo Estratégico</div>
+                    <p class="d8-paragraph">De forma inédita na história, a população humana poderá diminuir de maneira segura, amortecendo a queda do sistema. A mesma obsessão tecnológica que nos trouxe à beira do precipício ecológico será o paraquedas que nos permitirá envelhecer com dignidade. Ganhamos o tempo necessário para que o planeta possa, finalmente, respirar e se regenerar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
          DOBRA 10 — ETAPAS DO PROJETO
 
 
@@ -3257,6 +3371,17 @@
         gsap.from(".d7-bottom-text > *", {
             scrollTrigger: { trigger: ".d7-bottom-text", start: "top 85%" },
             y: 30, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
+        });
+
+        // Animação Dobra 8
+        gsap.from(".d8-header > *", {
+            scrollTrigger: { trigger: ".section-dobra-8", start: "top 80%" },
+            y: 30, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
+        });
+
+        gsap.from(".d8-text-block", {
+            scrollTrigger: { trigger: ".d8-grid", start: "top 85%" },
+            y: 40, opacity: 0, duration: 1.2, stagger: 0.3, ease: "power3.out"
         });
 
     });
