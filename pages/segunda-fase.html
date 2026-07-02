@@ -1909,6 +1909,24 @@
             gap: 3rem;
             width: 100%;
             margin-bottom: 5rem;
+            padding-top: 3.5rem;
+        }
+
+        .d5-col-wrapper {
+            position: relative;
+            padding-top: 3.5rem;
+        }
+
+        .d5-family-img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 7rem;
+            height: 7rem;
+            object-fit: contain;
+            z-index: 2;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
         }
 
         .d5-col {
@@ -1928,12 +1946,7 @@
         }
 
         .d5-dot-matrix {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr);
-            gap: 4px;
-            width: 100%;
-            max-width: 140px;
-            margin: 0 auto 2rem auto;
+            display: none;
         }
 
         .d5-dot {
@@ -2664,332 +2677,34 @@
             
             <div class="d5-grid">
                 
-                <div class="d5-col">
-                    <div class="d5-dot-matrix">
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
+                <div class="d5-col-wrapper">
+                    <img src="/projetoplantar/assets/images/familia-com-3.png" alt="Família com 3 filhos" class="d5-family-img">
+                    <div class="d5-col">
+                        <div class="d5-percent">75%</div>
+                        <h3 class="d5-col-title">Crescimento</h3>
+                        <p class="d5-col-desc">Casais com três ou mais filhos. A população cresce exponencialmente. A demanda por recursos se torna insustentável e a pressão sobre o meio ambiente aumenta de forma acelerada a cada geração.</p>
                     </div>
-                    <div class="d5-percent">75%</div>
-                    <h3 class="d5-col-title">Crescimento</h3>
-                    <p class="d5-col-desc">Casais com três ou mais filhos. A população cresce exponencialmente. A demanda por recursos se torna insustentável e a pressão sobre o meio ambiente aumenta de forma acelerada a cada geração.</p>
                 </div>
 
-                <div class="d5-col">
-                    <div class="d5-dot-matrix">
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
+                <div class="d5-col-wrapper">
+                    <img src="/projetoplantar/assets/images/familia-com-2.png" alt="Família com 2 filhos" class="d5-family-img">
+                    <div class="d5-col">
+                        <div class="d5-percent">50%</div>
+                        <h3 class="d5-col-title">Estabilidade</h3>
+                        <p class="d5-col-desc">Casais com dois filhos. A população se mantém no mesmo patamar. O índice já é excessivamente alto para a capacidade de regeneração dos recursos naturais — o impacto ambiental continua crítico.</p>
                     </div>
-                    <div class="d5-percent">50%</div>
-                    <h3 class="d5-col-title">Estabilidade</h3>
-                    <p class="d5-col-desc">Casais com dois filhos. A população se mantém no mesmo patamar. O índice já é excessivamente alto para a capacidade de regeneração dos recursos naturais — o impacto ambiental continua crítico.</p>
                 </div>
 
-                <div class="d5-col">
-                    <div class="d5-dot-matrix">
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
-                        <div class="d5-dot filled"></div>
+                <div class="d5-col-wrapper">
+                    <img src="/projetoplantar/assets/images/familia-com-1.png" alt="Família com 1 filho" class="d5-family-img">
+                    <div class="d5-col">
+                        <div class="d5-percent">25%</div>
+                        <h3 class="d5-col-title">Redução</h3>
+                        <p class="d5-col-desc">Casais com um filho. A população começa a reduzir. A real regeneração só começa a acontecer com essa média — um desafio cultural, social e ético que frequentemente leva ao silêncio.</p>
                     </div>
-                    <div class="d5-percent">25%</div>
-                    <h3 class="d5-col-title">Redução</h3>
-                    <p class="d5-col-desc">Casais com um filho. A população começa a reduzir. A real regeneração só começa a acontecer com essa média — um desafio cultural, social e ético que frequentemente leva ao silêncio.</p>
                 </div>
 
             </div>
-
             <div class="d5-quote-box">
                 <p>A redução real só começa a acontecer quando, em média, cada casal tem apenas um filho — um cenário que, embora matematicamente simples, envolve complexas questões culturais, sociais e éticas. Discutir isso é crucial, mas a delicadeza do tema frequentemente leva ao silêncio, agravando o problema.</p>
             </div>
@@ -3332,7 +3047,7 @@
             y: 30, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
         });
 
-        gsap.from(".d5-col", {
+        gsap.from(".d5-col-wrapper", {
             scrollTrigger: {
                 trigger: ".d5-grid",
                 start: "top 75%",
